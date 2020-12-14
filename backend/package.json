@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "backend for webedevelopment HTW",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/h3nk42/WebentwicklungHTW.git"
+  },
+  "author": "Henk van der Sloot",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/h3nk42/WebentwicklungHTW/issues"
+  },
+  "homepage": "https://github.com/h3nk42/WebentwicklungHTW#readme"
+}
