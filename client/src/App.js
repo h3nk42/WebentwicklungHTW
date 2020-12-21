@@ -13,10 +13,16 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import './themes/dark.css';
 import './themes/light.css';
+import useDarkMode from "./hooks/useDarkMode";
 
 function App() {
 
     const {token, setToken, userName} = useToken();
+    const [darkMode, setDarkMode, componentMounted] = useDarkMode();
+
+    if (!componentMounted) {
+        return <div/>
+    }
 
     // if (!token) {
     //     return <LoginForm setToken={setToken}/>
@@ -28,8 +34,8 @@ function App() {
                 <Route exact path="/" render={props => <LandingPage/>}/>
                 <Route path="/login" render={props => <Login setToken={setToken}/>}/>
                 <Route path="/register" render={props => <Register/>}/>
-                <Route path="/profile" render={props => <Profile userName={userName()}/>}/>
-                <Route path="/home" render={props => <Home userName={userName()}/>}/>
+                <Route path="/profile" render={props => <Profile userName={userName()} setDarkMode={setDarkMode}/>}/>
+                <Route path="/home" render={props => <Home userName={userName()} setDarkMode={setDarkMode}/>}/>
             </Switch>
         </Router>
     );

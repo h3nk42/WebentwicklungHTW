@@ -5,7 +5,7 @@ function Profile(props) {
 
     return (
         <div>
-            <Header/>
+            <Header setDarkMode={props.setDarkMode}/>
             <div className="col-12 text-center mt-5">
                 <h2>Hello <strong>{props.userName}</strong>!</h2>
                 <a href="/home">Home</a>

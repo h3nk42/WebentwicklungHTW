@@ -118,10 +118,27 @@ body.dark-mode {
     background: #06090f;
 }
 
+body.dark-mode a {
+    color: #723cc6;
+    text-decoration: none;
+}
+
+body.dark-mode a:hover {
+    color: #6833ba;
+}
+
 body.dark-mode p,
 body.dark-mode h1,
 body.dark-mode h2 {
     color: #fff;
+}
+
+body.dark-mode .card-style {
+    background: #21262d;
+    color: #fff;
+    border: transparent;
+    border-radius: 0;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
 }
 
 body.dark-mode .header {

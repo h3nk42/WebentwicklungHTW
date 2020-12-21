@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a97a420-3ec4-4ba7-9ebc-8a1cd3d9c47a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/client/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/LoginForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RegistrationForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RegistrationForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/darkmode/dark.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/darkmode/lightTheme.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/LandingPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/LandingPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/themes/dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/themes/dark.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/themes/light.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/themes/light.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608580394186</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="completed darkmode functionality">
+      <created>1608581839386</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1608581839386</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,6 +134,7 @@
     <MESSAGE value="added pages, components, hooks, logo" />
     <MESSAGE value="dark mode unfinished" />
     <MESSAGE value="slight darkmode changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="slight darkmode changes" />
+    <MESSAGE value="completed darkmode functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="completed darkmode functionality" />
   </component>
 </project>

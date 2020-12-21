@@ -3,18 +3,13 @@ import {useHistory} from 'react-router-dom';
 import useDarkMode from "../hooks/useDarkMode";
 import logo from '../logo/DYDsponge24_logo_only.png'
 
-function Header() {
-    const [darkMode, setDarkMode, componentMounted] = useDarkMode();
+function Header({setDarkMode}) {
 
     const history = useHistory();
 
     const logout = () => {
         localStorage.setItem('user', null);
         history.push("/");
-    }
-
-    if (!componentMounted) {
-        return <div/>
     }
 
     return (

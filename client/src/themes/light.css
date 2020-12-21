@@ -3,6 +3,17 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+a,
+a:active,
+a:visited {
+    color: #f76d2e;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #e36125;
+}
+
 h1, h2 {
     color: #695D47;
 }

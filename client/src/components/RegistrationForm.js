@@ -87,7 +87,7 @@ function RegistrationForm() {
     return (
         <div className="card p-4 col-12 col-lg-4 login-card card-style">
             <h2 className="card-title mt-4">Register</h2>
-            <p className="card-subtitle mb-5 text-muted">Already have an account? <a href="/login">Sign in here</a>
+            <p className="card-subtitle mb-5">Already have an account? <a href="/login">Sign in here</a>
             </p>
             <form>
                 <div className="form-group text-left">
