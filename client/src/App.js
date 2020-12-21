@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch
+} from 'react-router-dom';
+import Profile from './pages/Profile';
+import LandingPage from "./pages/LandingPage";
+import useToken from "./hooks/useToken";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import './App.css';
 
 function App() {
+  const {token, setToken, userName} = useToken();
+
+  // if (!token) {
+  //     return <LoginForm setToken={setToken}/>
+  // }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+        <Switch>
+          <Route exact path="/" render={props => <LandingPage/>}/>
+          <Route path="/login" render={props => <Login setToken={setToken}/>}/>
+          <Route path="/register" render={props => <Register/>}/>
+          <Route path="/profile" render={props => <Profile userName={userName()}/>}/>
+        </Switch>
+      </Router>
   );
 }
 

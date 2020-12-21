@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3a97a420-3ec4-4ba7-9ebc-8a1cd3d9c47a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/components/Header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/LoginForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/RegistrationForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/hooks/useToken.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/logo/DYDsponge24.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/logo/DYDsponge24_logo_only.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/LandingPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/Login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/Profile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1lykIpzxVekPv16YLRbdBFGTZUA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3a97a420-3ec4-4ba7-9ebc-8a1cd3d9c47a" name="Default Changelist" comment="" />
+      <created>1608576642048</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1608576642048</updated>
+      <workItem from="1608576643229" duration="491000" />
+      <workItem from="1608577882899" duration="854000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="feature-login-and-darkmode" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

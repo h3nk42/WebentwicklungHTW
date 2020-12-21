@@ -1,38 +1,109 @@
-.App {
-  text-align: center;
+body {
+  background: #CCBA92;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.backdrop {
+  font-family: 'Poppins', sans-serif
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.backdrop h1 {
+  font-weight: bold;
+  color: #695D47;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.backdrop img {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 393px;
+  width: 515px;
 }
 
-.App-link {
-  color: #61dafb;
+.login-card {
+  min-height: 88vh;
+  min-width: 39vw;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card-style {
+  background: #9FE3D6;
+  border: transparent;
+}
+
+.card-style h2 {
+  font-family: 'Poppins SemiBold', sans-serif;
+}
+
+.card-style a {
+  color: #f76d2e;
+}
+
+.btn-primary {
+  background-color: #f76d2e;
+  border-color: transparent;
+}
+
+.btn-primary:hover {
+  background-color: #e36125;
+  border-color: transparent;
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+  box-shadow: 0 0 0 .2rem rgba(227, 97, 37, 0.5)
+}
+
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:active:focus {
+  background-color: #f76d2e;
+  border-color: transparent;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.show>.btn-primary.dropdown-toggle {
+  background-color: #db5514;
+  border-color: transparent;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.show>.btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 .2rem rgba(227, 97, 37, 0.5)
+}
+
+.btn-outline-primary {
+  color: #f76d2e;
+  background-color: transparent;
+  background-image: none;
+  border-color: transparent;
+}
+
+.btn-outline-primary:hover {
+  color: #e36125;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.btn-outline-primary:focus,
+.btn-outline-primary.focus {
+  box-shadow: 0 0 0 .2rem rgba(247, 109, 46, 0.5)
+}
+
+.btn-outline-primary.disabled,
+.btn-outline-primary:disabled {
+  color: #f76d2e;
+  background-color: transparent
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.show>.btn-outline-primary.dropdown-toggle {
+  color: #db5514;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus,
+.btn-outline-primary:not(:disabled):not(.disabled).active:focus,
+.show>.btn-outline-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 .2rem rgba(247, 109, 46, 0.5)
 }
