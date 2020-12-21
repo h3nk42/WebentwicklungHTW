@@ -1,0 +1,115 @@
+body {
+    background: #CCBA92;
+}
+
+.backdrop {
+    font-family: 'Poppins', sans-serif
+}
+
+.backdrop h1 {
+    font-weight: bold;
+    color: #695D47;
+}
+
+.backdrop img {
+    display: flex;
+    height: 393px;
+    width: 515px;
+}
+
+.btn-primary {
+    background-color: #f76d2e;
+    border-color: transparent;
+}
+
+.btn-primary:hover {
+    background-color: #e36125;
+    border-color: transparent;
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+    box-shadow: 0 0 0 .2rem rgba(227, 97, 37, 0.5)
+}
+
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:active:focus {
+    background-color: #f76d2e;
+    border-color: transparent;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+    background-color: #db5514;
+    border-color: transparent;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 .2rem rgba(227, 97, 37, 0.5)
+}
+
+.btn-outline-primary {
+    color: #f76d2e;
+    background-color: transparent;
+    background-image: none;
+    border-color: transparent;
+}
+
+.btn-outline-primary:hover {
+    color: #e36125;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.btn-outline-primary:focus,
+.btn-outline-primary.focus {
+    box-shadow: 0 0 0 .2rem rgba(247, 109, 46, 0.5)
+}
+
+.btn-outline-primary.disabled,
+.btn-outline-primary:disabled {
+    color: #f76d2e;
+    background-color: transparent
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle {
+    color: #db5514;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus,
+.btn-outline-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 .2rem rgba(247, 109, 46, 0.5)
+}
+
+.card-style {
+    background: #9FE3D6;
+    border: transparent;
+}
+
+.card-style h2 {
+    font-family: 'Poppins SemiBold', sans-serif;
+}
+
+.card-style a {
+    color: #f76d2e;
+}
+
+.header {
+    background-color: #695d47;
+    width: 85vw;
+    border-radius: 0 20px 20px 0;
+}
+
+.login-card {
+    min-height: 88vh;
+    min-width: 39vw;
+}

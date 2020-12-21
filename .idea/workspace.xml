@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3a97a420-3ec4-4ba7-9ebc-8a1cd3d9c47a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/Header.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/LoginForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/RegistrationForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/hooks/useToken.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/logo/DYDsponge24.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/logo/DYDsponge24_logo_only.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/LandingPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/Login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/Profile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-    </list>
+    <list default="true" id="3a97a420-3ec4-4ba7-9ebc-8a1cd3d9c47a" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,12 +19,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src/pages" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/pages" />
       <recent name="$PROJECT_DIR$/client/src" />
     </key>
   </component>
@@ -53,8 +38,30 @@
       <option name="presentableId" value="Default" />
       <updated>1608576642048</updated>
       <workItem from="1608576643229" duration="491000" />
-      <workItem from="1608577882899" duration="854000" />
+      <workItem from="1608577882899" duration="1668000" />
     </task>
+    <task id="LOCAL-00001" summary="added pages, components, hooks, logo">
+      <created>1608579053312</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1608579053312</updated>
+    </task>
+    <task id="LOCAL-00002" summary="added pages, components, hooks, logo">
+      <created>1608579126574</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1608579126574</updated>
+    </task>
+    <task id="LOCAL-00003" summary="dark mode unfinished">
+      <created>1608579695485</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1608579695485</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -82,5 +89,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added pages, components, hooks, logo" />
+    <MESSAGE value="dark mode unfinished" />
+    <option name="LAST_COMMIT_MESSAGE" value="dark mode unfinished" />
   </component>
 </project>
