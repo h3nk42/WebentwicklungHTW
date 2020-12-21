@@ -7,7 +7,7 @@ function Profile(props) {
         display: 'flex',
         width: '100%',
         justifyContent: 'space-between',
-        padding: '10'
+        padding: '10px'
     }
 
     return (

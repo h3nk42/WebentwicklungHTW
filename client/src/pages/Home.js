@@ -5,8 +5,9 @@ function Home(props) {
     return (
         <div>
             <Header/>
-            <div className="col-12 mt-5">
-                <h2 className="text-center">Welcome {props.userName}</h2>
+            <div className="col-12 text-center mt-5">
+                <h2>Welcome {props.userName}</h2>
+                <a href="/profile">Profile</a>
             </div>
         </div>
     );
