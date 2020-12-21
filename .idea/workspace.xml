@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a97a420-3ec4-4ba7-9ebc-8a1cd3d9c47a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/darkmode/Dark.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/darkmode/dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/darkmode/dark.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/darkmode/lightTheme.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/darkmode/lightTheme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/client/.eslintcache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +13,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1lykIpzxVekPv16YLRbdBFGTZUA" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -26,12 +24,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Confirmation" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client" />
       <recent name="$PROJECT_DIR$/client/src" />
       <recent name="$PROJECT_DIR$/client/src/pages" />
     </key>
@@ -45,7 +45,7 @@
       <option name="presentableId" value="Default" />
       <updated>1608576642048</updated>
       <workItem from="1608576643229" duration="491000" />
-      <workItem from="1608577882899" duration="2030000" />
+      <workItem from="1608577882899" duration="3066000" />
     </task>
     <task id="LOCAL-00001" summary="added pages, components, hooks, logo">
       <created>1608579053312</created>
@@ -75,7 +75,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608579873993</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="slight darkmode changes">
+      <created>1608580394186</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1608580394186</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -107,6 +114,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added pages, components, hooks, logo" />
     <MESSAGE value="dark mode unfinished" />
-    <option name="LAST_COMMIT_MESSAGE" value="dark mode unfinished" />
+    <MESSAGE value="slight darkmode changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="slight darkmode changes" />
   </component>
 </project>

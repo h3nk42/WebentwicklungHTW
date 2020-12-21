@@ -1,32 +1,10 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
+import useDarkMode from "../hooks/useDarkMode";
+import logo from '../logo/DYDsponge24_logo_only.png'
 
 function Header() {
-    const body = document.querySelector("body");
-
-    // Dark Mode Action
-    let darkMode = localStorage.getItem("darkMode");
-
-    // Enable Dark Mode
-    const enableDarkMode = () => {
-        body.classList.add("dark-mode");
-        localStorage.setItem("darkMode", "enabled");
-    };
-
-    // Disable Dark Mode
-    const disableDarkMode = () => {
-        body.classList.remove("dark-mode");
-        localStorage.setItem("darkMode", null);
-    };
-
-    if (darkMode === "enabled") {
-        enableDarkMode();
-    }
-
-    const getDarkMode = () => {
-        darkMode = localStorage.getItem("darkMode");
-        darkMode !== "enabled" ? enableDarkMode() : disableDarkMode();
-    };
+    const [darkMode, setDarkMode, componentMounted] = useDarkMode();
 
     const history = useHistory();
 
@@ -35,21 +13,27 @@ function Header() {
         history.push("/");
     }
 
+    if (!componentMounted) {
+        return <div/>
+    }
+
     return (
         <nav className="navbar navbar-light header mt-3">
-            <div className="row col-12 d-flex justify-content-center text-white">
-                <span className="h3">DoYourDishes</span>
+            <div className="row col-12 d-flex align-items-center text-white">
+                <div className="mr-auto">
+                    <span className="h4 align-middle">DoYourDishes</span>
+                    <img className="icon" src={logo} alt="DoYourDishes logo"/>
+                </div>
                 <button
                     className="dark-mode-button top-dark-mode-button"
                     aria-label="dark mode toggle"
-                    onClick={getDarkMode}
+                    onClick={setDarkMode}
                 >
                     <span aria-hidden="true" className="dark-toggle">
-                         <span className="DTSpan"></span>
+                        <span className="DTSpan"></span>
                     </span>
                 </button>
-                <button className="btn btn-primary"
-                        style={{height: '50px'}}
+                <button className="btn btn-primary btn-sm"
                         onClick={logout}
                 >
                     Logout

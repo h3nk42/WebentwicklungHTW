@@ -24,7 +24,7 @@ function LoginForm({setToken}) {
         console.log(res);
         // setLoggedInUser(userName);
         setToken(res.data);
-        history.push("/profile");
+        history.push("/home");
     }
 
     function handlePasswordChange(event) {
@@ -37,7 +37,7 @@ function LoginForm({setToken}) {
 
     return (
         <div className="card p-4 col-12 col-lg-4 login-card card-style">
-            <h2 className="card-title">Sign in</h2>
+            <h2 className="card-title mt-4">Sign in</h2>
             <p className="card-subtitle mb-5 text-muted">New to DoYourDishes? <a href="/register">Create
                 account</a></p>
             <form>

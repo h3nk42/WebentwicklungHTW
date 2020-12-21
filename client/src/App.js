@@ -11,8 +11,8 @@ import LandingPage from "./pages/LandingPage";
 import useToken from "./hooks/useToken";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import './darkmode/dark.css';
-import './darkmode/lightTheme.css';
+import './themes/dark.css';
+import './themes/light.css';
 
 function App() {
 
