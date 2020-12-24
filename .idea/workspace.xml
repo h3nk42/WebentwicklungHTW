@@ -3,18 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="3a97a420-3ec4-4ba7-9ebc-8a1cd3d9c47a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/client/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/LoginForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/RegistrationForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RegistrationForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/darkmode/dark.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/darkmode/lightTheme.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/LandingPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/LandingPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/themes/dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/themes/dark.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/themes/light.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/themes/light.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +50,9 @@
       <updated>1608576642048</updated>
       <workItem from="1608576643229" duration="491000" />
       <workItem from="1608577882899" duration="3066000" />
+      <workItem from="1608625922362" duration="190000" />
+      <workItem from="1608658535480" duration="111000" />
+      <workItem from="1608813627699" duration="4883000" />
     </task>
     <task id="LOCAL-00001" summary="added pages, components, hooks, logo">
       <created>1608579053312</created>
@@ -101,7 +96,21 @@
       <option name="project" value="LOCAL" />
       <updated>1608581839386</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="completed darkmode for real">
+      <created>1608583658282</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1608583658282</updated>
+    </task>
+    <task id="LOCAL-00008" summary="added PrivateRoute.js and authentication context">
+      <created>1608818476785</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1608818476785</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,12 +138,15 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added pages, components, hooks, logo" />
     <MESSAGE value="dark mode unfinished" />
     <MESSAGE value="slight darkmode changes" />
     <MESSAGE value="completed darkmode functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="completed darkmode functionality" />
+    <MESSAGE value="completed darkmode for real" />
+    <MESSAGE value="added PrivateRoute.js and authentication context" />
+    <option name="LAST_COMMIT_MESSAGE" value="added PrivateRoute.js and authentication context" />
   </component>
 </project>

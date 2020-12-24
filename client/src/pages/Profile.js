@@ -1,14 +1,17 @@
 import React, {useContext} from 'react';
 import Header from "../components/Header";
+import {useAuth} from "../context/auth";
+import {Link} from "react-router-dom";
 
-function Profile(props) {
+function Profile() {
+    const {userName} = useAuth();
 
     return (
         <div>
-            <Header setDarkMode={props.setDarkMode}/>
+            <Header/>
             <div className="col-12 text-center mt-5">
-                <h2>Hello <strong>{props.userName}</strong>!</h2>
-                <a href="/home">Home</a>
+                <h2>Hello <strong>{userName}</strong>!</h2>
+                <Link to="/home">Home</Link>
             </div>
         </div>
     )

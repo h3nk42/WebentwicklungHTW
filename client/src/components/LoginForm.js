@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
-import {useHistory, withRouter} from 'react-router-dom';
+import {useHistory, withRouter, Link} from 'react-router-dom';
 import axios from "axios";
-import {Link} from "react-router-dom";
+import {useAuth} from "../context/auth";
 
-function LoginForm({setToken}) {
-    let [userName, setUserName] = useState('');
-    let [password, setPassword] = useState('');
+function LoginForm() {
+    const [userName, setUserName] = useState('');
+    const [password, setPassword] = useState('');
+    const [isError, setIsError] = useState(false);
+
     const history = useHistory();
-
-    // let [loggedInUser, setLoggedInUser] = useState(null);
+    const {setToken} = useAuth();
 
     async function login(e) {
         e.preventDefault();
@@ -16,15 +17,22 @@ function LoginForm({setToken}) {
             password: password,
             userName: userName
         }
-        let res = await axios({
-            method: 'post',
-            url: `https://doyourdishes.herokuapp.com/api/auth/login`,
-            data: data
-        });
-        console.log(res);
-        // setLoggedInUser(userName);
-        setToken(res.data);
-        history.push("/home");
+        try {
+            let res = await axios({
+                method: 'post',
+                url: `https://doyourdishes.herokuapp.com/api/auth/login`,
+                data: data
+            });
+            if (res.status === 200) {
+                console.log(res);
+                setToken(res.data);
+                history.push("/home");
+            } else {
+                setIsError(true);
+            }
+        } catch (e) {
+            setIsError(true);
+        }
     }
 
     function handlePasswordChange(event) {
@@ -38,8 +46,8 @@ function LoginForm({setToken}) {
     return (
         <div className="card p-4 col-12 col-lg-4 login-card card-style">
             <h2 className="card-title mt-4">Sign in</h2>
-            <p className="card-subtitle mb-5">New to DoYourDishes? <a href="/register">Create
-                account</a></p>
+            <p className="card-subtitle mb-5">New to DoYourDishes? <Link to="/register">Create
+                account</Link></p>
             <form>
                 <div className="form-group text-left">
                     <label>Username :</label>
@@ -61,25 +69,14 @@ function LoginForm({setToken}) {
                 <div className="text-center">
                     <button
                         type="submit"
-                        className="btn btn-primary btn-block"
+                        className="btn btn-primary btn-block mb-4"
                         onClick={login}
                     >
                         Log in
                     </button>
                 </div>
             </form>
-            {/*{*/}
-            {/*    !(tokenData === null) ?*/}
-            {/*        'token === ' + tokenData*/}
-            {/*        :*/}
-            {/*        null*/}
-            {/*}*/}
-            {/*{*/}
-            {/*    loggedInUser ?*/}
-            {/*        <h1 style={{color: 'green'}}> logged in as: {loggedInUser} </h1>*/}
-            {/*        :*/}
-            {/*        null*/}
-            {/*}*/}
+            {isError && "The username or password provided were incorrect!"}
         </div>
     );
 }

@@ -15,13 +15,13 @@ export default function useToken() {
         setToken(userToken.token);
     };
 
-    const userName = () => {
+    const getUserName = () => {
         return user?.userName;
     }
 
     return {
         setToken: saveToken,
         token,
-        userName
+        userName: getUserName()
     }
 }

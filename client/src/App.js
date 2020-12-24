@@ -8,12 +8,14 @@ import {
 import Profile from './pages/Profile';
 import Home from "./pages/Home";
 import LandingPage from "./pages/LandingPage";
-import useToken from "./hooks/useToken";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import './themes/dark.css';
 import './themes/light.css';
 import useDarkMode from "./hooks/useDarkMode";
+import useToken from "./hooks/useToken";
+import {AuthContext} from "./context/auth";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
 
@@ -24,20 +26,18 @@ function App() {
         return <div/>
     }
 
-    // if (!token) {
-    //     return <LoginForm setToken={setToken}/>
-    // }
-
     return (
-        <Router>
-            <Switch>
-                <Route exact path="/" render={props => <LandingPage/>}/>
-                <Route path="/login" render={props => <Login setToken={setToken}/>}/>
-                <Route path="/register" render={props => <Register/>}/>
-                <Route path="/profile" render={props => <Profile userName={userName()} setDarkMode={setDarkMode}/>}/>
-                <Route path="/home" render={props => <Home userName={userName()} setDarkMode={setDarkMode}/>}/>
-            </Switch>
-        </Router>
+        <AuthContext.Provider value={{token, setToken, userName, darkMode, setDarkMode}}>
+            <Router>
+                <Switch>
+                    <Route exact path="/" component={LandingPage}/>
+                    <Route path="/login" component={Login}/>
+                    <Route path="/register" component={Register}/>
+                    <PrivateRoute path="/profile" component={Profile}/>
+                    <PrivateRoute path="/home" component={Home}/>
+                </Switch>
+            </Router>
+        </AuthContext.Provider>
     );
 }
 

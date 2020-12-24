@@ -2,9 +2,10 @@ import React from 'react';
 import {useHistory} from 'react-router-dom';
 import useDarkMode from "../hooks/useDarkMode";
 import logo from '../logo/DYDsponge24_logo_only.png'
+import {useAuth} from "../context/auth";
 
-function Header({setDarkMode}) {
-
+function Header() {
+    const {setDarkMode} = useAuth();
     const history = useHistory();
 
     const logout = () => {
