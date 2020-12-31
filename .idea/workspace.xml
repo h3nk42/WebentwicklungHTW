@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3a97a420-3ec4-4ba7-9ebc-8a1cd3d9c47a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/client/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/LoginForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RegistrationForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RegistrationForm.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +51,10 @@
       <workItem from="1608577882899" duration="3066000" />
       <workItem from="1608625922362" duration="190000" />
       <workItem from="1608658535480" duration="111000" />
-      <workItem from="1608813627699" duration="4883000" />
+      <workItem from="1608813627699" duration="6225000" />
+      <workItem from="1609417311829" duration="23000" />
+      <workItem from="1609417415920" duration="19000" />
+      <workItem from="1609417687457" duration="677000" />
     </task>
     <task id="LOCAL-00001" summary="added pages, components, hooks, logo">
       <created>1608579053312</created>
@@ -110,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608818476785</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="added PrivateRoute.js and authentication context">
+      <created>1608820114685</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1608820114685</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,6 +156,6 @@
     <MESSAGE value="completed darkmode functionality" />
     <MESSAGE value="completed darkmode for real" />
     <MESSAGE value="added PrivateRoute.js and authentication context" />
-    <option name="LAST_COMMIT_MESSAGE" value="added PrivateRoute.js and authentication context" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>
