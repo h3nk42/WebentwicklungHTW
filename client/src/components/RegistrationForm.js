@@ -1,16 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
-import {useHistory, withRouter, Link} from 'react-router-dom';
+import {useHistory, NavLink} from 'react-router-dom';
 
 function RegistrationForm() {
 
-    let [data, setData] = useState(null);
-    let [tokenData, setTokenData] = useState(null);
-    let [taskData, setTaskData] = useState(null);
-    let [userData, setUserData] = useState(null);
-    let [userName, setUserName] = useState('');
-    let [password, setPassword] = useState('');
-    let [confirmPassword, setConfirmPassword] = useState('');
+    const [data, setData] = useState(null);
+    const [tokenData, setTokenData] = useState(null);
+    const [taskData, setTaskData] = useState(null);
+    const [userData, setUserData] = useState(null);
+    const [userName, setUserName] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
 
     const history = useHistory();
 
@@ -64,16 +64,9 @@ function RegistrationForm() {
         setConfirmPassword(e.target.value);
     }
 
-    function renderUserData() {
-        return userData.map((e) => {
-            return <h3 style={{color: 'red'}}
-                       key={e._id}> {`${e.userName} // userId: ${e._id} // plan: ${e.plan} `} </h3>
-        })
-    }
-
     function createUser(e) {
         e.preventDefault();
-        let res = axios({
+        axios({
             method: 'post',
             url: `https://doyourdishes.herokuapp.com/api/user/createUser`,
             data: {userName: userName, password: password}
@@ -87,7 +80,7 @@ function RegistrationForm() {
     return (
         <div className="card p-4 col-12 col-lg-4 login-card card-style">
             <h2 className="card-title mt-4">Register</h2>
-            <p className="card-subtitle mb-5">Already have an account? <Link to="/login">Sign in here</Link>
+            <p className="card-subtitle mb-5">Already have an account? <NavLink className="navlink" to="/login">Sign in here</NavLink>
             </p>
             <form>
                 <div className="form-group text-left">
@@ -125,14 +118,8 @@ function RegistrationForm() {
                     </button>
                 </div>
             </form>
-            {/*{*/}
-            {/*    userData ?*/}
-            {/*        renderUserData()*/}
-            {/*        :*/}
-            {/*        null*/}
-            {/*}*/}
         </div>
     );
 }
 
-export default withRouter(RegistrationForm);
+export default RegistrationForm;

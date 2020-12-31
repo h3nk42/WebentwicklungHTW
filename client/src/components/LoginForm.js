@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useHistory, withRouter, Link} from 'react-router-dom';
+import {useHistory, NavLink} from 'react-router-dom';
 import axios from "axios";
 import {useAuth} from "../context/auth";
 
@@ -46,8 +46,8 @@ function LoginForm() {
     return (
         <div className="card p-4 col-12 col-lg-4 login-card card-style">
             <h2 className="card-title mt-4">Sign in</h2>
-            <p className="card-subtitle mb-5">New to DoYourDishes? <Link to="/register">Create
-                account</Link></p>
+            <p className="card-subtitle mb-5">New to DoYourDishes? <NavLink className="navlink" to="/register">Create
+                account</NavLink></p>
             <form>
                 <div className="form-group text-left">
                     <label>Username :</label>
@@ -81,4 +81,4 @@ function LoginForm() {
     );
 }
 
-export default withRouter(LoginForm);
+export default LoginForm;
