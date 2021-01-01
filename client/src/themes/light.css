@@ -103,6 +103,19 @@ h1, h2 {
     box-shadow: 0 0 0 .2rem rgba(247, 109, 46, 0.5)
 }
 
+.btn-language {
+    background-color: transparent;
+    border-color: transparent;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.btn-language span:active,
+.btn-language span:hover {
+    text-decoration: underline;
+}
+
 .card-style {
     background: #9FE3D6;
     border: transparent;
@@ -124,6 +137,24 @@ h1, h2 {
     height: 10vh;
     width: 85vw;
     border-radius: 0 20px 20px 0;
+}
+
+.header a:hover {
+    text-decoration: none;
+}
+
+.footer {
+    background-color: #695d47;
+    height: 7vh;
+    width: 85vw;
+    border-radius: 20px 0 0 20px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+.footer a:hover {
+    text-decoration: none;
 }
 
 .icon {

@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    BrowserRouter as Router,
+    HashRouter,
     Redirect,
     Route,
     Switch
@@ -10,6 +10,9 @@ import Home from "./pages/Home";
 import LandingPage from "./pages/LandingPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import MyPlan from "./pages/MyPlan";
+import Impressum from "./pages/Impressum";
+import Datenschutz from "./pages/Datenschutz";
 import './themes/dark.css';
 import './themes/light.css';
 import useDarkMode from "./hooks/useDarkMode";
@@ -28,15 +31,18 @@ function App() {
 
     return (
         <AuthContext.Provider value={{token, setToken, userName, darkMode, setDarkMode}}>
-            <Router>
+            <HashRouter>
                 <Switch>
                     <Route exact path="/" component={LandingPage}/>
                     <Route path="/login" component={Login}/>
                     <Route path="/register" component={Register}/>
                     <PrivateRoute path="/profile" component={Profile}/>
                     <PrivateRoute path="/home" component={Home}/>
+                    <PrivateRoute path="/myPlan" component={MyPlan}/>
+                    <PrivateRoute path="/impressum" component={Impressum}/>
+                    <PrivateRoute path="/datenschutz" component={Datenschutz}/>
                 </Switch>
-            </Router>
+            </HashRouter>
         </AuthContext.Provider>
     );
 }

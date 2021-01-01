@@ -1,7 +1,7 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import {useAuth} from "../context/auth";
-import {Link} from "react-router-dom";
 
 function Profile() {
     const {userName} = useAuth();
@@ -11,11 +11,10 @@ function Profile() {
             <Header/>
             <div className="col-12 text-center mt-5">
                 <h2>Hello <strong>{userName}</strong>!</h2>
-                <Link to="/home">Home</Link>
             </div>
+            <Footer/>
         </div>
-    )
-        ;
+    );
 }
 
 export default Profile;

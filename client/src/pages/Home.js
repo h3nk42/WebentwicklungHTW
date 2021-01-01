@@ -1,6 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import {useAuth} from "../context/auth";
 
 function Home() {
@@ -11,8 +11,8 @@ function Home() {
             <Header/>
             <div className="col-12 text-center mt-5">
                 <h2>Welcome {userName}</h2>
-                <Link to="/profile">Profile</Link>
             </div>
+            <Footer/>
         </div>
     );
 }
