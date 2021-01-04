@@ -5,13 +5,9 @@ const passport = require('passport')
 
 
 const userController = require('../controllers/user');
-const validate = require('../middlewares/unused/validate');
 
 const router = express.Router();
 
-const upload = multer().single('profileImage');
-
-const {passwordScheme} = require('../utils/index')
 
 
 
@@ -23,8 +19,6 @@ router.post('/createUser',[
     userController.createUser)
 
 router.get('/findAllUsers',[],userController.findAllUsers)
-
-router.get('/delAllUsers',[],userController.delAllUsers)
 
 router.delete('/delUser',passport.authenticate('jwt',{session: false}), userController.delUser)
 
