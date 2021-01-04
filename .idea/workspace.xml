@@ -2,8 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a97a420-3ec4-4ba7-9ebc-8a1cd3d9c47a" name="Default Changelist" comment="changed link to navlink">
-      <change afterPath="$PROJECT_DIR$/backend/Server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/controllers/auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/controllers/user.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/middlewares/passport.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/models/Plan.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/models/Task.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/models/User.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/user.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/tests/loginTest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/tests/runDropDb.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/utils/dropDb.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/utils/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/Server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,17 +54,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend/tests" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Confirmation" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/client/src" />
-      <recent name="$PROJECT_DIR$/client/src/components" />
-      <recent name="$PROJECT_DIR$/client/src/pages" />
-      <recent name="$PROJECT_DIR$/client" />
+      <recent name="$PROJECT_DIR$/backend/tests" />
+      <recent name="$PROJECT_DIR$/backend/utils" />
+      <recent name="$PROJECT_DIR$/backend/models" />
+      <recent name="$PROJECT_DIR$/backend/controllers" />
+      <recent name="$PROJECT_DIR$/backend/routes" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -72,7 +86,7 @@
       <workItem from="1609417687457" duration="1135000" />
       <workItem from="1609524421319" duration="115000" />
       <workItem from="1609532381010" duration="316000" />
-      <workItem from="1609674181370" duration="390000" />
+      <workItem from="1609674181370" duration="2056000" />
     </task>
     <task id="LOCAL-00001" summary="added pages, components, hooks, logo">
       <created>1608579053312</created>
