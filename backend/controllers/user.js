@@ -12,6 +12,9 @@ const secret = process.env.JWT_SECRET;
 
 
 
+// @route PUT api/user/createUser
+// @desc creates a user with a given username and password
+// @access Public
 exports.createUser = async function (req, res) {
     if(checkInputs(req,res)) return  retErr(res, {}, 418, 'INVALID_INPUT');
     let{ userName, password } = req.body;
@@ -40,6 +43,9 @@ exports.createUser = async function (req, res) {
     })
 }
 
+// @route PUT api/user/delAllUsers
+// @desc creates a user with a given username and password
+// @access Public
 exports.delAllUsers = async (req, res) => {
     let users = await User.find({}, (err, data) =>{
     })
@@ -51,10 +57,11 @@ exports.delAllUsers = async (req, res) => {
     })
 }
 
+
+
 exports.delUser = async (req, res) => {
     let msgSender = req.user.userName;
     let planToDelete = await Plan.findOne({owner: msgSender})
-
     let userModel = await User.findOne({userName: msgSender}, (err, data)=>{})
 
     Plan.deleteOne({owner: msgSender}, (err,data) =>{
