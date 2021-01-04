@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/Server.js",
-    "test": "mocha --exit src/tests/tests.js",
+    "loginTest": "mocha --exit tests/loginTest.js",
     "drop": "node src/tests/runDropDb.js"
   },
   "keywords": [],
