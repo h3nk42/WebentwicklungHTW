@@ -1,8 +1,22 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import logo from '../logo/DYDsponge24_logo_only.png'
+import i18n from "../i18next";
+import {useTranslation} from "react-i18next";
+
 
 function Header() {
+
+
+    const changeLanguage = (lang) => {
+        return ()=>{
+            i18n.changeLanguage(lang)
+            console.log("language changed to " + lang);
+        };
+    };
+
+    const{t, i18n} = useTranslation();
+
 
     return (
         <nav className="navbar navbar-light header mt-3">
@@ -17,7 +31,7 @@ function Header() {
                                  exact
                                  to="/home"
                         >
-                            Home
+                            <p>{t("home")}</p>
                         </NavLink>
                     </li>
                     <li>
@@ -25,7 +39,7 @@ function Header() {
                                  exact
                                  to="/myPlan"
                         >
-                            MyPlan
+                            <p>{t("myPlan")}</p>
                         </NavLink>
                     </li>
                     <li>
@@ -33,8 +47,18 @@ function Header() {
                                  exact
                                  to="/profile"
                         >
-                            Profile
+                            <p>{t("profile")}</p>
                         </NavLink>
+                    </li>
+                    <li>
+                        <button className="btn-language"
+                                onClick={changeLanguage("en")}>
+                            <a>EN </a>
+                        </button>
+                        <button className="btn-language"
+                                onClick={changeLanguage("de")}>
+                            <a>DE</a>
+                        </button>
                     </li>
                     <li>
                         <button className="btn btn-primary btn-sm"

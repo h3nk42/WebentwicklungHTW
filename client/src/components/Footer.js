@@ -14,7 +14,7 @@ function Footer () {
                             exact
                             to="/impressum"
                         >
-                            Impressum
+                            <p>{t("impressum_footer")}</p>
                         </NavLink>
                     </li>
                     <li>
@@ -22,7 +22,7 @@ function Footer () {
                             exact
                             to="/datenschutz"
                         >
-                            Datenschutz
+                            <p>{t("datenschutz_footer")}</p>
                         </NavLink>
                     </li>
                 </ul>
