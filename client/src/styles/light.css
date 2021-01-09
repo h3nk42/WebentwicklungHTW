@@ -163,6 +163,7 @@ h1, h2 {
 }
 
 .login-card {
+    position: relative;
     min-height: 88vh;
     min-width: 39vw;
 }
