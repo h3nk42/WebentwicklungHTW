@@ -1,6 +1,7 @@
 import React from 'react';
 import {NavLink, useHistory} from 'react-router-dom';
 import {useTranslation} from "react-i18next";
+import "./Footer.css";
 
 function Footer() {
 

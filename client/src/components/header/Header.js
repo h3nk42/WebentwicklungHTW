@@ -1,9 +1,11 @@
 import React from 'react';
 import {NavLink, useHistory} from 'react-router-dom';
-import logo from '../logo/DYDsponge24_logo_only.png'
-import {useAuth} from "../context/auth";
-import i18n from "../i18next";
+import logo from '../../logo/DYDsponge24_logo_only.png'
+import {useAuth} from "../../context/auth";
+import i18n from "../../i18next";
 import {useTranslation} from "react-i18next";
+import "./Header.css";
+import "./switch.css";
 
 function Header() {
     const {setDarkMode} = useAuth();

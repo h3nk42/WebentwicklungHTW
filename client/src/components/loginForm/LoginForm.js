@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import {useHistory, NavLink} from 'react-router-dom';
 import axios from "axios";
-import {useAuth} from "../context/auth";
-import '../styles/spinner.css';
+import {useAuth} from "../../context/auth";
+import "./spinner.css";
+import "./LoginForm.css";
 
 function LoginForm() {
     const [userName, setUserName] = useState('');

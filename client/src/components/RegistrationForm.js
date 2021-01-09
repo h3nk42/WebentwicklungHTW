@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import {useHistory, NavLink} from 'react-router-dom';
+import "./loginForm/LoginForm.css";
+import "./loginForm/spinner.css";
 
 function RegistrationForm() {
 
