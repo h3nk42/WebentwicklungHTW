@@ -1,5 +1,5 @@
 const express = require('express');
-const planControl = require('../controllers/plan')
+const planControl = require('../controllers/plans')
 const passport = require('passport')
 const {body} = require('express-validator');
 
@@ -24,24 +24,7 @@ router.post(
     passport.authenticate('jwt',{session: false}),
     planControl.createPlan);
 
-router.delete(
-    '/deletePlan',
-    //[body('id').not().isEmpty().withMessage('planName is required')],
-    passport.authenticate('jwt',{session: false}),
-    planControl.deletePlan);
 
-router.post(
-    '/addUser',
-    [
-        body('userName').not().isEmpty().withMessage(' username is required')],
-        passport.authenticate('jwt',{session: false}),
-    planControl.addUser )
 
-router.post(
-    '/removeUser',
-    [
-        body('userName').not().isEmpty().withMessage(' username is required')],
-    passport.authenticate('jwt',{session: false}),
-    planControl.removeUser )
 
 module.exports = router;
