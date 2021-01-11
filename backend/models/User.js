@@ -117,7 +117,9 @@ UserSchema.methods.removePlan =  function() {
 
 UserSchema.methods.setPlan =  function(planId, res) {
     return new Promise((resolve, reject) => {
+
         this.plan = mongoose.Types.ObjectId(planId);
+        console.log(this.plan)
         this.save((err, user) => {
             if (err) reject(retErr(res, {}, 418, 'DB_ERROR'))
             console.log(this)

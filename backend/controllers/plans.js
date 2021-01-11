@@ -42,16 +42,23 @@ exports.createPlan = async (req, res) => {
     let planExists = await Plan.exists({owner: msgSender})
     if (planExists)   return  retErr(res, {}, 418, 'ONLY_ONE_PLAN_PER_USER');
 
+    let user = await User.findOne({userName: msgSender}, (err, user) => {
+        if(err) return retErr(res, {}, 418, 'DB_ERROR');
+    })
+
     plan.name = name;
     plan.users = [{userName: msgSender, points: 0}];
     plan.owner = msgSender;
     plan.tasks = [];
-    plan.save((err, plan) => {
-        if (err) return res.json({success: false, error: err});
-        User.updateOne({userName: msgSender}, {$set: {plan:plan._id}}, (err, updatedUser ) => { if(!err) {} } )
-        console.log(plan);
-        return res.json({success: true, data: plan});
-    });
+    plan.create(res).then((resolve, reject) => {
+        if(reject) return reject;
+        if(resolve) {
+            user.setPlan(resolve.data._id, res).then((resolve, reject) => {
+                if (reject) return reject;
+                else return res.json({success: true, data: plan});
+            })
+        }
+    })
 }
 
 

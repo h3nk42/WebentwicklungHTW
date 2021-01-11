@@ -30,5 +30,15 @@ PlanSchema.methods.delete = function (res) {
     })
 }
 
+PlanSchema.methods.create = function (res) {
+    const plan = this;
+    return new Promise((resolve, reject) => {
+        plan.save({_id: this._id}, (err, plan) => {
+            if (err) reject(retErr(res, {}, 418, 'DB_ERROR'));
+            resolve({success: true, data: plan});
+        })
+    })
+}
+
 // export the new Schema so we could modify it using Node.js
 module.exports = mongoose.model("Plan", PlanSchema, "Plan");
