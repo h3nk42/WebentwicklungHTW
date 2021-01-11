@@ -46,7 +46,23 @@ exports.delete = async (req, res) => {
 
     userModel.delUser(planToDelete).then((resolve, rej) => {
         if (resolve){
-            return res.status(200).json(resolve);
+            if (planToDelete) planToDelete.delete(res).then((resolve, rej) => {
+                if (rej) return(rej);
+                // delete Tasks Task.deleteMany({plan: planToDelete._id}, (err) => {
+                //                 })
+                // update Users
+                User.find({plan: planToDelete._id}, (err, userArray) => {
+                    for (let u in userArray) {
+                        u.removePlan().then((resolve, reject)=>{
+                            if(reject) return(reject);
+                        });
+                    }
+                })
+                return res.status(200).json(resolve);
+            })
+            else {
+                return res.status(200).json(resolve);
+            }
         }
         else {
             return (rej)

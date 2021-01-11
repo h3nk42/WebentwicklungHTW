@@ -7,6 +7,8 @@ const Schema = mongoose.Schema;
 const Plan = require('./Plan')
 const Task = require('./Task')
 
+const {retErr} = require('../utils/index');
+
 
 const UserSchema = new Schema(
     {
@@ -103,35 +105,35 @@ UserSchema.methods.saveUser = function (userData, res, userName, secret) {
     })
 }
 
-UserSchema.methods.delUser = function (planToDelete) {
-
-    const msgSender = this.userName;
+UserSchema.methods.removePlan =  function() {
     return new Promise((resolve, reject) => {
+        this.plan = null;
+        this.save((err, user) => {
+            if (err) reject(retErr(res, {}, 418, 'DB_ERROR'))
+            resolve(user)
+        })
+    })
+}
 
-        Plan.deleteOne({owner: msgSender}, (err, data) => {
-            if (err) return retErr(res, {}, 418, 'DB_ERROR');
-            // if plans have been deleted, also delete tasks
-            if (data.n > 0) {
-                Task.deleteMany({plan: planToDelete._id}, (err) => {
-                })
-                this.updateMany({plan: planToDelete._id}, {$set: {plan: null}}, (err, data) => {
-                    if (err)  reject(retErr(res, {}, 418, 'DB_ERROR'));
-                })
-            }
-            //if user is in an existing plan but not owner, remove him/her from plan
-            else if (data.n === 0 && this.plan != null) {
-                Plan.updateOne({_id: this.plan}, {$pull: {users: {userName: msgSender}}}, (err, data) => {
-                    if (err)  reject(retErr(res, {}, 418, 'DB_ERROR'));
-                })
-            }
-        }).then(() => {
-            this.deleteOne({userName: msgSender}, (err, data) => {
-                if (err)  reject(retErr(res, {}, 418, 'DB_ERROR'));
-                resolve({success: true, data: data});
-            })
+UserSchema.methods.setPlan =  function(planId, res) {
+    return new Promise((resolve, reject) => {
+        this.plan = mongoose.Types.ObjectId(planId);
+        this.save((err, user) => {
+            if (err) reject(retErr(res, {}, 418, 'DB_ERROR'))
+            console.log(this)
+            resolve(user)
+        })
+    })
+}
+
+UserSchema.methods.delUser = function (planToDelete) {
+    return new Promise((resolve, reject) => {
+        this.deleteOne({userName: this.userName}, (err, data) => {
+            if (err)  reject(retErr(res, {}, 418, 'DB_ERROR'));
+            resolve({success: true, data: data});
         })
     })
 }
 
 // export the new Schema so we could modify it using Node.js
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("User", UserSchema,"Users");
