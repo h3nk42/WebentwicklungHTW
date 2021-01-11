@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node src/Server.js",
     "loginTest": "mocha --exit tests/loginTest.js",
+    "createPlanTest": "mocha --exit tests/createPlanTest.js",
     "drop": "node src/tests/runDropDb.js"
   },
   "keywords": [],
