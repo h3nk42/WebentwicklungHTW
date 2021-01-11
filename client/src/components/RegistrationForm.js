@@ -13,6 +13,14 @@ function RegistrationForm() {
 
     const history = useHistory();
 
+    const checkEmptyField = () => {
+        if (userName === '' || password === '' || confirmPassword === '') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     function handleUsernameChange(e) {
         setUserName(e.target.value);
     }
@@ -42,6 +50,7 @@ function RegistrationForm() {
                     data: data
                 });
                 if (res.status === 200) {
+                    setRegisterState("registered");
                     history.push("/login");
                 }
             } catch (e) {
@@ -51,16 +60,15 @@ function RegistrationForm() {
     }
 
     return (
-        <div className="card p-4 col-12 col-lg-4 login-card card-style">
+        <div data-testid="register-card" className="card p-4 col-12 col-lg-4 login-card card-style">
             {registerState === "registering" ?
                 <div className="spin"></div>
                 :
                 <>
                     <h2 className="card-title mt-4">Register</h2>
-                    <p className="card-subtitle mb-5">Already have an account? <NavLink className="navlink" to="/login">Sign
-                        in here</NavLink>
-                    </p>
-                    <form>
+                    <p className="card-subtitle mb-5">Already have an account? <NavLink to="/login">Sign
+                        in here</NavLink></p>
+                    <form data-testid="registration-form">
                         <div className="form-group text-left">
                             <label>Username :</label>
                             <input className="form-control"
@@ -92,6 +100,7 @@ function RegistrationForm() {
                                 type="submit"
                                 className="btn btn-primary btn-block mb-4"
                                 onClick={createUser}
+                                disabled={checkEmptyField()}
                             >
                                 Register
                             </button>

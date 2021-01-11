@@ -13,6 +13,14 @@ function LoginForm() {
     const history = useHistory();
     const {setToken} = useAuth();
 
+    const checkEmptyField = () => {
+        if (userName === '' || password === '') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     async function login(e) {
         e.preventDefault();
         setLoggedInState("logging in");
@@ -28,6 +36,7 @@ function LoginForm() {
             });
             if (res.status === 200) {
                 setToken(res.data);
+                setLoggedInState("logged in");
                 history.push("/home");
             }
         } catch (e) {
@@ -44,15 +53,15 @@ function LoginForm() {
     }
 
     return (
-        <div className="card p-4 col-12 col-lg-4 login-card card-style">
+        <div data-textid="login-card" className="card p-4 col-12 col-lg-4 login-card card-style">
             {loggedInState === "logging in" ?
                 <div className="spin"></div>
                 :
                 <>
                     <h2 className="card-title mt-4">Sign in</h2>
-                    <p className="card-subtitle mb-5">New to DoYourDishes? <NavLink className="navlink" to="/register">Create
+                    <p className="card-subtitle mb-5">New to DoYourDishes? <NavLink to="/register">Create
                         account</NavLink></p>
-                    <form>
+                    <form data-textid="login-form">
                         <div className="form-group text-left">
                             <label>Username :</label>
                             <input className="form-control"
@@ -75,6 +84,7 @@ function LoginForm() {
                                 type="submit"
                                 className="btn btn-primary btn-block mb-4"
                                 onClick={login}
+                                disabled={checkEmptyField()}
                             >
                                 Log in
                             </button>

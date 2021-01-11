@@ -48,6 +48,11 @@ body.dark-mode .btn-primary:active:focus {
     border-color: transparent;
 }
 
+body.dark-mode .btn-primary:disabled, .btn-primary.disabled {
+    background-color: #723cc6;
+    border-color: transparent;
+}
+
 body.dark-mode .btn-primary:not(:disabled):not(.disabled):active,
 body.dark-mode .btn-primary:not(:disabled):not(.disabled).active,
 .show > body.dark-mode .btn-primary.dropdown-toggle {

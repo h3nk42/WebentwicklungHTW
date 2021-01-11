@@ -52,6 +52,11 @@ h1, h2 {
     border-color: transparent;
 }
 
+.btn-primary:disabled, .btn-primary.disabled {
+    background-color: #f76d2e;
+    border-color: transparent;
+}
+
 .btn-primary:not(:disabled):not(.disabled):active,
 .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
