@@ -27,7 +27,6 @@ mongoose.connect(dbUri, {useUnifiedTopology: true, useNewUrlParser: true})
     })
 
 mongoose.set("useCreateIndex", true);
-
 let dbConnection = mongoose.connection;
 dbConnection.once('open', () => console.log('connected to the database'));
 // checks if connection with the database is successful
@@ -41,18 +40,17 @@ const router = express.Router();
 // bodyParser, parses the request body to be a readable json format
     app.use(bodyParser.urlencoded({extended: false}));
     app.use(bodyParser.json());
-    app.use(logger('dev'));
+    process.env.HEROKU === 'true' ?
+        app.use(logger('default'))
+        :
+        app.use(logger('dev'));
 
-// this is our get method
-// this method fetches all available data in our database
 
-//=== 3 - INITIALIZE PASSPORT MIDDLEWARE
+//=== 2 - INITIALIZE PASSPORT MIDDLEWARE
 
 passportController.applyPassportStrategy(passport);
-//app.use(passport.initialize());
 
-
-//=== 4 - CONFIGURE ROUTES
+//=== 3 - CONFIGURE ROUTES
 //Configure Route
 require('./routes/index')(app);
 

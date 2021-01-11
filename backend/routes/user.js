@@ -4,7 +4,7 @@ const multer = require('multer');
 const passport = require('passport')
 
 
-const userController = require('../controllers/user');
+const userController = require('../controllers/users');
 
 const router = express.Router();
 
@@ -16,7 +16,7 @@ router.post('/createUser',[
     body('userName').isLength({min:4, max: 15}).withMessage('Your username is required'),
     body('password').not().isEmpty().withMessage('Your password is required'),
     body('password').isLength({min:5, max: 20})],
-    userController.createUser)
+    userController.create)
 
 router.get('/findAllUsers',[],userController.findAllUsers)
 

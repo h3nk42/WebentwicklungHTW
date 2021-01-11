@@ -14,7 +14,7 @@ const secret = process.env.JWT_SECRET;
 
 
 
-exports.createUser = async function (req, res) {
+exports.create = async function (req, res) {
     if(checkInputs(req,res)) return  retErr(res, {}, 418, 'INVALID_INPUT');
     let{ userName, password } = req.body;
     let user = await User.exists({$or:[{userName: userName},{userNameLowerCase: userName.toLowerCase()}]})
