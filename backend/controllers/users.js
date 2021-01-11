@@ -39,7 +39,7 @@ exports.create = async function (req, res) {
     })
 }
 
-exports.delUser = async (req, res) => {
+exports.delete = async (req, res) => {
     let msgSender = req.user.userName;
     let planToDelete = await Plan.findOne({owner: msgSender})
     let userModel = await User.findOne({userName: msgSender}, (err, data)=>{})

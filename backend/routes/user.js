@@ -20,7 +20,7 @@ router.post('/createUser',[
 
 router.get('/findAllUsers',[],userController.findAllUsers)
 
-router.delete('/delUser',passport.authenticate('jwt',{session: false}), userController.delUser)
+router.delete('/delUser',passport.authenticate('jwt',{session: false}), userController.delete)
 
 
 
