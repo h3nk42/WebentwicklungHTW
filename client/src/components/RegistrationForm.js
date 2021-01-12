@@ -11,6 +11,7 @@ function RegistrationForm() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [registerState, setRegisterState] = useState('');
 
+    const SERVER_URL = process.env.REACT_APP_SERVER_URL;
     const history = useHistory();
 
     const checkEmptyField = () => {
@@ -46,7 +47,7 @@ function RegistrationForm() {
             try {
                 let res = await axios({
                     method: 'post',
-                    url: `https://doyourdishes.herokuapp.com/api/user/createUser`,
+                    url: `${SERVER_URL}user/createUser`,
                     data: data
                 });
                 if (res.status === 200) {
