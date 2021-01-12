@@ -8,21 +8,21 @@ const router = express.Router();
 
 
 router.get(
-    '/findPlanToOwner',
+    '/showOne',
     passport.authenticate('jwt',{session: false}),
-    planControl.findPlanToOwner);
+    planControl.showOne);
 
 router.get(
-    '/findAllPlans',
-    planControl.findAllPlans);
+    '/showMany',
+    planControl.showMany);
 
 router.post(
-    '/createPlan',
+    '/create',
     [
         body('name').not().isEmpty(),
             body('name').isLength({min: 1, max: 15})],
     passport.authenticate('jwt',{session: false}),
-    planControl.createPlan);
+    planControl.create);
 
 
 

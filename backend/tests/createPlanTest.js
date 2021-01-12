@@ -56,7 +56,7 @@ describe(" createUser / login : ", () => {
     describe("Plans", () => {
         it("(UNHAPPY PATH) should not create a plan (empty planName)", (done) => {
             chai.request(app)
-                .post('/api/plan/createPlan')
+                .post('/api/plan/create')
                 .auth(token, {type: 'bearer'})
                 .send({name: ''})
                 .end((err, res) => {
@@ -69,7 +69,7 @@ describe(" createUser / login : ", () => {
 
         it("(UNHAPPY PATH) should not create a plan ( name.length() > 15 )", (done) => {
             chai.request(app)
-                .post('/api/plan/createPlan')
+                .post('/api/plan/create')
                 .auth(token, {type: 'bearer'})
                 .send({name: 'Das ist ein sehr langer Haushaltsplan'})
                 .end((err, res) => {
@@ -82,14 +82,14 @@ describe(" createUser / login : ", () => {
 
         it("(HAPPY PATH) should create a plan and then find it in DB", (done) => {
             chai.request(app)
-                .post('/api/plan/createPlan')
+                .post('/api/plan/create')
                 .auth(token, {type: 'bearer'})
                 .send({name: 'haushalt1'})
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('object');
                     chai.request(app)
-                        .get('/api/plan/findPlanToOwner')
+                        .get('/api/plan/showOne')
                         .auth(token, {type: 'bearer'})
                         .end((err, res) => {
                             res.should.have.status(200);
@@ -102,7 +102,7 @@ describe(" createUser / login : ", () => {
 
         it("(UNHAPPY PATH) should not create a plan (1 plan per user)", (done) => {
             chai.request(app)
-                .post('/api/plan/createPlan')
+                .post('/api/plan/create')
                 .auth(token, {type: 'bearer'})
                 .send({name: 'haushalt1'})
                 .end((err, res) => {
@@ -115,7 +115,7 @@ describe(" createUser / login : ", () => {
 
         it("(UNHAPPY PATH) should not create a plan (not logged in)", (done) => {
             chai.request(app)
-                .post('/api/plan/createPlan')
+                .post('/api/plan/create')
                 .send({name: 'haushalt1'})
                 .end((err, res) => {
                     res.should.have.status(401);

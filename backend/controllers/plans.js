@@ -1,5 +1,3 @@
-
-
 const Plan = require('../models/Plan')
 const Task = require('../models/Task')
 const User = require('../models/User')
@@ -10,7 +8,7 @@ const {retErr} = require('../utils/index');
 const {checkInputs} = require('../utils/index')
 
 
-exports.findPlanToOwner = async (req, res) => {
+exports.showOne = async (req, res) => {
     let msgSender = req.user.userName;
     let user = await User.findOne({userName: msgSender}, (err, data)=>{})
     Plan.findOne( {_id: user.plan } ,(err, data) => {
@@ -23,7 +21,7 @@ exports.findPlanToOwner = async (req, res) => {
     });
 }
 
-exports.findAllPlans = (req, res) => {
+exports.showMany = (req, res) => {
     Plan.find((err, data) => {
         if (err) {
             return  retErr(res, err, 418, 'PLAN_NOT_FOUND');
@@ -33,7 +31,7 @@ exports.findAllPlans = (req, res) => {
     });
 }
 
-exports.createPlan = async (req, res) => {
+exports.create = async (req, res) => {
     if(checkInputs(req,res)) return  retErr(res, {}, 418, 'INVALID_INPUT');
     let msgSender = req.user.userName;
     let plan = new Plan();
@@ -60,8 +58,3 @@ exports.createPlan = async (req, res) => {
         }
     })
 }
-
-
-
-
-

@@ -4,8 +4,6 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Schema = mongoose.Schema;
 
-const Plan = require('./Plan')
-const Task = require('./Task')
 
 const {retErr} = require('../utils/index');
 
@@ -117,7 +115,6 @@ UserSchema.methods.removePlan =  function() {
 
 UserSchema.methods.setPlan =  function(planId, res) {
     return new Promise((resolve, reject) => {
-
         this.plan = mongoose.Types.ObjectId(planId);
         console.log(this.plan)
         this.save((err, user) => {
