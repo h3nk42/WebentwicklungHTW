@@ -11,7 +11,7 @@ function LoginForm() {
     const [loggedInState, setLoggedInState] = useState('');
 
     const history = useHistory();
-    const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+    const API_URL = process.env.REACT_APP_API_URL;
     const {setToken} = useAuth();
 
     const checkEmptyField = () => {
@@ -32,7 +32,7 @@ function LoginForm() {
         try {
             let res = await axios({
                 method: 'post',
-                url: `${SERVER_URL}auth/login`,
+                url: `${API_URL}auth/login`,
                 data: data
             });
             if (res.status === 200) {
