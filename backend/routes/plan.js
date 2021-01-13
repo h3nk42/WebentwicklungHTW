@@ -1,5 +1,5 @@
 const express = require('express');
-const planControl = require('../controllers/plan')
+const planControl = require('../controllers/plans')
 const passport = require('passport')
 const {body} = require('express-validator');
 
@@ -8,40 +8,23 @@ const router = express.Router();
 
 
 router.get(
-    '/findPlanToOwner',
+    '/showOne',
     passport.authenticate('jwt',{session: false}),
-    planControl.findPlanToOwner);
+    planControl.showOne);
 
 router.get(
-    '/findAllPlans',
-    planControl.findAllPlans);
+    '/showMany',
+    planControl.showMany);
 
 router.post(
-    '/createPlan',
+    '/create',
     [
         body('name').not().isEmpty(),
             body('name').isLength({min: 1, max: 15})],
     passport.authenticate('jwt',{session: false}),
-    planControl.createPlan);
+    planControl.create);
 
-router.delete(
-    '/deletePlan',
-    //[body('id').not().isEmpty().withMessage('planName is required')],
-    passport.authenticate('jwt',{session: false}),
-    planControl.deletePlan);
 
-router.post(
-    '/addUser',
-    [
-        body('userName').not().isEmpty().withMessage(' username is required')],
-        passport.authenticate('jwt',{session: false}),
-    planControl.addUser )
 
-router.post(
-    '/removeUser',
-    [
-        body('userName').not().isEmpty().withMessage(' username is required')],
-    passport.authenticate('jwt',{session: false}),
-    planControl.removeUser )
 
 module.exports = router;

@@ -48,9 +48,10 @@ exports.delete = async (req, res) => {
         if (resolve){
             if (planToDelete) planToDelete.delete(res).then((resolve, rej) => {
                 if (rej) return(rej);
+
+                //TODO
                 // delete Tasks Task.deleteMany({plan: planToDelete._id}, (err) => {
                 //                 })
-                // update Users
                 User.find({plan: planToDelete._id}, (err, userArray) => {
                     for (let u in userArray) {
                         u.removePlan().then((resolve, reject)=>{
@@ -70,10 +71,9 @@ exports.delete = async (req, res) => {
     })
 }
 
-
 exports.findAllUsers = async function (req, res) {
-    User.find({},(err, data)=>{
-        if(err){
+    User.find({}, (err, data) => {
+        if (err) {
             return res.status(400).json({
                 success: false,
                 error: err
@@ -85,4 +85,3 @@ exports.findAllUsers = async function (req, res) {
         })
     })
 }
-
