@@ -49,8 +49,5 @@ PlanSchema.methods.addUser = function (res, userToAdd) {
     })
 }
 
-
-
-
 // export the new Schema so we could modify it using Node.js
 module.exports = mongoose.model("Plan", PlanSchema, "Plan");
