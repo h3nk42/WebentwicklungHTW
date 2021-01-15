@@ -278,6 +278,28 @@ describe(" TESTS : ", () => {
                 })
         });
     });
+
+    describe("remove User from Plan", () => {
+        it("(HAPPY PATH) should add a user to plan", (done) => {
+            chai.request(app)
+                .post('/api/plan/removeUser',)
+                .auth(token, { type: 'bearer' })
+                .send({ userName: 'paraiso' })
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    chai.request(app)
+                    chai.request(app)
+                        .get('/api/plan/showOne')
+                        .auth(token, { type: 'bearer' })
+                        .end((err, res) => {
+                            res.should.have.status(200);
+                            res.body.should.be.a('object');
+                            chai.expect(res.body.data.users.length).to.equal(1)
+                            planId = res.body.data._id;
+                            done();
+                        })
+                })
+        });
+    });
  })
-
-

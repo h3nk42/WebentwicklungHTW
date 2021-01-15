@@ -36,5 +36,11 @@ router.post(
     passport.authenticate('jwt',{session: false}),
     planControl.addUser )
 
+router.post(
+    '/removeUser',
+    [
+        body('userName').not().isEmpty().withMessage(' username is required')],
+    passport.authenticate('jwt',{session: false}),
+    planControl.removeUser )
 
 module.exports = router;

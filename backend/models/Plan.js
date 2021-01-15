@@ -49,5 +49,16 @@ PlanSchema.methods.addUser = function (res, userToAdd) {
     })
 }
 
+PlanSchema.methods.removeUser = function (res, userToRemove) {
+    return new Promise((resolve, reject) => {
+        this.users = this.users.filter((user, index, arr) => { return (user.userName !== userToRemove)});
+        this.save((err, plan) => {
+            if (err) reject(retErr(res, {}, 418, 'DB_ERROR'));
+            else { resolve({success: true, plan: plan});
+            }
+        })
+    })
+}
+
 // export the new Schema so we could modify it using Node.js
 module.exports = mongoose.model("Plan", PlanSchema, "Plan");
