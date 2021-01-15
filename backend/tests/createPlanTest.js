@@ -15,10 +15,8 @@ let planId;
 
 describe(" createUser / login : ", () => {
 
-    let longString = "";
-    for (let i = 0; i < 10; i++) {
-        longString += "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-    }
+    const longString = "a".repeat(1000);
+
 
     before(
         function (done) {
