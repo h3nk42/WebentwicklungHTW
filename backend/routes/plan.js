@@ -25,7 +25,7 @@ router.post(
     planControl.create);
 
 router.delete(
-    '/deletePlan',
+    '/delete',
     passport.authenticate('jwt',{session: false}),
     planControl.destroy);
 

@@ -66,7 +66,6 @@ exports.destroy = async (req, res) => {
     const msgSender  = req.user.userName;
     let plan = await Plan.findOne({owner: msgSender}, (err, plan) => {
         if(err) return retErr(res, {}, 418, 'DB_ERROR');
-
     })
     if (!plan) return retErr(res, {}, 418, 'USER_NOT_IN_ANY_PLAN');
     if(plan.owner !== req.user.userName)  return  retErr(res, {}, 418, 'USER_NOT_OWNER_OF_PLAN');
@@ -82,7 +81,9 @@ exports.destroy = async (req, res) => {
             User.find({plan: ObjectId(plan.id)}, (err,users) => {
                 removePlanFromUsers(users).then( (resolve,reject) => {
                         if (reject) return reject;
-                        if (resolve)  return res.json({data: true});
+                        if (resolve) {
+                            return res.json({data: true});
+                        }
                     })
             })
         }
