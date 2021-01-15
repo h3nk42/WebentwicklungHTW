@@ -4,8 +4,10 @@ const User = require('../models/User')
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 
-const {retErr} = require('../utils/index');
-const {checkInputs} = require('../utils/index')
+const { retErr } = require('../utils/index');
+const { checkInputs } = require('../utils/index')
+
+const { removePlanFromUsers } = require('./util')
 
 
 exports.showOne = async (req, res) => {
@@ -54,6 +56,35 @@ exports.create = async (req, res) => {
             user.setPlan(resolve.data._id, res).then((resolve, reject) => {
                 if (reject) return reject;
                 else return res.json({success: true, data: plan});
+            })
+        }
+    })
+}
+
+exports.destroy = async (req, res) => {
+    if(checkInputs(req,res)) return  retErr(res, {}, 418, 'INVALID_INPUT');
+    const msgSender  = req.user.userName;
+    let plan = await Plan.findOne({owner: msgSender}, (err, plan) => {
+        if(err) return retErr(res, {}, 418, 'DB_ERROR');
+    })
+    if (!plan) return retErr(res, {}, 418, 'USER_NOT_IN_ANY_PLAN');
+    if(plan.owner !== req.user.userName)  return  retErr(res, {}, 418, 'USER_NOT_OWNER_OF_PLAN');
+    if (!plan) return retErr(res, {}, 418, 'USER_NOT_IN_ANY_PLAN');
+    if(plan.owner !== req.user.userName)  return  retErr(res, {}, 418, 'USER_NOT_OWNER_OF_PLAN');
+
+    plan.delete(res).then( (resolve, reject) => {
+        if(reject) return reject;
+        if(resolve) {
+            /*
+            TODO: delete Tasks Task.deleteMany({plan: plan.id}, (err, updatedPlan) => { if(err) return retErr(res, err, 418, 'DB_ERROR'); })
+             */
+            User.find({plan: ObjectId(plan.id)}, (err,users) => {
+                removePlanFromUsers(users).then( (resolve,reject) => {
+                        if (reject) return reject;
+                        if (resolve) {
+                            return res.json({data: true});
+                        }
+                    })
             })
         }
     })

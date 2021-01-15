@@ -1,6 +1,4 @@
-//
 const mongoose = require("mongoose");
-
 const Schema = mongoose.Schema;
 const {retErr} = require('../utils/index');
 
