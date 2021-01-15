@@ -6,6 +6,7 @@ const {validationResult} = require('express-validator');
 const ObjectId = require('mongoose').Types.ObjectId
 const {retErr} = require('../utils/index');
 const {checkInputs} = require('../utils/index')
+const { removePlanFromUsers } = require('./util')
 
 const jwt = require('jsonwebtoken')
 require('dotenv').config();
@@ -52,14 +53,12 @@ exports.delete = async (req, res) => {
                 //TODO
                 // delete Tasks Task.deleteMany({plan: planToDelete._id}, (err) => {
                 //                 })
-                User.find({plan: planToDelete._id}, (err, userArray) => {
-                    for (let u in userArray) {
-                        u.removePlan().then((resolve, reject)=>{
-                            if(reject) return(reject);
-                        });
-                    }
+                User.find({plan: planToDelete._id}, (err, users) => {
+                    removePlanFromUsers(users).then( (resolve,reject) => {
+                        if (reject) return reject;
+                        if (resolve)  return res.json({data: true});
+                    })
                 })
-                return res.status(200).json(resolve);
             })
             else {
                 return res.status(200).json(resolve);
