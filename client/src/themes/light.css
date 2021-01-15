@@ -6,7 +6,7 @@ body {
 a,
 a:active,
 a:visited {
-    color: #f76d2e;
+    color: white;
     text-decoration: none;
 }
 
@@ -165,4 +165,116 @@ h1, h2 {
 .login-card {
     min-height: 88vh;
     min-width: 39vw;
+}
+
+
+
+
+.footer li {
+    list-style-type: none;
+    margin: 0 2vw;
+}
+
+.footer ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+
+.header li {
+    list-style-type: none;
+    margin: 0 3vw;
+    font-size: 30px;
+}
+
+.header li .changeLang-button {
+    font-size: 15px;
+    background: transparent;
+    border: transparent;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+.header ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+
+.addPlan-style {
+    background: #CCBA92;
+    border: transparent;
+    border-radius: 0;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+}
+
+.addPlan-card {
+    min-height: 76vh;
+    min-width: 39vw;
+}
+
+.addPlan-sm-style {
+    display: flex;
+    align-self: center;
+    background: #9FE3D6;
+    border: transparent;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    min-height: 10vw;
+    min-width: 10vw;
+}
+
+.addPlan-button {
+    margin: 50px;
+}
+
+.addPlan-note {
+    font-family: 'Poppins SemiBold', sans-serif;
+    color:  #695D47;
+}
+
+.plus-logo {
+    width: 2px;
+    height: 2px;
+}
+
+.button-plan {
+    background: transparent;
+    border: transparent;
+    font-size: 5vw;
+    color: #f76d2e;
+}
+
+.modal-header {
+    background: #CCBA92;
+    border: transparent;
+}
+
+.modal-body {
+    background: #CCBA92;
+    border: transparent;
+}
+
+.modal-footer {
+    background: #CCBA92;
+    border: transparent;
+}
+
+.modal-text {
+    font-family: 'Poppins SemiBold', sans-serif;
+    color:  #695D47;
+}
+
+.modal-button {
+    background: #CCBA92;
+    font-family: 'Poppins', sans-serif;
+    border: transparent;
+}
+
+.modal-input {
+    background: #CCBA92;
+    border-color: #695D47;
+    border-radius: 4px;
 }

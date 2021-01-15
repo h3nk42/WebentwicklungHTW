@@ -218,3 +218,82 @@ body.dark-mode .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
 .show > body.dark-mode .btn-outline-primary.dropdown-toggle:focus {
     box-shadow: 0 0 0 .2rem rgba(114, 60, 198, 0.5)
 }
+
+body.dark-mode .addPlan-style {
+    background: #06090f;
+    border: transparent;
+    border-radius: 0;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .addPlan-sm-style {
+    display: flex;
+    align-self: center;
+    background: #161b22;
+    border: transparent;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    min-height: 10vw;
+    min-width: 10vw;
+}
+
+body.dark-mode .button-plan {
+    background: transparent;
+    border: transparent;
+    font-size: 5vw;
+    color: #612db0;
+}
+
+body.dark-mode .modal-header {
+    background: #161b22;
+    border: transparent;
+}
+
+body.dark-mode .modal-body {
+    background: #161b22;
+    border: transparent;
+}
+
+body.dark-mode .modal-footer {
+    background: #161b22;
+    border: transparent;
+}
+
+body.dark-mode .modal-text {
+    font-family: 'Poppins SemiBold', sans-serif;
+    color:  #612db0;
+}
+
+body.dark-mode .modal-button {
+    background: #161b22;
+    font-family: 'Poppins', sans-serif;
+    border: transparent;
+}
+
+body.dark-mode .modal-input {
+    background: #161b22;
+    border-color: #612db0;
+    border-radius: 4px;
+}
+
+body.dark-mode .header li .changeLang-button {
+    font-size: 15px;
+    background: transparent;
+    border: transparent;
+    font-family: 'Poppins', sans-serif;
+    color: #612db0;
+}
+
+body.dark-mode .header li .mx-2 {
+    color: #612db0;
+}
+
+body.dark-mode .card-title {
+    color: #612db0;
+}
+
+body.dark-mode .addPlan-note {
+    color: #612db0;
+}
+
+
