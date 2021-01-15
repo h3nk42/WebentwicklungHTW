@@ -8,6 +8,7 @@
     "loginTest": "mocha --exit tests/loginTest.js",
     "createPlanTest": "mocha --exit tests/createPlanTest.js",
     "deletePlanTest": "mocha --exit tests/deletePlanTest.js",
+    "addUserTest": "mocha --exit tests/addUserTest.js",
     "drop": "node src/tests/runDropDb.js"
   },
   "keywords": [],

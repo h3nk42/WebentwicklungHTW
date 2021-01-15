@@ -89,3 +89,31 @@ exports.destroy = async (req, res) => {
         }
     })
 }
+
+exports.addUser = async (req, res) => {
+    if(checkInputs(req,res)) return  retErr(res, {}, 418, 'INVALID_INPUT');
+    let msgSender = req.user.userName,
+        userToAdd = req.body.userName;
+    let plan = await Plan.findOne({owner: req.user.userName}, (err, plan) => {
+        if(err)  return  retErr(res, err, 418, 'DB_ERROR');
+    })
+    if(!plan) return  retErr(res, {}, 418, 'PLAN_NOT_FOUND');
+    if(plan.users.some(e=>e.userName === userToAdd)) return  retErr(res, {}, 418, 'USER_IN_PLAN_ALLREADY');
+    let user = await User.findOne({userName: userToAdd}, (err)=>{
+    })
+    if (!user) return  retErr(res, {}, 418, 'USER_DOES_NOT_EXIST');
+    if (user.plan != null)   return  retErr(res, {}, 418, 'USER_IN_ANOTHER_PLAN');
+
+    plan.addUser(res, userToAdd).then((resolve, reject) => {
+        if(reject) return reject;
+        if(resolve) {
+            const newPlan = resolve.plan;
+            user.setPlan(plan.id, res).then((resolve, reject) => {
+                if (reject) return reject;
+                if(resolve) {
+                    return res.status(200).json({success: true, data: newPlan});
+                }
+             })
+        }
+    });
+}

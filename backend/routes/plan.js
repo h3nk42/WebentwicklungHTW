@@ -29,7 +29,12 @@ router.delete(
     passport.authenticate('jwt',{session: false}),
     planControl.destroy);
 
-
+router.post(
+    '/addUser',
+    [
+        body('userName').not().isEmpty().withMessage(' username is required')],
+    passport.authenticate('jwt',{session: false}),
+    planControl.addUser )
 
 
 module.exports = router;

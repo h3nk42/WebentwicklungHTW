@@ -38,5 +38,19 @@ PlanSchema.methods.create = function (res) {
     })
 }
 
+PlanSchema.methods.addUser = function (res, userToAdd) {
+    return new Promise((resolve, reject) => {
+        this.users.push({userName: userToAdd, points: 0})
+        this.save((err, plan) => {
+            if (err) reject(retErr(res, {}, 418, 'DB_ERROR'));
+            else { resolve({success: true, plan: plan});
+            }
+        })
+    })
+}
+
+
+
+
 // export the new Schema so we could modify it using Node.js
 module.exports = mongoose.model("Plan", PlanSchema, "Plan");
