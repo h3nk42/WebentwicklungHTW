@@ -15,11 +15,7 @@ function RegistrationForm() {
     const history = useHistory();
 
     const checkEmptyField = () => {
-        if (userName === '' || password === '' || confirmPassword === '') {
-            return true;
-        } else {
-            return false;
-        }
+        return userName === '' || password === '' || confirmPassword === '';
     }
 
     function handleUsernameChange(e) {
@@ -67,12 +63,20 @@ function RegistrationForm() {
                 :
                 <>
                     <h2 className="card-title mt-4">Register</h2>
-                    <p className="card-subtitle mb-5">Already have an account? <NavLink to="/login">Sign
-                        in here</NavLink></p>
+                    <p className="card-subtitle mb-5">Already have an account?
+                        <span data-testid="sign-in"
+                                className="btn btn-outline-primary"
+                                onClick={() => history.push("/login")}
+                        >
+                            Sign in here
+                        </span>
+                    </p>
                     <form data-testid="registration-form">
                         <div className="form-group text-left">
                             <label>Username :</label>
-                            <input className="form-control"
+                            <input data-testid="username-register"
+                                   type="text"
+                                   className="form-control"
                                    placeholder="Username"
                                    value={userName}
                                    onChange={handleUsernameChange}
@@ -80,7 +84,8 @@ function RegistrationForm() {
                         </div>
                         <div className="form-group text-left">
                             <label>Password :</label>
-                            <input type="password"
+                            <input data-testid="password-register"
+                                   type="password"
                                    className="form-control"
                                    placeholder="Password"
                                    value={password}
@@ -89,7 +94,8 @@ function RegistrationForm() {
                         </div>
                         <div className="form-group mb-5 text-left">
                             <label>Confirm Password :</label>
-                            <input type="password"
+                            <input data-testid="confirm-password"
+                                   type="password"
                                    className="form-control"
                                    placeholder="Confirm Password"
                                    value={confirmPassword}
@@ -98,6 +104,7 @@ function RegistrationForm() {
                         </div>
                         <div className="text-center">
                             <button
+                                data-testid="register-btn"
                                 type="submit"
                                 className="btn btn-primary btn-block mb-4"
                                 onClick={createUser}

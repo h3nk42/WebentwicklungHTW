@@ -1,5 +1,5 @@
 import React from 'react';
-import {fireEvent, render} from '@testing-library/react';
+import {fireEvent, render, screen} from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import LandingPage from "../pages/LandingPage";
 
@@ -8,24 +8,31 @@ jest.mock('react-router-dom', () => ({
     useHistory: () => ({push: mockHistoryPush}),
 }))
 
-describe('Test for Landing Page', () => {
+describe('<LandingPage>', () => {
+    beforeEach(() => {
+        render(<LandingPage/>);
+    });
 
-    test('Test Rendering', () => {
-        const {getByTestId} = render(<LandingPage/>)
-        expect(getByTestId('logo')).toBeInTheDocument()
-    })
+    describe('When visiting the website', () => {
+        test('then render landing page correctly', () => {
+            expect(screen.getByAltText('DoYourDishes Logo')).toBeInTheDocument();
+            expect(screen.getByText('DoYourDishes')).toBeInTheDocument();
+            expect(screen.getByTestId('register-button')).toBeInTheDocument();
+            expect(screen.getByTestId('login-button')).toBeInTheDocument();
+        });
+    });
 
-    test('Test Routing Log In', () => {
-        const {getByTestId} = render(<LandingPage/>)
-        const logInButton = getByTestId('login-button')
-        fireEvent.click(logInButton);
-        expect(mockHistoryPush).toHaveBeenCalledWith('/login');
-    })
+    describe('When register or login button is clicked', () => {
+        test('then routing to login page', () => {
+            const logInButton = screen.getByTestId('login-button')
+            fireEvent.click(logInButton);
+            expect(mockHistoryPush).toHaveBeenCalledWith('/login');
+        });
 
-    test('Test Routing Register', () => {
-        const {getByTestId} = render(<LandingPage/>)
-        const registerButton = getByTestId('register-button')
-        fireEvent.click(registerButton);
-        expect(mockHistoryPush).toHaveBeenCalledWith('/register');
-    })
+        test('then routing to register page', () => {
+            const registerButton = screen.getByTestId('register-button')
+            fireEvent.click(registerButton);
+            expect(mockHistoryPush).toHaveBeenCalledWith('/register');
+        });
+    });
 })

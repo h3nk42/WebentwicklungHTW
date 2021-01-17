@@ -15,11 +15,7 @@ function LoginForm() {
     const {setToken} = useAuth();
 
     const checkEmptyField = () => {
-        if (userName === '' || password === '') {
-            return true;
-        } else {
-            return false;
-        }
+        return userName === '' || password === '';
     }
 
     async function login(e) {
@@ -54,18 +50,26 @@ function LoginForm() {
     }
 
     return (
-        <div data-textid="login-card" className="card p-4 col-12 col-lg-4 login-card card-style">
+        <div data-testid="login-card" className="card p-4 col-12 col-lg-4 login-card card-style">
             {loggedInState === "logging in" ?
                 <div className="spin"></div>
                 :
                 <>
                     <h2 className="card-title mt-4">Sign in</h2>
-                    <p className="card-subtitle mb-5">New to DoYourDishes? <NavLink to="/register">Create
-                        account</NavLink></p>
-                    <form data-textid="login-form">
+                    <p className="card-subtitle mb-5">New to DoYourDishes?
+                        <span data-testid="create-account"
+                              className="btn btn-outline-primary"
+                              onClick={() => history.push("/register")}
+                        >
+                            Create account
+                        </span>
+                    </p>
+                    <form data-testid="login-form">
                         <div className="form-group text-left">
                             <label>Username :</label>
-                            <input className="form-control"
+                            <input data-testid="username-login"
+                                   type="text"
+                                   className="form-control"
                                    placeholder="Username"
                                    value={userName}
                                    onChange={handleUserNameChange}
@@ -73,7 +77,8 @@ function LoginForm() {
                         </div>
                         <div className="form-group mb-5 text-left">
                             <label>Password :</label>
-                            <input type="password"
+                            <input data-testid="password-login"
+                                   type="password"
                                    className="form-control"
                                    placeholder="Password"
                                    value={password}
@@ -82,6 +87,7 @@ function LoginForm() {
                         </div>
                         <div className="text-center">
                             <button
+                                data-testid="login-btn"
                                 type="submit"
                                 className="btn btn-primary btn-block mb-4"
                                 onClick={login}
