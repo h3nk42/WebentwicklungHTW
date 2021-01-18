@@ -26,7 +26,7 @@ function Header() {
     const {t, i18n} = useTranslation();
 
     return (
-        <nav className="navbar navbar-light header mt-3">
+        <nav data-testid="header" className="navbar navbar-light header mt-3">
             <div className="row col-12 d-flex align-items-center text-white">
                 <div className="mr-auto">
                     <span className="h4 align-middle">DoYourDishes</span>

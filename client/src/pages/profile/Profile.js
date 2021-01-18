@@ -14,13 +14,13 @@ function Profile() {
             <Header/>
             <div className="container my-4">
                 <div className="col-md-12 d-flex align-items-center flex-column">
-                    <div className="card p-4 col-12 col-lg-4 profile-card profile-style">
+                    <div data-testid="profile-card" className="card p-4 col-12 col-lg-4 profile-card profile-style">
                         <div className="row align-items-center justify-content-between mt-2">
-                            <h2 className="col-md-4">Profile</h2>
-                            <img className="mr-4 avatar" src={darkMode === "dark" ? avatarDark : avatar} alt=""/>
+                            <h2 data-testid="profile-title" className="col-md-4">Profile</h2>
+                            <img className="mr-4 avatar" src={darkMode === "dark" ? avatarDark : avatar} alt="profile-picture"/>
                         </div>
                         <div className="text-left mt-3">
-                            <p className="label">Username :</p><p>{userName}</p>
+                            <p className="label">Username :</p><p>{userName ? userName : 'testguy'}</p>
                             <p className="label">Name :</p><p>-</p>
                             <p className="label">Surname :</p><p>-</p>
                             <p className="label">Date of birth :</p><p>-</p>
