@@ -74,22 +74,22 @@ body.dark-mode .dark-toggle {
     border: 2px solid #fff;
 }
 
-.dark-toggle span {
-    height: 24px;
-    width: 24px;
-    left: -6px;
+.dark-toggle img {
+    height: 25px;
+    width: 25px;
+    left: -7px;
     border-radius: 50%;
-    background: #fff;
+    background: transparent;
     position: absolute;
     -webkit-transition: 0.3s ease;
     -o-transition: 0.3s ease;
     transition: 0.3s ease;
-    -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.75);
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
 }
 
-body.dark-mode .dark-toggle span {
-    left: 15px;
+body.dark-mode .dark-toggle img {
+    left: 13px;
     -webkit-transition: 0.3s ease;
     -o-transition: 0.3s ease;
     transition: 0.3s ease;

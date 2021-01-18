@@ -6,7 +6,8 @@ app.use(cors());
 
 app.use('/api', (req, res) => {
     res.send({
-        token: 'test123'
+        userName: 'testguy',
+        token: 'abcdefghijklmnopqrstuvwxyz'
     });
 });
 

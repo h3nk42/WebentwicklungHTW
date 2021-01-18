@@ -6,9 +6,11 @@ import i18n from "../../i18next";
 import {useTranslation} from "react-i18next";
 import "./Header.css";
 import "./switch.css";
+import Sun from "../../logo/SwitchLight.png";
+import Moon from "../../logo/SwitchDark.png";
 
 function Header() {
-    const {setDarkMode} = useAuth();
+    const {darkMode, setDarkMode} = useAuth();
     const history = useHistory();
 
     const logout = () => {
@@ -59,12 +61,17 @@ function Header() {
                         DE
                     </span>
                 </div>
-                <button className="dark-mode-button top-dark-mode-button mx-4"
+                <button data-testid="dark-mode-toggle"
+                        className="dark-mode-button top-dark-mode-button mx-4"
                         aria-label="dark mode toggle"
                         onClick={setDarkMode}
                 >
                     <span aria-hidden="true" className="dark-toggle">
-                        <span className="DTSpan"></span>
+                        {darkMode === "dark" ?
+                            <img className="DTSpan" src={Moon} alt="dark theme logo"/>
+                            :
+                            <img className="DTSpan" src={Sun} alt="light theme logo"/>
+                        }
                     </span>
                 </button>
                 <button className="btn btn-primary btn-sm"
