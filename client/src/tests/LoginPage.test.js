@@ -59,4 +59,4 @@ describe('<Login/> Tests', () => {
         fireEvent.click(createAccountButton);
         expect(mockHistoryPush).toHaveBeenCalledWith('/register');
     });
-})
+});

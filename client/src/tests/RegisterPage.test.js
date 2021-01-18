@@ -54,4 +54,4 @@ describe('<Register/> Tests', () => {
         fireEvent.click(signInHereButton);
         expect(mockHistoryPush).toHaveBeenCalledWith('/login');
     });
-})
+});
