@@ -67,11 +67,9 @@ function Header() {
                         onClick={setDarkMode}
                 >
                     <span aria-hidden="true" className="dark-toggle">
-                        {darkMode === "dark" ?
-                            <img className="DTSpan" src={Moon} alt="dark theme logo"/>
-                            :
-                            <img className="DTSpan" src={Sun} alt="light theme logo"/>
-                        }
+                        <img className="DTSpan"
+                             src={darkMode === "dark" ? Moon : Sun}
+                             alt={darkMode === "dark" ? "dark theme logo" : "light theme logo"}/>
                     </span>
                 </button>
                 <button className="btn btn-primary btn-sm"

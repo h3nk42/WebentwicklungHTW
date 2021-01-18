@@ -11,7 +11,6 @@ function LandingPage() {
                 <img src={logo} className="" alt="DoYourDishes Logo"/>
                 <h1 className="display-3 mb-4 mx-auto">DoYourDishes</h1>
                 <button
-                    data-testid="register-button"
                     className="btn btn-primary my-2"
                     onClick={() => history.push('/register')}
                 >

@@ -13,26 +13,20 @@ describe('<LandingPage>', () => {
         render(<LandingPage/>);
     });
 
-    describe('When visiting the website', () => {
-        test('then render landing page correctly', () => {
-            expect(screen.getByAltText('DoYourDishes Logo')).toBeInTheDocument();
-            expect(screen.getByText('DoYourDishes')).toBeInTheDocument();
-            expect(screen.getByTestId('register-button')).toBeInTheDocument();
-            expect(screen.getByTestId('login-button')).toBeInTheDocument();
-        });
-    });
+    it('render landing page correctly', () => {
+        const logInButton = screen.getByText(/log in/i)
+        const registerButton = screen.getByText(/create new account/i);
+        expect(screen.getByAltText('DoYourDishes Logo')).toBeInTheDocument();
+        expect(screen.getByText('DoYourDishes')).toBeInTheDocument();
+        expect(registerButton).toBeInTheDocument();
+        expect(logInButton).toBeInTheDocument();
 
-    describe('When register or login button is clicked', () => {
-        test('then routing to login page', () => {
-            const logInButton = screen.getByTestId('login-button')
-            fireEvent.click(logInButton);
-            expect(mockHistoryPush).toHaveBeenCalledWith('/login');
-        });
+        // click login button
+        fireEvent.click(logInButton);
+        expect(mockHistoryPush).toHaveBeenCalledWith('/login');
 
-        test('then routing to register page', () => {
-            const registerButton = screen.getByTestId('register-button')
-            fireEvent.click(registerButton);
-            expect(mockHistoryPush).toHaveBeenCalledWith('/register');
-        });
+        // click create new account button
+        fireEvent.click(registerButton);
+        expect(mockHistoryPush).toHaveBeenCalledWith('/register');
     });
-})
+});
