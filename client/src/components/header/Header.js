@@ -59,7 +59,8 @@ function Header() {
                         DE
                     </span>
                 </div>
-                <button className="dark-mode-button top-dark-mode-button mx-4"
+                <button data-testid="dark-mode-toggle"
+                        className="dark-mode-button top-dark-mode-button mx-4"
                         aria-label="dark mode toggle"
                         onClick={setDarkMode}
                 >

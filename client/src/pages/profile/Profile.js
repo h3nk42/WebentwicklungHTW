@@ -17,7 +17,9 @@ function Profile() {
                     <div data-testid="profile-card" className="card p-4 col-12 col-lg-4 profile-card profile-style">
                         <div className="row align-items-center justify-content-between mt-2">
                             <h2 data-testid="profile-title" className="col-md-4">Profile</h2>
-                            <img className="mr-4 avatar" src={darkMode === "dark" ? avatarDark : avatar} alt="profile-picture"/>
+                            <img className="mr-4 avatar"
+                                 src={darkMode === "dark" ? avatarDark : avatar}
+                                 alt={darkMode === "dark" ? "profile pic dark" : "profile pic light"}/>
                         </div>
                         <div className="text-left mt-3">
                             <p className="label">Username :</p><p>{userName ? userName : 'testguy'}</p>
