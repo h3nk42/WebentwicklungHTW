@@ -3,9 +3,7 @@ const planControl = require('../controllers/plans')
 const passport = require('passport')
 const {body} = require('express-validator');
 
-
 const router = express.Router();
-
 
 router.get(
     '/showOne',
