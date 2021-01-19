@@ -3,9 +3,7 @@ const planControl = require('../controllers/plans')
 const passport = require('passport')
 const {body} = require('express-validator');
 
-
 const router = express.Router();
-
 
 router.get(
     '/showOne',
@@ -36,5 +34,11 @@ router.post(
     passport.authenticate('jwt',{session: false}),
     planControl.addUser )
 
+router.post(
+    '/removeUser',
+    [
+        body('userName').not().isEmpty().withMessage(' username is required')],
+    passport.authenticate('jwt',{session: false}),
+    planControl.removeUser )
 
 module.exports = router;
