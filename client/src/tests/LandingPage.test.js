@@ -16,7 +16,7 @@ describe('<LandingPage>', () => {
     it('render landing page correctly', () => {
         const logInButton = screen.getByText(/log in/i)
         const registerButton = screen.getByText(/create new account/i);
-        expect(screen.getByAltText('DoYourDishes Logo')).toBeInTheDocument();
+        expect(screen.getByTestId('logo')).toBeInTheDocument();
         expect(screen.getByText('DoYourDishes')).toBeInTheDocument();
         expect(registerButton).toBeInTheDocument();
         expect(logInButton).toBeInTheDocument();

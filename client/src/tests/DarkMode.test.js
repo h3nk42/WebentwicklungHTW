@@ -16,15 +16,17 @@ describe('Dark-mode Tests', () => {
     });
 
     it("show light theme by default", () => {
-        const lightModeLogo = screen.getByAltText("light theme logo");
+        const lightModeLogo = screen.getByTestId("light-logo");
         expect(lightModeLogo).toBeInTheDocument();
     });
 
     it("change theme when button is clicked", () => {
         const darkModeToggle = screen.getByTestId("dark-mode-toggle");
         fireEvent.click(darkModeToggle);
-        expect(screen.getByAltText("dark theme logo")).toBeInTheDocument();
+        expect(screen.getByTestId("dark-logo")).toBeInTheDocument();
+        expect(screen.queryByTestId("light-logo")).not.toBeInTheDocument();
         fireEvent.click(darkModeToggle);
-        expect(screen.getByAltText("light theme logo")).toBeInTheDocument();
+        expect(screen.getByTestId("light-logo")).toBeInTheDocument();
+        expect(screen.queryByTestId("dark-logo")).not.toBeInTheDocument();
     });
 });
