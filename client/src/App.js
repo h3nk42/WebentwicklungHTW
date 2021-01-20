@@ -12,24 +12,15 @@ import Register from "./pages/Register";
 import MyPlan from "./pages/MyPlan";
 import Impressum from "./pages/Impressum";
 import Datenschutz from "./pages/Datenschutz";
+import PrivateRoute from "./components/PrivateRoute";
+import AuthProvider from "./components/AuthProvider";
 import './themes/dark.css';
 import './themes/light.css';
-import useDarkMode from "./hooks/useDarkMode";
-import useToken from "./hooks/useToken";
-import {AuthContext} from "./context/auth";
-import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
 
-    const {token, setToken, userName} = useToken();
-    const [darkMode, setDarkMode, componentMounted] = useDarkMode();
-
-    if (!componentMounted) {
-        return <div/>
-    }
-
     return (
-        <AuthContext.Provider value={{token, setToken, userName, darkMode, setDarkMode}}>
+        <AuthProvider>
             <HashRouter>
                 <Switch>
                     <Route exact path="/" component={LandingPage}/>
@@ -42,7 +33,7 @@ function App() {
                     <PrivateRoute path="/datenschutz" component={Datenschutz}/>
                 </Switch>
             </HashRouter>
-        </AuthContext.Provider>
+        </AuthProvider>
     );
 }
 

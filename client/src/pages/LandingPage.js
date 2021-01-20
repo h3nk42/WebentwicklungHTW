@@ -8,10 +8,9 @@ function LandingPage() {
     return (
         <div className="container backdrop my-4">
             <div className="col-md-12 d-flex align-items-center flex-column">
-                <img src={logo} className="" alt="DoYourDishes Logo"/>
+                <img data-testid="logo" src={logo} className="" alt="DoYourDishes Logo"/>
                 <h1 className="display-3 mb-4 mx-auto">DoYourDishes</h1>
                 <button
-                    data-testid="register-button"
                     className="btn btn-primary my-2"
                     onClick={() => history.push('/register')}
                 >
