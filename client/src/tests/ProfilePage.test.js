@@ -2,7 +2,7 @@ import React from "react";
 import {fireEvent, render, screen} from "@testing-library/react";
 import '@testing-library/jest-dom/extend-expect';
 import {MemoryRouter} from "react-router-dom";
-import Profile from "../pages/profile/Profile";
+import Profile from "../pages/Profile";
 import AuthProvider from "../components/AuthProvider";
 
 describe('<Profile/>', () => {
