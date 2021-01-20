@@ -4,7 +4,7 @@ import {
     Route,
     Switch
 } from 'react-router-dom';
-import Profile from './pages/profile/Profile';
+import Profile from './pages/Profile';
 import Home from "./pages/Home";
 import LandingPage from "./pages/LandingPage";
 import Login from "./pages/Login";
