@@ -1,0 +1,29 @@
+.card-style {
+    background: #9FE3D6;
+    border: transparent;
+    border-radius: 0;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+}
+
+.card-style h2 {
+    font-family: 'Poppins SemiBold', sans-serif;
+    color: #000;
+}
+
+.card-style a {
+    color: #f76d2e;
+}
+
+.login-card {
+    position: relative;
+    min-height: 88vh;
+    min-width: 39vw;
+}
+
+body.dark-mode .card-style {
+    background: #21262d;
+    color: #fff;
+    border: transparent;
+    border-radius: 0;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+}

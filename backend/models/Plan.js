@@ -39,6 +39,7 @@ PlanSchema.methods.create = function (res) {
 };
 
 PlanSchema.methods.addUser = function (res, userToAdd) {
+<<<<<<< HEAD
   return new Promise((resolve, reject) => {
     this.users.push({ userName: userToAdd, points: 0 });
     this.save((err, plan) => {
@@ -62,5 +63,28 @@ PlanSchema.methods.removeUser = function (res, userToRemove) {
     });
   });
 };
+=======
+    return new Promise((resolve, reject) => {
+        this.users.push({userName: userToAdd, points: 0})
+        this.save((err, plan) => {
+            if (err) reject(retErr(res, {}, 418, 'DB_ERROR'));
+            else { resolve({success: true, plan: plan});
+            }
+        })
+    })
+}
+
+PlanSchema.methods.removeUser = function (res, userToRemove) {
+    return new Promise((resolve, reject) => {
+        this.users = this.users.filter((user, index, arr) => { return (user.userName !== userToRemove)});
+        this.save((err, plan) => {
+            if (err) reject(retErr(res, {}, 418, 'DB_ERROR'));
+            else { resolve({success: true, plan: plan});
+            }
+        })
+    })
+}
+
+>>>>>>> 309f3e58d4d67d3882ada1058a41b554bb610dc8
 // export the new Schema so we could modify it using Node.js
 module.exports = mongoose.model("Plan", PlanSchema, "Plan");

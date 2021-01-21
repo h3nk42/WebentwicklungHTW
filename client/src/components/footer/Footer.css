@@ -1,0 +1,17 @@
+.footer {
+    background-color: #695d47;
+    height: 7vh;
+    width: 85vw;
+    border-radius: 20px 0 0 20px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+.footer a:hover {
+    text-decoration: none;
+}
+
+body.dark-mode .footer {
+    background: #161b22;
+}

@@ -6,7 +6,12 @@
   "scripts": {
     "start": "node src/Server.js",
     "test": "mocha --exit tests/tests.js",
+<<<<<<< HEAD
     "drop": "node tests/runDropDb.js"  },
+=======
+    "drop": "node tests/runDropDb.js"
+  },
+>>>>>>> 309f3e58d4d67d3882ada1058a41b554bb610dc8
   "keywords": [],
   "author": "",
   "license": "ISC",
