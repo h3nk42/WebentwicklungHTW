@@ -50,7 +50,7 @@ exports.delete = async (req, res) => {
     (err, data) => {}
   );
 
-  userModel.destroy(res, planToDelete).then((resolve, rej) => {
+  userModel.destroy(planToDelete).then((resolve, rej) => {
     if (resolve) {
       if (planToDelete)
         planToDelete.delete(res).then(async (resolve, rej) => {

@@ -44,18 +44,6 @@ const UserSchema = new Schema(
       type: Date,
       required: false,
     },
-    firstName: {
-      type: String,
-      required: false,
-    },
-    surname: {
-      type: String,
-      required: false,
-    },
-    dateOfBirth: {
-      type: String,
-      required: false,
-    },
   },
   { timestamps: true }
 );
@@ -132,24 +120,11 @@ UserSchema.methods.setPlan = function (planId, res) {
   });
 };
 
-UserSchema.methods.destroy = function (res, planToDelete) {
+UserSchema.methods.destroy = function (planToDelete) {
   return new Promise((resolve, reject) => {
     this.deleteOne({ userName: this.userName }, (err, data) => {
       if (err) reject(retErr(res, {}, 418, "DB_ERROR"));
       resolve({ success: true, data: data });
-    });
-  });
-};
-
-UserSchema.methods.updateData = function (res, updatedData) {
-  return new Promise((resolve, reject) => {
-    this.firstName = updatedData.firstName ?? this.firstName;
-    this.surname = updatedData.surname ?? this.surname;
-    this.firstName = updatedData.firstName ?? this.firstName;
-
-    this.save((err, user) => {
-      if (err) reject(retErr(res, {}, 418, "DB_ERROR"));
-      resolve(user);
     });
   });
 };
