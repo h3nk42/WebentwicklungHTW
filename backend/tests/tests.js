@@ -534,4 +534,49 @@ describe(" TESTS : ", () => {
       });
     });
   });
+
+  describe("FULFILL Task", () => {
+    it("(HAPPY PATH) should fulfill task", (done) => {
+      chai
+        .request(app)
+        .post("/api/auth/login")
+        .send({ userName: "henk", password: "iloveandroid" })
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a("object");
+          token = res.body.token;
+          chai
+            .request(app)
+            .get("/api/plan/showOne")
+            .auth(token, { type: "bearer" })
+            .end((err, res) => {
+              res.should.have.status(200);
+              res.body.should.be.a("object");
+              // chai.expect(res.body.data).equal(0);
+              res.body.data.users[0].points.should.equal(0);
+              chai
+                .request(app)
+                .post("/api/task/fulfillTask")
+                .send({ taskId: taskId })
+                .auth(token, { type: "bearer" })
+                .end((err, res) => {
+                  res.should.have.status(200);
+                  res.body.should.be.a("object");
+                  // chai.expect(res.body.data).equal(0);
+                  chai
+                    .request(app)
+                    .get("/api/plan/showOne")
+                    .auth(token, { type: "bearer" })
+                    .end((err, res) => {
+                      res.should.have.status(200);
+                      res.body.should.be.a("object");
+                      // chai.expect(res.body.data).equal(0);
+                      res.body.data.users[0].points.should.equal(50);
+                      done();
+                    });
+                });
+            });
+        });
+    });
+  });
 });
