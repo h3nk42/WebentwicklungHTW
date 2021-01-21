@@ -28,7 +28,7 @@ router.delete(
   userController.delete
 );
 
-router.updateData(
+router.post(
   "/updateData",
   passport.authenticate("jwt", { session: false }),
   userController.updateData

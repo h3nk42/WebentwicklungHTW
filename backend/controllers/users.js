@@ -105,8 +105,14 @@ exports.updateData = async (req, res) => {
 
   console.log(firstName + surName + dateOfBirth);
 
-  let userModel = await User.findOne(
-    { userName: msgSender },
-    (err, data) => {}
-  );
+  let user = await User.findOne({ userName: msgSender }, (err, data) => {});
+
+  user
+    .updateData(res, { firstName, surName, dateOfBirth })
+    .then((resolve, reject) => {
+      if (reject) return resolve;
+      if (resolve) {
+        return res.status(200).json(resolve);
+      }
+    });
 };

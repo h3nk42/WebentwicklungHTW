@@ -144,9 +144,9 @@ UserSchema.methods.destroy = function (res, planToDelete) {
 
 UserSchema.methods.updateData = function (res, data) {
   return new Promise((resolve, reject) => {
-    this.firstName = data.firstName ?? this.firstName;
-    this.surName = data.surName ?? this.surName;
-    this.dateOfBirth = data.dateOfBirth ?? this.dateOfBirth;
+    this.firstName = data.firstName ? data.firstName : this.firstName;
+    this.surName = data.surName ? data.surName : this.surName;
+    this.dateOfBirth = data.dateOfBirth ? data.dateOfBirth : this.dateOfBirth;
     this.save((err, user) => {
       if (err) reject(retErr(res, {}, 418, "DB_ERROR"));
       resolve(user);
