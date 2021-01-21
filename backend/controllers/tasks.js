@@ -1,5 +1,5 @@
 const Plan = require("../models/Plan");
-const Task = require("../models/Task");
+const Tasks = require("../models/Task");
 const mongoose = require("mongoose");
 const User = require("../models/User");
 const { retErr } = require("../utils");
@@ -7,7 +7,7 @@ const ObjectId = mongoose.Types.ObjectId;
 const { checkInputs } = require("../utils/index");
 
 exports.showMany = (req, res) => {
-  Task.find((err, data) => {
+  Tasks.find((err, data) => {
     if (err) {
       return res.json({ success: false, error: err });
     } else {
@@ -19,7 +19,7 @@ exports.showMany = (req, res) => {
 exports.create = async (req, res) => {
   if (checkInputs(req, res)) return retErr(res, {}, 418, "INVALID_INPUT");
 
-  let task = new Task();
+  let task = new Tasks();
   const { name, pointsWorth } = req.body;
   let msgSender = req.user.userName;
 
