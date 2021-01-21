@@ -38,5 +38,15 @@ TaskSchema.methods.create = function (res) {
   });
 };
 
+TaskSchema.methods.delete = function (res) {
+  const task = this;
+  return new Promise((resolve, reject) => {
+    task.deleteOne({ _id: this._id }, (err, data) => {
+      if (err) reject(retErr(res, {}, 418, "DB_ERROR"));
+      resolve({ success: true, data: data });
+    });
+  });
+};
+
 // export the new Schema so we could modify it using Node.js
 module.exports = mongoose.model("Task", TaskSchema);
