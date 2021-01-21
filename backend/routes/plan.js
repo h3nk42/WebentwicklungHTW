@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 const express = require("express");
 const planControl = require("../controllers/plans");
 const passport = require("passport");
 const { body } = require("express-validator");
-=======
-const express = require('express');
-const planControl = require('../controllers/plans')
-const passport = require('passport')
-const {body} = require('express-validator');
->>>>>>> 309f3e58d4d67d3882ada1058a41b554bb610dc8
 
 const router = express.Router();
 
@@ -41,18 +34,10 @@ router.post(
 );
 
 router.post(
-<<<<<<< HEAD
   "/removeUser",
   [body("userName").not().isEmpty().withMessage(" username is required")],
   passport.authenticate("jwt", { session: false }),
   planControl.removeUser
 );
-=======
-    '/removeUser',
-    [
-        body('userName').not().isEmpty().withMessage(' username is required')],
-    passport.authenticate('jwt',{session: false}),
-    planControl.removeUser )
->>>>>>> 309f3e58d4d67d3882ada1058a41b554bb610dc8
 
 module.exports = router;
