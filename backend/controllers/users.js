@@ -50,7 +50,7 @@ exports.delete = async (req, res) => {
     (err, data) => {}
   );
 
-  userModel.delUser(planToDelete).then((resolve, rej) => {
+  userModel.destroy(res, planToDelete).then((resolve, rej) => {
     if (resolve) {
       if (planToDelete)
         planToDelete.delete(res).then(async (resolve, rej) => {
@@ -84,7 +84,7 @@ exports.delete = async (req, res) => {
   });
 };
 
-exports.findAllUsers = async function (req, res) {
+exports.showMany = async function (req, res) {
   User.find({}, (err, data) => {
     if (err) {
       return res.status(400).json({
