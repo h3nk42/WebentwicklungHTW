@@ -50,9 +50,13 @@ PlanSchema.methods.addUser = function (res, userToAdd) {
   });
 };
 
-PlanSchema.methods.addTask = function (res, ta skToAdd) {
+PlanSchema.methods.addTask = function (res, taskToAdd) {
   return new Promise((resolve, reject) => {
-    this.tasks.push({ taskName: taskToAdd.name });
+    this.tasks.push(taskToAdd);
+    this.save((err, plan) => {
+      if (err) reject(retErr(res, {}, 418, "DB_ERROR"));
+      if (plan) resolve({ success: true, plan: plan });
+    });
   });
 };
 

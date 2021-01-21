@@ -2,14 +2,16 @@ const Plan = require("../models/Plan");
 const Task = require("../models/Task");
 const mongoose = require("mongoose");
 const User = require("../models/User");
+const { retErr } = require("../utils");
 const ObjectId = mongoose.Types.ObjectId;
+const { checkInputs } = require("../utils/index");
 
 exports.showMany = (req, res) => {
   Task.find((err, data) => {
     if (err) {
       return res.json({ success: false, error: err });
     } else {
-      return res.json({ success: true, data: data.length });
+      return res.json({ success: true, data: data });
     }
   });
 };
@@ -34,27 +36,17 @@ exports.create = async (req, res) => {
     task.lastTimeDone = Date.now();
     task.plan = planId;
     task.pointsWorth = pointsWorth;
-    task.save((err, newtask) => {
-      if (err) return retErr(res, {}, 418, "DB_ERROR");
-      Plan.updateOne(
-        { _id: planId },
-        {
-          $push: {
-            tasks: [
-              {
-                taskName: name,
-                taskId: newtask._id,
-                pointsWorth: pointsWorth,
-                lastTimeDone: Date.now(),
-              },
-            ],
-          },
-        },
-        (err, updatedPlan) => {
-          if (err) return retErr(res, {}, 418, "DB_ERROR");
-        }
-      );
-      return res.json({ data: true });
+
+    task.create(res).then((resolve, reject) => {
+      if (reject) return reject;
+      if (resolve) {
+        plan.addTask(res, resolve.data).then((resolve, reject) => {
+          if (reject) return reject;
+          if (resolve) {
+            return res.status(200).json({ data: true, resolve });
+          }
+        });
+      }
     });
   });
 };

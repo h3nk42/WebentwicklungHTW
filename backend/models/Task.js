@@ -29,8 +29,10 @@ const TaskSchema = new Schema(
 TaskSchema.methods.create = function (res) {
   const task = this;
   return new Promise((resolve, reject) => {
-    task.save({ _id: this._id }, (err, task) => {
-      if (err) reject(retErr(res, {}, 418, "DB_ERROR"));
+    task.save((err, user) => {
+      if (err) {
+        reject(retErr(res, err, 418, "DB_ERROR"));
+      }
       resolve({ success: true, data: task });
     });
   });

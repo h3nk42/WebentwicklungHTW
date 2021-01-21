@@ -7,7 +7,7 @@ const { body } = require("express-validator");
 
 const router = express.Router();
 
-router.get("/findAllTasks", taskControl.findAllTasks);
+router.get("/showMany", taskControl.showMany);
 
 router.post(
   "/create",
