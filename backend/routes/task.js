@@ -2,7 +2,7 @@ const passport = require("passport");
 
 const express = require("express");
 
-const taskControl = require("../controllers/task");
+const taskControl = require("../controllers/tasks");
 const { body } = require("express-validator");
 
 const router = express.Router();
