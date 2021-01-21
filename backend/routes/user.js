@@ -28,4 +28,10 @@ router.delete(
   userController.delete
 );
 
+router.updateData(
+  "/updateData",
+  passport.authenticate("jwt", { session: false }),
+  userController.updateData
+);
+
 module.exports = router;

@@ -50,7 +50,7 @@ exports.delete = async (req, res) => {
     (err, data) => {}
   );
 
-  userModel.destroy(planToDelete).then((resolve, rej) => {
+  userModel.destroy(res, planToDelete).then((resolve, rej) => {
     if (resolve) {
       if (planToDelete)
         planToDelete.delete(res).then(async (resolve, rej) => {
@@ -97,4 +97,16 @@ exports.showMany = async function (req, res) {
       data: data,
     });
   });
+};
+
+exports.updateData = async (req, res) => {
+  let msgSender = req.user.userName;
+  let { firstName, surName, dateOfBirth } = req.body;
+
+  console.log(firstName + surName + dateOfBirth);
+
+  let userModel = await User.findOne(
+    { userName: msgSender },
+    (err, data) => {}
+  );
 };
