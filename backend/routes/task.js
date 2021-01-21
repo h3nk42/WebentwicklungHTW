@@ -5,7 +5,7 @@ const { body } = require("express-validator");
 
 const router = express.Router();
 
-router.get("/showMany", taskControl.findAllTasks);
+router.get("/showMany", taskControl.showMany);
 
 router.post(
   "/create",
@@ -20,3 +20,5 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   taskControl.create
 );
+
+module.exports = router;
