@@ -141,5 +141,18 @@ UserSchema.methods.destroy = function (res, planToDelete) {
   });
 };
 
+UserSchema.methods.updateData = function (res, updatedData) {
+  return new Promise((resolve, reject) => {
+    this.firstName = updatedData.firstName ?? this.firstName;
+    this.surname = updatedData.surname ?? this.surname;
+    this.firstName = updatedData.firstName ?? this.firstName;
+
+    this.save((err, user) => {
+      if (err) reject(retErr(res, {}, 418, "DB_ERROR"));
+      resolve(user);
+    });
+  });
+};
+
 // export the new Schema so we could modify it using Node.js
 module.exports = mongoose.model("User", UserSchema, "Users");
