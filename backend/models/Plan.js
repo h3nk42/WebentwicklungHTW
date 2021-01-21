@@ -77,7 +77,7 @@ PlanSchema.methods.addTask = function (res, taskToAdd) {
 PlanSchema.methods.removeTask = function (res, taskToRemove) {
   return new Promise((resolve, reject) => {
     this.tasks = this.tasks.filter((task, index, arr) => {
-      return task._id !== taskToRemove._id;
+      return task._id.toString() !== taskToRemove._id.toString();
     });
     this.save((err, plan) => {
       if (err) reject(retErr(res, {}, 418, "DB_ERROR"));
