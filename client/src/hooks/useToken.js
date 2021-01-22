@@ -22,6 +22,7 @@ export default function useToken() {
     return {
         setToken: saveToken,
         token,
-        userName: getUserName()
+        // userName: getUserName()
+        user
     }
 }

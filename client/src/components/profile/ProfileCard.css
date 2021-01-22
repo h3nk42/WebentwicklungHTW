@@ -1,8 +1,18 @@
+input {
+    display: block;
+}
+
 .avatar {
     height: 100px;
     width: 100px;
     border-radius: 50%;
     box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.4);
+}
+
+.edit-profile {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
 }
 
 .label {

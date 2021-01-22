@@ -4,10 +4,26 @@ const app = express();
 
 app.use(cors());
 
-app.use('/api', (req, res) => {
+app.use('/api/auth/login', (req, res) => {
     res.send({
         userName: 'testguy',
         token: 'abcdefghijklmnopqrstuvwxyz'
+    });
+});
+
+app.use('/api/auth/whoAmI', (req, res) => {
+    res.send({
+        firstName: 'test',
+        surName: 'guy',
+        dateOfBirth: '2000-01-04',
+    });
+});
+
+app.use('/api/user/updateData', (req, res) => {
+    res.send({
+        firstName: 'test',
+        surName: 'guy',
+        dateOfBirth: '2000-01-04',
     });
 });
 
