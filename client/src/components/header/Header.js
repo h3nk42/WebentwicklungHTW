@@ -8,7 +8,10 @@ import "./Header.css";
 import "./switch.css";
 import Modal from 'react-bootstrap/Modal';
 
-function Header(props) {
+
+
+function Header({hasPlan}) {
+
     const {setDarkMode} = useAuth();
     const history = useHistory();
 
@@ -32,8 +35,7 @@ function Header(props) {
     const handleShow = () => setShow(true);
 
     function myPlanAuth() {
-        console.log("myPlanAuth (props): " + props.hasPlan);
-        if(props.hasPlan){
+        if(hasPlan){
             return(
                 <NavLink className="navlink"
                          exact
@@ -74,7 +76,7 @@ function Header(props) {
     }
 
     return (
-        <nav className="navbar navbar-light header mt-3">
+        <nav data-testid="header" className="navbar navbar-light header mt-3">
             <div className="row col-12 d-flex align-items-center text-white">
                 <div className="mr-auto">
                     <span className="h4 align-middle">DoYourDishes</span>

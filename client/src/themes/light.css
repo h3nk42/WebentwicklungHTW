@@ -197,3 +197,12 @@ h1, h2 {
     color: #f76d2e;
 }
 
+.add-user-button{
+    background: transparent;
+    border: transparent;
+    color:  #695D47;
+    padding-left: 100px;
+    margin-left: 100px;
+}
+
+

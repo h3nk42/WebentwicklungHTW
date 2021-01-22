@@ -1,0 +1,120 @@
+.tabs {
+    font-family: 'Poppins SemiBold', sans-serif;
+    background: transparent;
+    align-items: center;
+}
+
+.tab-task-title {
+    font-family: 'Poppins SemiBold', sans-serif;
+    color:  #695D47;
+    align-self: center;
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.tab-task-owner {
+    font-family: 'Poppins SemiBold', sans-serif;
+    color: #695D47;
+    font-size: 30px;
+    margin: 10px;
+}
+
+.myPlan-card {
+    min-height: 72vh;
+    min-width: 39vw;
+}
+
+
+.users-sm-style {
+    display: flex;
+    align-self: center;
+    background: #9FE3D6;
+    border: transparent;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    min-height: 6vw;
+    min-width: 10vw;
+    margin: 10px;
+}
+
+.owner-note {
+    font-family: 'Poppins SemiBold', sans-serif;
+    color:  #695D47;
+    align-self: center;
+    font-size: 40px;
+    margin-top: 20px;
+}
+
+
+.users-owner-sm-style {
+    display: flex;
+    align-self: center;
+    background: #db5514;
+    border: transparent;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    min-height: 6vw;
+    min-width: 10vw;
+    margin: 10px;
+}
+
+
+.taskCard-green {
+    display: flex;
+    align-self: center;
+    background: darkgreen;
+    border: transparent;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    min-height: 6vw;
+    min-width: 10vw;
+    margin: 10px;
+}
+
+.taskCard-yellow {
+    display: flex;
+    align-self: center;
+    background: yellow;
+    border: transparent;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    min-height: 6vw;
+    min-width: 10vw;
+    margin: 10px;
+}
+
+.taskCard-red {
+    display: flex;
+    align-self: center;
+    background: red;
+    border: transparent;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    min-height: 6vw;
+    min-width: 10vw;
+    margin: 10px;
+}
+
+.user-owner-sm-style-red {
+    display: flex;
+    align-self: center;
+    background: #db5514;
+    border: transparent;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    min-height: 6vw;
+    min-width: 10vw;
+    margin: 10px;
+}
+
+.show-profile-btn {
+    background: transparent;
+}
+
+.delete-owner-btn {
+    background: transparent;
+}
+
+.delete-task-btn {
+    margin: 30px;
+}
