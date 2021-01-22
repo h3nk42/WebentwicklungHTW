@@ -14,11 +14,6 @@ export default function useGetHasPlan() {
     const [isLoading, setIsLoading] = useState(true);
 
 
-
-    // TODO muss noch checken ob user in einem anderen plan nicht nur ob er ein owner von einem plan ist!!!!
-
-
-
     useEffect(() => {
         setIsLoading(true);
         const fetchData = async () => {
