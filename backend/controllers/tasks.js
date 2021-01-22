@@ -1,5 +1,5 @@
 const Plan = require("../models/Plan");
-const Tasks = require("../models/Task");
+const Task = require("../models/Task");
 const mongoose = require("mongoose");
 const User = require("../models/User");
 const { retErr } = require("../utils");
@@ -7,7 +7,7 @@ const ObjectId = mongoose.Types.ObjectId;
 const { checkInputs } = require("../utils/index");
 
 exports.showMany = (req, res) => {
-  Tasks.find((err, data) => {
+  Task.find((err, data) => {
     if (err) {
       return res.json({ success: false, error: err });
     } else {
@@ -19,7 +19,7 @@ exports.showMany = (req, res) => {
 exports.create = async (req, res) => {
   if (checkInputs(req, res)) return retErr(res, {}, 418, "INVALID_INPUT");
 
-  let task = new Tasks();
+  let task = new Task();
   const { name, pointsWorth } = req.body;
   let msgSender = req.user.userName;
 
@@ -48,5 +48,35 @@ exports.create = async (req, res) => {
         });
       }
     });
+  });
+};
+
+exports.destroy = async (req, res) => {
+  if (checkInputs(req, res)) return retErr(res, {}, 418, "INVALID_INPUT");
+  let msgSender = req.user.userName;
+  let taskId = req.body.taskId;
+
+  //eigentlich unnoetige abfrage
+  let user = await User.findOne({ userName: msgSender });
+  if (user.plan === null) return retErr(res, {}, 418, "USER_NOT_IN_ANY_PLAN");
+  planId = user.plan;
+
+  let task = await Task.findOne({ _id: taskId }, (err, task) => {});
+  if (!task) return retErr(res, {}, 418, "TASK_NOT_FOUND");
+
+  let plan = await Plan.findOne({ _id: task.plan }, (err, plan) => {});
+  if (!plan.users.some((e) => e.userName === msgSender))
+    return retErr(res, {}, 418, "USER_NOT_IN_THIS_PLAN");
+
+  task.delete(res).then((resolve, reject) => {
+    if (reject) return reject;
+    if (resolve) {
+      plan.removeTask(res, task).then((resolve, reject) => {
+        if (reject) return reject;
+        if (resolve) {
+          return res.status(200).json(resolve);
+        }
+      });
+    }
   });
 };

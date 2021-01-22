@@ -11,6 +11,7 @@ chai.use(chaiHttp);
 chai.should();
 let token;
 let planId;
+let taskId;
 
 describe(" TESTS : ", () => {
   const longString = "a".repeat(1000);
@@ -330,7 +331,6 @@ describe(" TESTS : ", () => {
     });
   });
   describe("Tasks", () => {
-    let taskId;
     it("(HAPPY PATH) should create task", (done) => {
       chai
         .request(app)
@@ -442,6 +442,96 @@ describe(" TESTS : ", () => {
           res.body.should.be.a("object");
           done();
         });
+    });
+  });
+
+  describe("DELETE Task", () => {
+    it("(UNHAPPY PATH) should not delete task ( user not in any plan )", (done) => {
+      chai
+        .request(app)
+        .post("/api/user/createUser")
+        .send({ userName: "nichtImPlan", password: "iloveandroid" })
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a("object");
+          chai
+            .request(app)
+            .post("/api/auth/login")
+            .send({ userName: "nichtImPlan", password: "iloveandroid" })
+            .end((err, res) => {
+              res.should.have.status(200);
+              res.body.should.be.a("object");
+              token = res.body.token;
+              chai
+                .request(app)
+                .post("/api/task/create")
+                .auth(token, { type: "bearer" })
+                .send({ name: "abwasch", pointsWorth: 50 })
+                .end((err, res) => {
+                  res.should.have.status(418);
+                  res.body.should.be.a("object");
+                  done();
+                });
+            });
+        });
+
+      it("(UNHAPPY PATH) should not delete task ( user in another plan )", (done) => {
+        chai
+          .request(app)
+          .post("/api/plan/create")
+          .auth(token, { type: "bearer" })
+          .send({ name: "swaggerPlan" })
+          .end((err, res) => {
+            res.should.have.status(200);
+            res.body.should.be.a("object");
+            chai
+              .request(app)
+              .delete("/api/task/destroy")
+              .auth(token, { type: "bearer" })
+              .send({ taskId: taskId })
+              .end((err, res) => {
+                res.should.have.status(418);
+                res.body.should.be.a("object");
+                chai
+                  .expect(res.body.customMessage)
+                  .equal("USER_NOT_IN_THIS_PLAN");
+                done();
+              });
+          });
+      });
+
+      it("(HAPPY PATH) should not delete task (not logged in) ", (done) => {
+        chai
+          .request(app)
+          .delete("/api/task/destroy")
+          .send({ taskId: taskId })
+          .end((err, res) => {
+            res.should.have.status(401);
+            res.body.should.be.a("object");
+            done();
+          });
+      });
+
+      it("(HAPPY PATH) should delete task", (done) => {
+        chai
+          .request(app)
+          .delete("/api/task/delSingleTask")
+          .auth(token, { type: "bearer" })
+          .send({ taskId: taskId2 })
+          .end((err, res) => {
+            res.should.have.status(200);
+            res.body.should.be.a("object");
+            chai
+              .request(app)
+              .get("/api/task/showMany")
+              .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a("object");
+                chai.expect(res.body.data).equal(0);
+                done();
+              });
+          });
+      });
     });
   });
 });

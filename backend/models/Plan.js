@@ -74,5 +74,17 @@ PlanSchema.methods.addTask = function (res, taskToAdd) {
   });
 };
 
+PlanSchema.methods.removeTask = function (res, taskToRemove) {
+  return new Promise((resolve, reject) => {
+    this.tasks = this.tasks.filter((task, index, arr) => {
+      return task._id.toString() !== taskToRemove._id.toString();
+    });
+    this.save((err, plan) => {
+      if (err) reject(retErr(res, {}, 418, "DB_ERROR"));
+      if (plan) resolve({ success: true, plan: plan });
+    });
+  });
+};
+
 // export the new Schema so we could modify it using Node.js
 module.exports = mongoose.model("Plan", PlanSchema, "Plan");

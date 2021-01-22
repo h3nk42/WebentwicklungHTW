@@ -73,12 +73,21 @@ exports.destroy = async (req, res) => {
   if (plan.owner !== req.user.userName)
     return retErr(res, {}, 418, "USER_NOT_OWNER_OF_PLAN");
 
-  plan.delete(res).then((resolve, reject) => {
+  plan.delete(res).then(async (resolve, reject) => {
     if (reject) return reject;
     if (resolve) {
-      /*
-            TODO: delete Tasks Task.deleteMany({plan: plan.id}, (err, updatedPlan) => { if(err) return retErr(res, err, 418, 'DB_ERROR'); })
-             */
+      let tasks = await Task.find(
+        { plan: plan._id.toString() },
+        (err, tasks) => {
+          if (err) return retErr(res, {}, 418, "DB_ERROR");
+        }
+      );
+
+      for (let task of tasks) {
+        task.delete(res).then((resolve, reject) => {
+          if (reject) return reject;
+        });
+      }
       User.find({ plan: ObjectId(plan.id) }, (err, users) => {
         removePlanFromUsers(users).then((resolve, reject) => {
           if (reject) return reject;
