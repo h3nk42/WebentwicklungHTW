@@ -192,14 +192,3 @@ function MyPlan() {
 
 export default MyPlan;
 
-
-/*
-TODO:   wenn Task fullFIlled => farbe ändern
-        Modal anzeigen wenn etwas nicht geklappt hat naja hab jetzt ein alert hinzugefügt...
-
-        wenn
-        Tests schreiben
-        stylen
-        alles übersetzen
- */
-
