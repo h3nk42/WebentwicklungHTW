@@ -44,11 +44,12 @@ const UserSchema = new Schema(
       type: Date,
       required: false,
     },
+
     firstName: {
       type: String,
       required: false,
     },
-    surname: {
+    surName: {
       type: String,
       required: false,
     },
@@ -137,6 +138,18 @@ UserSchema.methods.destroy = function (res, planToDelete) {
     this.deleteOne({ userName: this.userName }, (err, data) => {
       if (err) reject(retErr(res, {}, 418, "DB_ERROR"));
       resolve({ success: true, data: data });
+    });
+  });
+};
+
+UserSchema.methods.updateData = function (res, data) {
+  return new Promise((resolve, reject) => {
+    this.firstName = data.firstName ? data.firstName : this.firstName;
+    this.surName = data.surName ? data.surName : this.surName;
+    this.dateOfBirth = data.dateOfBirth ? data.dateOfBirth : this.dateOfBirth;
+    this.save((err, user) => {
+      if (err) reject(retErr(res, {}, 418, "DB_ERROR"));
+      resolve(user);
     });
   });
 };

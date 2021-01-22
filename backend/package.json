@@ -4,7 +4,7 @@
   "description": "backend for web development HTW",
   "main": "index.js",
   "scripts": {
-    "start": "node src/Server.js",
+    "start": "node Server.js",
     "test": "mocha --exit tests/tests.js",
     "drop": "node tests/runDropDb.js"
   },

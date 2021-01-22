@@ -98,3 +98,21 @@ exports.showMany = async function (req, res) {
     });
   });
 };
+
+exports.updateData = async (req, res) => {
+  let msgSender = req.user.userName;
+  let { firstName, surName, dateOfBirth } = req.body;
+
+  console.log(firstName + surName + dateOfBirth);
+
+  let user = await User.findOne({ userName: msgSender }, (err, data) => {});
+
+  user
+    .updateData(res, { firstName, surName, dateOfBirth })
+    .then((resolve, reject) => {
+      if (reject) return resolve;
+      if (resolve) {
+        return res.status(200).json(resolve);
+      }
+    });
+};
