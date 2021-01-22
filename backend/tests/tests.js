@@ -329,4 +329,119 @@ describe(" TESTS : ", () => {
       });
     });
   });
+  describe("Tasks", () => {
+    let taskId;
+    it("(HAPPY PATH) should create task", (done) => {
+      chai
+        .request(app)
+        .post("/api/task/create")
+        .auth(token, { type: "bearer" })
+        .send({ name: "abwasch", pointsWorth: 50 })
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a("object");
+          chai
+            .request(app)
+            .get("/api/plan/showOne")
+            .auth(token, { type: "bearer" })
+            .end((err, res) => {
+              res.should.have.status(200);
+              res.body.should.be.a("object");
+              chai.expect(res.body.data.tasks[0].name).to.equal("abwasch");
+              chai.expect(res.body.data.tasks[0].pointsWorth).to.equal(50);
+              taskId = res.body.data.tasks[0]._id;
+              chai
+                .request(app)
+                .get("/api/task/showMany")
+                .end((err, res) => {
+                  res.should.have.status(200);
+                  res.body.should.be.a("object");
+                  chai.expect(res.body.data.length).equal(1);
+                  done();
+                });
+            });
+        });
+    });
+
+    it("(UNHAPPY PATH) should not create task (taskName longer than 10)", (done) => {
+      chai
+        .request(app)
+        .post("/api/task/create")
+        .auth(token, { type: "bearer" })
+        .send({ name: "abwaschAbwaschAbwasch", pointsWorth: 50 })
+        .end((err, res) => {
+          res.should.have.status(418);
+          res.body.should.be.a("object");
+          chai.expect(res.body.customMessage).equal("INVALID_INPUT");
+          done();
+        });
+    });
+
+    it("(UNHAPPY PATH) should not create task (empty taskName)", (done) => {
+      chai
+        .request(app)
+        .post("/api/task/create")
+        .auth(token, { type: "bearer" })
+        .send({ name: "", pointsWorth: 50 })
+        .end((err, res) => {
+          res.should.have.status(418);
+          res.body.should.be.a("object");
+          chai.expect(res.body.customMessage).equal("INVALID_INPUT");
+          done();
+        });
+    });
+
+    it("(UNHAPPY PATH) should not create task (empty score)", (done) => {
+      chai
+        .request(app)
+        .post("/api/task/create")
+        .auth(token, { type: "bearer" })
+        .send({ name: "", pointsWorth: 50 })
+        .end((err, res) => {
+          res.should.have.status(418);
+          res.body.should.be.a("object");
+          chai.expect(res.body.customMessage).equal("INVALID_INPUT");
+          done();
+        });
+    });
+
+    it("(UNHAPPY PATH) should not create task (score > 100 )", (done) => {
+      chai
+        .request(app)
+        .post("/api/task/create")
+        .auth(token, { type: "bearer" })
+        .send({ name: "testTask", pointsWorth: 101 })
+        .end((err, res) => {
+          res.should.have.status(418);
+          res.body.should.be.a("object");
+          chai.expect(res.body.customMessage).equal("INVALID_INPUT");
+          done();
+        });
+    });
+    it("(UNHAPPY PATH) should not create task (score < 1 )", (done) => {
+      chai
+        .request(app)
+        .post("/api/task/create")
+        .auth(token, { type: "bearer" })
+        .send({ name: "testTask", pointsWorth: -10 })
+        .end((err, res) => {
+          res.should.have.status(418);
+          res.body.should.be.a("object");
+          chai.expect(res.body.customMessage).equal("INVALID_INPUT");
+          done();
+        });
+    });
+
+    it("(UNHAPPY PATH) should not create task (no Token send / not logged in)", (done) => {
+      chai
+        .request(app)
+        .post("/api/task/create")
+        .send({ name: "testTask", pointsWorth: 10 })
+        .end((err, res) => {
+          res.should.have.status(401);
+          res.body.should.be.a("object");
+          done();
+        });
+    });
+  });
 });
