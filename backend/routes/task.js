@@ -28,4 +28,11 @@ router.delete(
   taskControl.destroy
 );
 
+router.post(
+  "/fulfillTask",
+  [body("taskId").not().isEmpty().withMessage("taskId is required")],
+  passport.authenticate("jwt", { session: false }),
+  taskControl.fulfillTask
+);
+
 module.exports = router;

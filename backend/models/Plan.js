@@ -86,5 +86,39 @@ PlanSchema.methods.removeTask = function (res, taskToRemove) {
   });
 };
 
+PlanSchema.methods.updateSingleTask = function (res, taskToUpdate) {
+  let plan = this;
+  return new Promise((resolve, reject) => {
+    let index = this.tasks.findIndex(
+      (task) => task._id.toString() === taskToUpdate._id.toString()
+    );
+    plan.tasks[index].lastTimeDone = Date.now();
+    plan.markModified("tasks");
+    plan.save((err, plan) => {
+      if (err) reject(retErr(res, {}, 418, "DB_ERROR"));
+      if (plan) resolve({ success: true, plan: plan });
+    });
+  });
+};
+
+PlanSchema.methods.increasePoints = function (
+  res,
+  userToIncrease,
+  pointsToAdd
+) {
+  let plan = this;
+  return new Promise((resolve, reject) => {
+    let index = this.users.findIndex(
+      (user) => user.userName === userToIncrease.userName
+    );
+    plan.users[index].points += pointsToAdd;
+    plan.markModified("users");
+    plan.save((err, plan) => {
+      if (err) reject(retErr(res, {}, 418, "DB_ERROR"));
+      if (plan) resolve({ success: true, plan: plan });
+    });
+  });
+};
+
 // export the new Schema so we could modify it using Node.js
 module.exports = mongoose.model("Plan", PlanSchema, "Plan");

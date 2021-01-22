@@ -48,5 +48,18 @@ TaskSchema.methods.delete = function (res) {
   });
 };
 
+TaskSchema.methods.updateLastTimeDone = function (res) {
+  const task = this;
+  return new Promise((resolve, reject) => {
+    task.lastTimeDone = Date.now();
+    task.save((err, user) => {
+      if (err) {
+        reject(retErr(res, err, 418, "DB_ERROR"));
+      }
+      resolve({ success: true, data: task });
+    });
+  });
+};
+
 // export the new Schema so we could modify it using Node.js
 module.exports = mongoose.model("Task", TaskSchema);
