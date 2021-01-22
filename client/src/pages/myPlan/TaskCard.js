@@ -90,20 +90,3 @@ function TaskCard(props) {
 
 export default TaskCard;
 
-
-
-/*
-
-
-Einfach ein Mal beim refresh der Daten die Farbe rendern je nachdem wie viele Sekunden vergangen sind seit dem timestamp
-Dann bauste noch einen refresh button ein damit man nicht immer die ganze Seite neu laden muss
-
-Ok da kannst du ja noch den timestamp mit.passen
-Dann ne renderColor Funktion in der Taskcard und feddich
-
-
-Math.floor((Date.now() - timeStamp)/1000)
-das gibt dir die vergangene zeit in sekunden aus
-
-
- */
