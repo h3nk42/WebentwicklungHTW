@@ -13,17 +13,19 @@ app.use('/api/auth/login', (req, res) => {
 
 app.use('/api/auth/whoAmI', (req, res) => {
     res.send({
-        firstName: 'test',
-        surName: 'guy',
-        dateOfBirth: '2000-01-04',
+        data: {
+            firstName: 'test',
+            surName: 'guy',
+            dateOfBirth: '2000-01-04',
+        }
     });
 });
 
 app.use('/api/user/updateData', (req, res) => {
     res.send({
-        firstName: 'test',
-        surName: 'guy',
-        dateOfBirth: '2000-01-04',
+        firstName: 'testtwo',
+        surName: 'guytwo',
+        dateOfBirth: '2000-01-05',
     });
 });
 
