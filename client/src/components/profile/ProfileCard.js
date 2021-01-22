@@ -123,15 +123,18 @@ function ProfileCard() {
                         <label className="label">Date of birth :</label>
                         <DayPickerInput onDayChange={handleDayChange}
                                         className="my-2"
+                                        dayPickerProps={{
+                                            month: new Date(1998, 0)
+                                        }}
                         />
                         <div className="mt-3">
-                            <button className="btn btn-outline-primary btn-sm"
+                            <button className="btn btn-outline-primary btn-sm mr-2"
                                     onClick={handleCancel}
                             >
                                 Cancel
                             </button>
                             <button type="submit"
-                                    className="btn btn-primary btn-sm"
+                                    className="btn btn-primary btn-sm m-2 px-3"
                                     onClick={handleSubmit}
                             >
                                 Save
