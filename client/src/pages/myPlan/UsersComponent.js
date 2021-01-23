@@ -6,6 +6,7 @@ import useToken from "../../hooks/useToken";
 import UsersCards from "./UsersCards";
 import {useAuth} from "../../context/auth";
 import { useHistory } from "react-router-dom";
+import "./myPlan.css";
 
 
 function UsersComponent(props) {
@@ -115,13 +116,13 @@ function UsersComponent(props) {
     function renderAllUsersOfPlanCards() {
         return (
             <div>
-                <ol>
+                <ul className="userList-style">
                     {props.allUsersOfPlan.map((user) =>
-                        <li key={user._id}>
+                        <li className="userList-item" key={user._id}>
                             <UsersCards userName={user.userName} handleDeleteUser={handleDeleteUser}/>
                         </li>
                     )}
-                </ol>
+                </ul>
             </div>
         )
     }
@@ -130,7 +131,7 @@ function UsersComponent(props) {
         <div className="container backdrop my-4">
             <div className="col-md-12 d-flex align-items-center flex-column">
                 <div className="card p-4 col-12 col-lg-4 myPlan-card addPlan-style">
-                    <h2 className="tab-task-title col-md-12">
+                    <h2 className="tab-task-title">
                         <strong>Users</strong>
                         <button className="add-user-button" onClick={handleShowUsers}>+</button>
                         {stateModalAddUsers()}

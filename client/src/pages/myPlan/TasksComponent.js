@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import useToken from "../../hooks/useToken";
 import TaskCard from './TaskCard';
-
+import "./myPlan.css";
 
 
 
@@ -110,9 +110,9 @@ function TasksComponent(props) {
     function renderAllTasksCards() {
         return (
             <div>
-                <ul>
+                <ul className="taskList-style">
                     {props.tasks.map(task =>
-                        <li key={task._id}>
+                        <li className="taskList-item" key={task._id}>
                             <TaskCard taskID={task._id} taskName={task.name} pointsWorth={task.pointsWorth} lastTimeDone={task.lastTimeDone} handleDelete={handleDeleteTask} handleFullFill={handleFullFillTask} />
                         </li>)}
                 </ul>
@@ -131,7 +131,7 @@ function TasksComponent(props) {
                 <div className="card p-4 col-12 col-lg-4 myPlan-card addPlan-style">
                     <h2 className="tab-task-title"><strong>Tasks</strong>
                         <button onClick={handleShow} className="add-user-button"> + </button>
-                        <button onClick={handleRefresh}> Refresh page </button>
+                        <button  onClick={handleRefresh} className="refresh-btn"> &#8634;</button>
                         {stateModalAddTask()}
                     </h2>
                     <ul>

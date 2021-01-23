@@ -1,5 +1,6 @@
 import React from "react";
 import {BarChart} from "react-easy-chart";
+import "./myPlan.css";
 
 function ScoreComponent(props) {
 
@@ -24,11 +25,11 @@ function ScoreComponent(props) {
             <div className="col-md-12 d-flex align-items-center flex-column">
                 <div className="card p-4 col-12 col-lg-4 myPlan-card addPlan-style">
                     <h2 className="tab-task-title"><strong>Score</strong></h2>
-                    <div className="col-md-12 align-items-center ">
+                    <div className="col-md-12 chart-style">
                         <BarChart
                             axes
-                            height={350}
-                            width={700}
+                            height={400}
+                            width={720}
                             colorBars
                             yTickNumber={10}
                             data={arr2}

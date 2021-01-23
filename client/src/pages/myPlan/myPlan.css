@@ -1,13 +1,29 @@
-.tabs {
-    font-family: 'Poppins SemiBold', sans-serif;
+.tabs-style {
+    position: relative;
+    left: 380px;
+}
+
+.activeTab {
     background: transparent;
-    align-items: center;
+    font-family: 'Poppins SemiBold', sans-serif;
+    font-size: 20px;
+    border: transparent;
+    position: relative;
+    left: 200px;
+}
+
+.notActiveTab {
+    background: transparent;
+    font-family: 'Poppins SemiBold', sans-serif;
+    border: transparent;
+    position: relative;
+    left: 200px;
 }
 
 .tab-task-title {
     font-family: 'Poppins SemiBold', sans-serif;
     color:  #695D47;
-    align-self: center;
+    position: relative;
     font-size: 50px;
     margin-bottom: 20px;
 }
@@ -24,6 +40,68 @@
     min-width: 39vw;
 }
 
+.tasks-sm-style-green {
+    display: flex;
+    align-self: center;
+    background: #81F781;
+    border: transparent;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    min-height: 6vw;
+    min-width: 10vw;
+    margin-top: 5px;
+}
+.tasks-sm-style-yellow {
+    display: flex;
+    align-self: center;
+    background: #F3F781;
+    border: transparent;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    min-height: 6vw;
+    min-width: 10vw;
+    margin-top: 5px;
+}
+.tasks-sm-style-red {
+    display: flex;
+    align-self: center;
+    background: #FA5858;
+    border: transparent;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    min-height: 6vw;
+    min-width: 10vw;
+    margin-top: 5px;
+}
+
+.taskCard-name {
+    font-family: 'Poppins Bold', sans-serif;
+    color: #695D47;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.tasks-sm-style-btn {
+    background: transparent;
+    font-size: 20px;
+    margin-top: 50px;
+    width: 60px;
+    border: transparent;
+    position: absolute;
+    left: 10px;
+    top: 25px;
+}
+
+.tasks-sm-style-btn-fullfill {
+    background: transparent;
+    font-size: 20px;
+    margin-top: 50px;
+    width: 60px;
+    border: transparent;
+    position: absolute;
+    right: 10px;
+    bottom: 7px;
+}
 
 .users-sm-style {
     display: flex;
@@ -34,7 +112,47 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     min-height: 6vw;
     min-width: 10vw;
-    margin: 10px;
+    margin-top: 5px;
+}
+
+.userCard-name {
+    font-family: 'Poppins Bold', sans-serif;
+    color: #695D47;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.users-sm-style-btn {
+    background: transparent;
+    font-size: 20px;
+    margin-top: 50px;
+    width: 50px;
+    border: transparent;
+}
+
+
+ul.userList-style {
+    list-style-type: none;
+    columns: 3;
+    position: absolute;
+    left: -20px;
+}
+
+li.userList-item {
+    padding: 5px;
+    left: 5px;
+}
+
+ul.taskList-style {
+    list-style-type: none;
+    columns: 3;
+    position: absolute;
+    left: -20px;
+}
+
+li.taskList-item {
+    padding: 5px;
+    left: 5px;
 }
 
 .owner-note {
@@ -117,4 +235,39 @@
 
 .delete-task-btn {
     margin: 30px;
+}
+
+.refresh-btn {
+    background: transparent;
+    font-family: 'Poppins', sans-serif;
+    size: 12px;
+    margin: 10px;
+    border: transparent;
+    color:  #695D47;
+    position: absolute;
+    right: 25px;
+    top: -8px;
+
+}
+
+.add-user-button{
+    background: transparent;
+    border: transparent;
+    color:  #695D47;
+    padding-left: 100px;
+    margin-left: 100px;
+    position: absolute;
+    top: -4px;
+}
+
+.taskCard-list {
+    columns: 3;
+    -webkit-columns: 3;
+    -moz-columns: 3;
+}
+
+.chart-style {
+    position: absolute;
+    bottom: 100px;
+    right: 15px;
 }

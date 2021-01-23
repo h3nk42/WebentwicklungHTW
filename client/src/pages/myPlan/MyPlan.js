@@ -163,13 +163,13 @@ function MyPlan() {
         <div data-testid="myplancard">
             <Header/>
                 <div className="myTabs">
-                    <div className="tabs">
+                    <div className="tabs-style">
                         {
                             tabList.map((tab,i) => (
                                 <button
                                 key={i}
                                 onClick={() => setCurrentTab(tab.name)}
-                                className={(tab.name === currentTab) ? 'active' : ''}>
+                                className={(tab.name === currentTab) ? 'activeTab' : 'notActiveTab'}>
                                     {tab.label}
                                 </button>
                             ))

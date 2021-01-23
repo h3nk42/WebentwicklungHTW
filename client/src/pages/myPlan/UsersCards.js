@@ -6,8 +6,8 @@ import "./myPlan.css";
 function UsersCards(props) {
     return(
         <div className="col-md-4 users-sm-style">
-            <p>{props.userName}</p>
-            <button onClick={() => props.handleDeleteUser(props.userName)}>delete User</button>
+            <p className="userCard-name">{props.userName}</p>
+            <button className="users-sm-style-btn" onClick={() => props.handleDeleteUser(props.userName)}>&#128465;</button>
         </div>
     )
 
