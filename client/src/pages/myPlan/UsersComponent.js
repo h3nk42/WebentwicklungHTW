@@ -5,13 +5,12 @@ import axios from "axios";
 import useToken from "../../hooks/useToken";
 import UsersCards from "./UsersCards";
 import {useAuth} from "../../context/auth";
-import { useHistory } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import "./myPlan.css";
 
 
 function UsersComponent(props) {
-    console.log("UsersComponent uip: " + JSON.stringify(props.allUsersOfPlan));
-    console.log("Owner  ::::: " + props.owner);
+    console.log("PLANID::::" + props.planID);
 
 
     let history = useHistory();
@@ -33,22 +32,21 @@ function UsersComponent(props) {
 
 
     function addUserToPlan() {
-
-            props.setIsLoading(true);
-            const data = {userName: newUserNameAdded};
-            const headers = {Authorization: `Bearer ${token}`};
-            axios.post(`${API_URL}plan/addUser`, data, {headers})
-                .then(response => {
-                    console.log(response);
-                    props.setIsLoading(false);
-                    props.fetchData();
-                })
-                .catch(error => {
-                    const e = error.json
-                    console.log("Error " + e);
-                    props.setIsLoading(false);
-                    alert("You are not the owner")
-                })
+        props.setIsLoading(true);
+        const data = {userName: newUserNameAdded};
+        const headers = {Authorization: `Bearer ${token}`};
+        axios.post(`${API_URL}plan/addUser`, data, {headers})
+            .then(response => {
+                console.log(response);
+                props.setIsLoading(false);
+                props.fetchData();
+            })
+            .catch(error => {
+                const e = error.json
+                console.log("Error " + e);
+                props.setIsLoading(false);
+                alert("You are not the owner")
+            })
 
     }
 
@@ -91,25 +89,40 @@ function UsersComponent(props) {
 
 
     function handleDeleteUser(delUserName) {
-            props.setIsLoading(true);
-            const data = {userName: delUserName};
-            const headers = {Authorization: `Bearer ${token}`};
-            axios.post(`${API_URL}plan/removeUser`, data, {headers})
-                .then(response => {
-                    console.log(response);
-                    props.setIsLoading(false);
-                    props.fetchData();
-                    if(userName === delUserName){
-                        history.push("/home");
-                    }
-                })
-                .catch(error => {
-                    const e = error.json
-                    console.log("Error " + e);
-                    props.setIsLoading(false);
-                    alert("You are not the owner")
-                })
+        props.setIsLoading(true);
+        const data = {userName: delUserName};
+        const headers = {Authorization: `Bearer ${token}`};
+        axios.post(`${API_URL}plan/removeUser`, data, {headers})
+            .then(response => {
+                console.log(response);
+                props.setIsLoading(false);
+                props.fetchData();
+                if (userName === delUserName) {
+                    history.push("/home");
+                }
+            })
+            .catch(error => {
+                const e = error.json
+                console.log("Error " + e);
+                props.setIsLoading(false);
+                alert("You are not the owner")
+            })
 
+    }
+
+    function handleDeletePlan(){
+        props.setIsLoading(true);
+        const headers = {Authorization: `Bearer ${token}`};
+        axios.delete(`${API_URL}plan/delete`, {headers})
+            .then(response => {
+                props.setIsLoading(false);
+                history.push("/home");
+            })
+            .catch(error => {
+                console.log(error);
+                alert("You are not the owner")
+                props.setIsLoading(false);
+            })
     }
 
 
@@ -134,6 +147,7 @@ function UsersComponent(props) {
                     <h2 className="tab-task-title">
                         <strong>Users</strong>
                         <button className="add-user-button" onClick={handleShowUsers}>+</button>
+                        <button  onClick={handleDeletePlan} className="delete-plan-btn"> &#128465;</button>
                         {stateModalAddUsers()}
                     </h2>
                     <h1 className="tab-task-owner"> Owner: {props.owner}</h1>

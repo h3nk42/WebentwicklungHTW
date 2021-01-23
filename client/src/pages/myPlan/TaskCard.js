@@ -5,7 +5,6 @@ import "./myPlan.css";
 function TaskCard(props) {
 
     let sec = Math.floor((Date.now() - props.lastTimeDone)/1000)
-    console.log(props.taskName + " " + sec);
 
     if(sec<10){
         return (

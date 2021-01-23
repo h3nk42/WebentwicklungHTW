@@ -22,7 +22,6 @@ function TasksComponent(props) {
         const headers = {Authorization: `Bearer ${token}`};
         axios.post(`${API_URL}task/create`, body, {headers})
             .then(response => {
-                console.log(response);
                 props.setIsLoading(false);
                 props.getTasksFromDB();
             })
@@ -41,7 +40,6 @@ function TasksComponent(props) {
             data: {taskId: id},
             headers: {Authorization: `Bearer ${token}`}
         }).then(response=>{
-            console.log(response);
             props.setIsLoading(false);
             props.getTasksFromDB();
         }).catch(error => {
@@ -57,7 +55,6 @@ function TasksComponent(props) {
         const headers = {Authorization: `Bearer ${token}`}
         axios.post(`${API_URL}task/fulfillTask`, body, {headers})
             .then(response => {
-                console.log(response);
                 props.setIsLoading(false);
                 props.fetchData();
             })

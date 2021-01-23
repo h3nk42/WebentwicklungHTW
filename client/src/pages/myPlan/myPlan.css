@@ -271,3 +271,16 @@ li.taskList-item {
     bottom: 100px;
     right: 15px;
 }
+
+.delete-plan-btn {
+    background: transparent;
+    font-family: 'Poppins', sans-serif;
+    size: 12px;
+    margin: 10px;
+    border: transparent;
+    color:  #695D47;
+    position: absolute;
+    right: 25px;
+    top: -8px;
+
+}

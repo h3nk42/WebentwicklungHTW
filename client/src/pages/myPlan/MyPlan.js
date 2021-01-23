@@ -46,7 +46,6 @@ function MyPlan() {
             ])
                 .then(axios.spread((planNameRes, withoutPlanRes, allUserOfPlanRes) => {
                     planNameRes.data.data.forEach((obj) => {
-                        console.log(obj);
                         if(obj.owner === userName){
                             setOwner(obj.owner);
                             setPlanName(obj.name);
@@ -113,7 +112,6 @@ function MyPlan() {
                     allTasks.data.data.map(obj => {
                         if(obj.name === tempPlanName){
                             setTasks(obj.tasks);
-                            console.log("TASKS FOUND");
                         }
                     })
                 }))
