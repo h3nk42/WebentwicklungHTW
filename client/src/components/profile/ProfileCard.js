@@ -8,6 +8,7 @@ import DayPickerInput from 'react-day-picker/DayPickerInput';
 import axios from "axios";
 import './ProfileCard.css';
 import 'react-day-picker/lib/style.css';
+import {act} from "@testing-library/react";
 
 function ProfileCard() {
     const {user, darkMode} = useAuth();
@@ -20,7 +21,7 @@ function ProfileCard() {
     const API_URL = process.env.REACT_APP_API_URL;
 
     let config = {
-        headers: {Authorization: `Bearer ${user.token}`},
+        headers: {Authorization: `Bearer ${user?.token}`},
     }
 
     useEffect(() => {
@@ -45,18 +46,18 @@ function ProfileCard() {
         setEditing(false);
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
         let body = {
             firstName: firstName,
             surName: surName,
             dateOfBirth: dateOfBirth
         }
-        axios({
+        await axios({
             method: 'post',
             url: `${API_URL}user/updateData`,
             data: body,
-            headers: {Authorization: `Bearer ${user.token}`}
+            headers: {Authorization: `Bearer ${user?.token}`}
         }).then((res) => {
             console.log(res);
             setEditing(false);
@@ -65,7 +66,6 @@ function ProfileCard() {
             console.log(err.message);
         })
     }
-
 
     return (
         <div data-testid="profile-card" className="card p-4 col-12 col-lg-4 profile-card profile-style">
@@ -78,42 +78,44 @@ function ProfileCard() {
                 {isEditing ? (
                     <></>
                 ) : (
-                    <img className="edit-profile"
+                    <img data-testid={darkMode === "dark" ? "edit-dark" : "edit-light"}
+                         className="edit-profile"
                          src={darkMode === "dark" ? settingsDark : settings}
                          alt="edit profile"
                          onClick={() => setEditing(true)}
                     />)}
-                <img className="mr-4 ml-auto avatar"
+                <img data-testid={darkMode === "dark" ? "profile-pic-dark" : "profile-pic-light"}
+                     className="mr-4 ml-auto avatar"
                      src={darkMode === "dark" ? avatarDark : avatar}
                      alt="profile picture"
                 />
             </div>
             <div className="text-left mt-3">
                 <label className="label">Username :</label>
-                <p>{user.userName ? user.userName : 'testguy'}</p>
+                <p>{user?.userName ? user.userName : 'testguy'}</p>
                 <label className="label">Plan :</label>
-                <p>{user.plan ? user.plan : '-'}</p>
+                <p>{user?.plan ? user.plan : '-'}</p>
                 {!isEditing ? (
                     <>
                         <label className="label">Name :</label>
-                        <p>{data.firstName ? data.firstName : '-'}</p>
+                        <p data-testid="firstName">{data.firstName ? data.firstName : '-'}</p>
                         <label className="label">Surname :</label>
-                        <p>{data.surName ? data.surName : '-'}</p>
+                        <p data-testid="surName">{data.surName ? data.surName : '-'}</p>
                         <label className="label">Date of birth :</label>
                         <p>{data.dateOfBirth ? data.dateOfBirth : '-'}</p>
                     </>
                 ) : (
-                    <>
-                        <label className="label">Name :</label>
-                        <input type="text"
+                    <form data-testid="profile-form">
+                        <label className="label" htmlFor="firstName">Name :</label>
+                        <input id="firstName" type="text"
                                className="my-2"
                                name="firstName"
                                placeholder="Name"
                                value={firstName}
                                onChange={e => setFirstName(e.target.value)}
                         />
-                        <label className="label">Surname :</label>
-                        <input type="text"
+                        <label className="label" htmlFor="surName">Surname :</label>
+                        <input id="surName" type="text"
                                className="my-2"
                                name="surName"
                                placeholder="Surname"
@@ -128,19 +130,22 @@ function ProfileCard() {
                                         }}
                         />
                         <div className="mt-3">
-                            <button className="btn btn-outline-primary btn-sm mr-2"
+                            <button data-testid="cancel-btn"
+                                    className="btn btn-outline-primary btn-sm mr-2"
                                     onClick={handleCancel}
                             >
                                 Cancel
                             </button>
-                            <button type="submit"
+                            <button data-testid="save-btn"
+                                    type="submit"
                                     className="btn btn-primary btn-sm m-2 px-3"
                                     onClick={handleSubmit}
+                                    disabled={firstName === "" && surName === "" && dateOfBirth === ""}
                             >
                                 Save
                             </button>
                         </div>
-                    </>
+                    </form>
                 )}
             </div>
         </div>
