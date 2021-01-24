@@ -51,11 +51,13 @@ function Header() {
                     </NavLink>
                 </div>
                 <div className="btn-language mx-1">
-                    <span onClick={changeLanguage("en")}>
+                    <span data-testid="btn-language-en"
+                          onClick={changeLanguage("en")}>
                         EN
                     </span>
                     <span className="mx-2">|</span>
-                    <span onClick={changeLanguage("de")}>
+                    <span data-testid="btn-language-de"
+                          onClick={changeLanguage("de")}>
                         DE
                     </span>
                 </div>

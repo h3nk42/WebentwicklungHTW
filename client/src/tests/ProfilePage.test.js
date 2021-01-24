@@ -26,9 +26,9 @@ describe('<Profile/>', () => {
 
     it('render profile card correctly', () => {
         expect(screen.getByTestId('profile-title')).toBeInTheDocument();
-        expect(screen.getByAltText(/profile pic/i)).toBeInTheDocument();
+        expect(screen.getByTestId(/profile-pic/i)).toBeInTheDocument();
         expect(screen.getByText('Username :')).toBeInTheDocument();
-        expect(screen.getByText('Name :')).toBeInTheDocument();
+        expect(screen.getByText('First name :')).toBeInTheDocument();
         expect(screen.getByText('Surname :')).toBeInTheDocument();
         expect(screen.getByText('Date of birth :')).toBeInTheDocument();
         expect(screen.getByText('Plan :')).toBeInTheDocument();
@@ -62,7 +62,7 @@ describe('<Profile/>', () => {
         expect(cancelBtn).toBeInTheDocument();
 
         // Enable button when form is filled
-        const nameInput = screen.getByLabelText("Name :");
+        const nameInput = screen.getByLabelText("First name :");
         const surnameInput = screen.getByLabelText("Surname :");
         fireEvent.change(nameInput, {'target': {'value': 'James'}});
         fireEvent.change(surnameInput, {'target': {'value': 'Hannigan'}});
@@ -76,5 +76,24 @@ describe('<Profile/>', () => {
         expect(surName).toBeInTheDocument();
         expect(firstName.textContent).toBe("-");
         expect(surName.textContent).toBe("-");
+    })
+
+    it('change language when language button is clicked', () => {
+        const deutschBtn = screen.getByTestId("btn-language-de");
+        const englishBtn = screen.getByTestId("btn-language-en");
+        fireEvent.click(deutschBtn);
+        expect(screen.queryByText('First name :')).not.toBeInTheDocument();
+        expect(screen.queryByText('Surname :')).not.toBeInTheDocument();
+        expect(screen.queryByText('Date of birth :')).not.toBeInTheDocument();
+        expect(screen.getByText('Vorname :')).toBeInTheDocument();
+        expect(screen.getByText('Nachname :')).toBeInTheDocument();
+        expect(screen.getByText('Geburtsdatum :')).toBeInTheDocument();
+        fireEvent.click(englishBtn);
+        expect(screen.queryByText('Vorname :')).not.toBeInTheDocument();
+        expect(screen.queryByText('Nachname :')).not.toBeInTheDocument();
+        expect(screen.queryByText('Geburtsdatum :')).not.toBeInTheDocument();
+        expect(screen.getByText('First name :')).toBeInTheDocument();
+        expect(screen.getByText('Surname :')).toBeInTheDocument();
+        expect(screen.getByText('Date of birth :')).toBeInTheDocument();
     })
 })

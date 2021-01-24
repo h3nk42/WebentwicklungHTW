@@ -6,5 +6,11 @@
   "logout": "Logout",
   "profile": "Profile",
   "myPlan": "MyPlan",
-  "home": "Home"
+  "home": "Home",
+  "userName": "Username",
+  "firstName": "First name",
+  "surName": "Surname",
+  "dateOfBirth": "Date of birth",
+  "cancel": "Cancel",
+  "save": "Save"
 }

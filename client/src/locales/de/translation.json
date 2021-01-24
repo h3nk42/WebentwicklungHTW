@@ -6,6 +6,12 @@
   "logout": "Abmelden",
   "profile": "Profil",
   "myPlan": "MeinPlan",
-  "home": "Startseite"
+  "home": "Startseite",
+  "userName": "Benutzername",
+  "firstName": "Vorname",
+  "surName": "Nachname",
+  "dateOfBirth": "Geburtsdatum",
+  "cancel": "Abbrechen",
+  "save": "Speichern"
 }
 
