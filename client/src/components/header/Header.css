@@ -5,6 +5,11 @@
     border-radius: 0 20px 20px 0;
 }
 
+.header a:visited {
+    color: white;
+    text-decoration: none;
+}
+
 .header a:hover {
     text-decoration: none;
 }
@@ -15,5 +20,71 @@
 }
 
 body.dark-mode .header {
-    background-color: #161b22;
+    background: #161b22;
+}
+
+.btn-language {
+    background-color: transparent;
+    border-color: transparent;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.btn-language span:active,
+.btn-language span:hover {
+    text-decoration: underline;
+}
+
+.header li {
+    list-style-type: none;
+    margin: 0 3vw;
+    font-size: 30px;
+}
+
+.header li .changeLang-button {
+    font-size: 15px;
+    background: transparent;
+    border: transparent;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+.header ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.modal-header {
+    background: #CCBA92;
+    border: transparent;
+}
+
+
+.modal-body {
+    background: #CCBA92;
+    border: transparent;
+}
+
+.modal-footer {
+    background: #CCBA92;
+    border: transparent;
+}
+
+.modal-text {
+    font-family: 'Poppins SemiBold', sans-serif;
+    color:  #695D47;
+}
+
+.modal-button {
+    background: #CCBA92;
+    font-family: 'Poppins', sans-serif;
+    border: transparent;
+}
+
+.modal-input {
+    background: #CCBA92;
+    border-color: #695D47;
+    border-radius: 4px;
 }

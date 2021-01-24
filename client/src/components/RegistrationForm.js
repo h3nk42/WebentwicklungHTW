@@ -43,7 +43,7 @@ function RegistrationForm() {
             try {
                 let res = await axios({
                     method: 'post',
-                    url: `${API_URL}user/createUser`,
+                    url: `${API_URL}user/create`,
                     data: data
                 });
                 if (res.status === 200) {

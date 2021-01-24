@@ -8,7 +8,7 @@ function Footer() {
     const {t, i18n} = useTranslation();
 
     return (
-        <nav className="navbar navbar-light footer mb-3">
+        <nav data-testid="footer" className="navbar navbar-light footer mb-3">
             <div className="row col-12 d-flex align-items-center text-white">
                 <NavLink className="px-3 text-white"
                          exact
