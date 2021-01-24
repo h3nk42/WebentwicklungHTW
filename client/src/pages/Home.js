@@ -1,19 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import {useAuth} from "../context/auth";
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
 import LoadingSpinner from "../components/LoadingSpinner";
-import useToken from "../hooks/useToken";
 import useGetHasPlan from "../hooks/useGetHasPlan";
 
+
 function Home() {
-    const {userName} = useAuth();
-    const {token} = useToken();
+
+    const {user,token} = useAuth();
     const {hasPlan,setHasPlan} = useGetHasPlan();
     const API_URL = process.env.REACT_APP_API_URL;
-    console.log("Home hasPlan: " + hasPlan);
+
 
 
     let [userPlanName, setUserPlanName] = useState(" ");
@@ -32,10 +32,8 @@ function Home() {
                 setLoading(false);
                 console.log(res.data);
                 setHasPlan(true);
-                //history.push("/myPlan");
             }
         ).catch(e => {
-            // ONLY_ONE_PLAN_PER_USER
             console.log(e);
             setHasPlan(true);
             setLoading(false);
@@ -46,7 +44,7 @@ function Home() {
         setUserPlanName(event.target.value);
     }
 
-    //Modal
+
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -98,7 +96,7 @@ function Home() {
             <div data-testid="homecard" className="container backdrop my-4">
                 <div className="col-md-12 d-flex align-items-center flex-column">
                     <div className="card p-4 col-12 col-lg-4 addPlan-card addPlan-style">
-                        <h2 className="card-title mt-4"> Welcome <strong>{userName}</strong> </h2>
+                        <h2 className="card-title mt-4"> Welcome <strong>{user.userName}</strong> </h2>
                         <div className="col-md-12 d-inline-flex flex-column my-auto">
                             <div className="card p-4 col-12 col-lg-4 addPlan-sm-style">
                                 <button data-testid="addPlanTest" onClick={handleShow} className="button-plan">

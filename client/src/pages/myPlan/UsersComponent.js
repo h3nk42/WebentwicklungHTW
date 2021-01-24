@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import Modal from "react-bootstrap/Modal";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import axios from "axios";
-import useToken from "../../hooks/useToken";
 import UsersCards from "./UsersCards";
 import {useAuth} from "../../context/auth";
 import {useHistory} from "react-router-dom";
@@ -10,7 +9,7 @@ import "./myPlan.css";
 
 
 function UsersComponent(props) {
-    console.log("PLANID::::" + props.planID);
+
 
 
     let history = useHistory();
@@ -20,10 +19,9 @@ function UsersComponent(props) {
 
 
     const API_URL = process.env.REACT_APP_API_URL;
-    const {token} = useToken();
+    const {user,token} = useAuth();
     let [newUserNameAdded, setNewUserNameAdded] = useState("");
-    const {userName} = useAuth();
-    console.log("USerName:::: " + userName);
+    console.log("USerName:::: " + user.userName);
 
 
     function handleNewUserNameAdded(event) {
@@ -97,7 +95,7 @@ function UsersComponent(props) {
                 console.log(response);
                 props.setIsLoading(false);
                 props.fetchData();
-                if (userName === delUserName) {
+                if (user.userName === delUserName) {
                     history.push("/home");
                 }
             })

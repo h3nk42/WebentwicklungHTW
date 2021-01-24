@@ -10,14 +10,12 @@ import UsersComponent from "./UsersComponent";
 import ScoreComponent from "./ScoreComponent";
 
 
-
-
 function MyPlan() {
 
 
     const [currentTab, setCurrentTab] = useState('tab1')
     const API_URL = process.env.REACT_APP_API_URL;
-    const {userName} = useAuth();
+    const {user} = useAuth();
     const [owner, setOwner] = useState("")
     let [planName, setPlanName] = useState("");
     let [isLoading, setIsLoading] = useState(true);
@@ -28,7 +26,6 @@ function MyPlan() {
 
 
 
-    // get planName, owner, allUsersWithoutPlan, allUsersOfPlan
     useEffect(() => {
         fetchData();
         return function cleanup(){
@@ -46,13 +43,13 @@ function MyPlan() {
             ])
                 .then(axios.spread((planNameRes, withoutPlanRes, allUserOfPlanRes) => {
                     planNameRes.data.data.forEach((obj) => {
-                        if(obj.owner === userName){
+                        if(obj.owner === user.userName){
                             setOwner(obj.owner);
                             setPlanName(obj.name);
                             tempPlanName = obj.name;
                         }else{
-                            obj.users.map(user => {
-                                if(user.userName === userName){
+                            obj.users.map(users => {
+                                if(users.userName === user.userName){
                                     setOwner(obj.owner);
                                     setPlanName(obj.name);
                                     tempPlanName = obj.name;
@@ -60,9 +57,9 @@ function MyPlan() {
                             })
                         }
                     })
-                    withoutPlanRes.data.data.map(user => {
-                        if(user.plan === null){
-                            setAllUsersWithoutPlan(allUsersWithoutPlan => [...allUsersWithoutPlan, user.userName])
+                    withoutPlanRes.data.data.map(users => {
+                        if(users.plan === null){
+                            setAllUsersWithoutPlan(allUsersWithoutPlan => [...allUsersWithoutPlan, users.userName])
                         }
                     })
                     allUserOfPlanRes.data.data.map((obj) => {
@@ -95,13 +92,13 @@ function MyPlan() {
             ])
                 .then(axios.spread((planNameRes, allTasks) => {
                     planNameRes.data.data.forEach((obj) => {
-                        if(obj.owner === userName){
+                        if(obj.owner === user.userName){
                             setOwner(obj.owner);
                             setPlanName(obj.name);
                             tempPlanName = obj.name;
                         }else{
-                            obj.users.map(user => {
-                                if(user.userName === userName){
+                            obj.users.map(users => {
+                                if(users.userName === user.userName){
                                     setOwner(obj.owner);
                                     setPlanName(obj.name);
                                     tempPlanName = obj.name;

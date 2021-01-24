@@ -17,7 +17,9 @@ import AuthProvider from "./components/AuthProvider";
 import './themes/dark.css';
 import './themes/light.css';
 
+
 function App() {
+
 
     return (
         <AuthProvider>

@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useAuth} from "../context/auth";
-import useToken from "./useToken";
+
 
 
 export default function useGetHasPlan() {
 
-    const {token} = useToken();
-    const {userName} = useAuth();
+    const {token} = useAuth();
     const API_URL = process.env.REACT_APP_API_URL;
     const headers = {Authorization: `Bearer ${token}`};
     const [hasPlan, setHasPlan] = useState(false);
