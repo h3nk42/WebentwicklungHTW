@@ -5,15 +5,17 @@ import {useAuth} from "../context/auth";
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
 import LoadingSpinner from "../components/LoadingSpinner";
-import useToken from "../hooks/useToken";
 import useGetHasPlan from "../hooks/useGetHasPlan";
 
+
 function Home() {
-    const {userName} = useAuth();
-    const {token} = useToken();
+
+    // das geändert, user wird zurückgegeben nicht nur username!!!
+    const {user,token} = useAuth();
     const {hasPlan,setHasPlan} = useGetHasPlan();
     const API_URL = process.env.REACT_APP_API_URL;
     console.log("Home hasPlan: " + hasPlan);
+    console.log("Username:::" + user.userName);
 
 
     let [userPlanName, setUserPlanName] = useState(" ");
@@ -98,7 +100,7 @@ function Home() {
             <div data-testid="homecard" className="container backdrop my-4">
                 <div className="col-md-12 d-flex align-items-center flex-column">
                     <div className="card p-4 col-12 col-lg-4 addPlan-card addPlan-style">
-                        <h2 className="card-title mt-4"> Welcome <strong>{userName}</strong> </h2>
+                        <h2 className="card-title mt-4"> Welcome <strong>{user.userName}</strong> </h2>
                         <div className="col-md-12 d-inline-flex flex-column my-auto">
                             <div className="card p-4 col-12 col-lg-4 addPlan-sm-style">
                                 <button data-testid="addPlanTest" onClick={handleShow} className="button-plan">
