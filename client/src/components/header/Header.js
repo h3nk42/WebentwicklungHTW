@@ -8,11 +8,15 @@ import "./Header.css";
 import "./switch.css";
 import Modal from 'react-bootstrap/Modal';
 
+import Sun from "../../logo/SwitchLight.png";
+import Moon from "../../logo/SwitchDark.png";
 
 
 function Header({hasPlan}) {
 
-    const {setDarkMode} = useAuth();
+
+    const {darkMode, setDarkMode} = useAuth();
+
     const history = useHistory();
 
     const logout = () => {
@@ -82,6 +86,7 @@ function Header({hasPlan}) {
                     <span className="h4 align-middle">DoYourDishes</span>
                     <img className="icon" src={logo} alt="DoYourDishes logo"/>
                 </div>
+
                 <ul>
                     <li>
                         <NavLink className="navlink"
@@ -117,8 +122,12 @@ function Header({hasPlan}) {
                             aria-label="dark mode toggle"
                             onClick={setDarkMode}
                         >
+
                     <span aria-hidden="true" className="dark-toggle">
-                        <span className="DTSpan"></span>
+                        <img data-testid={darkMode === "dark" ? "dark-logo" : "light-logo"}
+                             className="DTSpan"
+                             src={darkMode === "dark" ? Moon : Sun}
+                             alt="theme logo"/>
                     </span>
                         </button>
                     </li>

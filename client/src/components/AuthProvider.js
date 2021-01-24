@@ -4,7 +4,7 @@ import useToken from "../hooks/useToken";
 import useDarkMode from "../hooks/useDarkMode";
 
 function AuthProvider({children}) {
-    const {token, setToken, user} = useToken();
+    const {token, setToken, userName} = useToken();
     const [darkMode, setDarkMode, componentMounted] = useDarkMode();
 
     if (!componentMounted) {
@@ -12,7 +12,7 @@ function AuthProvider({children}) {
     }
 
     return (
-        <AuthContext.Provider value={{token, setToken, user, darkMode, setDarkMode}}>
+        <AuthContext.Provider value={{token, setToken, userName, darkMode, setDarkMode}}>
             {children}
         </AuthContext.Provider>
     );

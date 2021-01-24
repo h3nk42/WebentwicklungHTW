@@ -1,22 +1,17 @@
 import React from "react";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
-import {useTranslation} from "react-i18next";
 
-function Impressum() {
-
-    const {t, i18n} = useTranslation();
-
+function MyPlan() {
     return (
         <div>
             <Header/>
             <div className="col-12 text-center mt-5">
-                <h2>Impressum page</h2>
-                <p>{t("datenschutz")}</p>
+                <h2>This is the MyPlan page</h2>
             </div>
             <Footer/>
         </div>
     )
 }
 
-export default Impressum;
+export default MyPlan;
