@@ -1,0 +1,43 @@
+input {
+    display: block;
+    height: 32px;
+}
+
+.avatar {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.4);
+}
+
+.edit-profile {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.label {
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 200px;
+    font-family: 'Poppins SemiBold', sans-serif;
+}
+
+.profile-card {
+    min-height: 70vh;
+    min-width: 40vw;
+    color: #695D47;
+}
+
+.profile-style {
+    background: #CCBA92;
+    border: transparent;
+    border-radius: 0;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .profile-style {
+    background: #06090f;
+    border: 1px solid #6e6e6e;
+}
