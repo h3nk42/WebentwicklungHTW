@@ -28,7 +28,6 @@ function MyPlan() {
 
 
 
-    // get planName, owner, allUsersWithoutPlan, allUsersOfPlan
     useEffect(() => {
         fetchData();
         return function cleanup(){
@@ -62,7 +61,7 @@ function MyPlan() {
                     })
                     withoutPlanRes.data.data.map(users => {
                         if(users.plan === null){
-                            setAllUsersWithoutPlan(allUsersWithoutPlan => [...allUsersWithoutPlan, user.userName])
+                            setAllUsersWithoutPlan(allUsersWithoutPlan => [...allUsersWithoutPlan, users.userName])
                         }
                     })
                     allUserOfPlanRes.data.data.map((obj) => {

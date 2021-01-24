@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import {useAuth} from "../context/auth";
@@ -10,7 +10,6 @@ import useGetHasPlan from "../hooks/useGetHasPlan";
 
 function Home() {
 
-    // das geändert, user wird zurückgegeben nicht nur username!!!
     const {user,token} = useAuth();
     const {hasPlan,setHasPlan} = useGetHasPlan();
     const API_URL = process.env.REACT_APP_API_URL;
@@ -34,10 +33,8 @@ function Home() {
                 setLoading(false);
                 console.log(res.data);
                 setHasPlan(true);
-                //history.push("/myPlan");
             }
         ).catch(e => {
-            // ONLY_ONE_PLAN_PER_USER
             console.log(e);
             setHasPlan(true);
             setLoading(false);
@@ -48,7 +45,7 @@ function Home() {
         setUserPlanName(event.target.value);
     }
 
-    //Modal
+
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);

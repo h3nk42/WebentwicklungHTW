@@ -16,9 +16,7 @@ import './themes/dark.css';
 import './themes/light.css';
 import PrivateRoute from "./components/PrivateRoute";
 import AuthProvider from "./components/AuthProvider";
-import useToken from "./hooks/useToken";
-import useDarkMode from "./hooks/useDarkMode";
-import {AuthContext} from "./context/auth";
+
 
 function App() {
 

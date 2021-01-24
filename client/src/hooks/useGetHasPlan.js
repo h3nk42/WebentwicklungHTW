@@ -6,7 +6,7 @@ import {useAuth} from "../context/auth";
 
 export default function useGetHasPlan() {
 
-    const {user,token} = useAuth();
+    const {token} = useAuth();
     const API_URL = process.env.REACT_APP_API_URL;
     const headers = {Authorization: `Bearer ${token}`};
     const [hasPlan, setHasPlan] = useState(false);

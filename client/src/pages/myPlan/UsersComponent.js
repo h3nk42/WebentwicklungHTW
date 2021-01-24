@@ -9,7 +9,7 @@ import "./myPlan.css";
 
 
 function UsersComponent(props) {
-    console.log("PLANID::::" + props.planID);
+
 
 
     let history = useHistory();
