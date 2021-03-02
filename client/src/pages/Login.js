@@ -3,7 +3,7 @@ import LoginForm from "../components/loginForm/LoginForm";
 
 function Login() {
     return (
-        <div className="container my-4">
+        <div className="container backdrop">
             <div className="col-md-12 d-flex align-items-center flex-column">
                 <LoginForm/>
             </div>

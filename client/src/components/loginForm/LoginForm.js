@@ -52,7 +52,7 @@ function LoginForm() {
     return (
         <div data-testid="login-card" className="card p-4 col-12 col-lg-4 login-card card-style">
             {loggedInState === "logging in" ?
-                <div className="spin"></div>
+                <div className="spin"/>
                 :
                 <>
                     <h2 className="card-title mt-4">Sign in</h2>
