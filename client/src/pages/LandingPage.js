@@ -3,11 +3,12 @@ import logo from '../logo/DYDsponge24_logo_only.png'
 import {useHistory} from "react-router-dom";
 
 function LandingPage() {
+
     const history = useHistory();
 
     return (
-        <div className="container backdrop my-4">
-            <div className="col-md-12 d-flex align-items-center flex-column">
+        <div className="container backdrop">
+            <div className="d-flex align-items-center flex-column">
                 <img data-testid="logo" src={logo} className="" alt="DoYourDishes Logo"/>
                 <h1 className="display-3 mb-4 mx-auto">DoYourDishes</h1>
                 <button

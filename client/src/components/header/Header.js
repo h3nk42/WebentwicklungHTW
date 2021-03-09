@@ -11,12 +11,9 @@ import Modal from 'react-bootstrap/Modal';
 import Sun from "../../logo/SwitchLight.png";
 import Moon from "../../logo/SwitchDark.png";
 
-
 function Header({hasPlan}) {
 
-
     const {darkMode, setDarkMode} = useAuth();
-
     const history = useHistory();
 
     const logout = () => {
@@ -39,9 +36,9 @@ function Header({hasPlan}) {
     const handleShow = () => setShow(true);
 
     function myPlanAuth() {
-        if(hasPlan){
-            return(
-                <NavLink className="navlink"
+        if (hasPlan) {
+            return (
+                <NavLink className="px-4"
                          exact
                          to="/myPlan"
                 >
@@ -50,10 +47,10 @@ function Header({hasPlan}) {
             )
         } else {
             return (
-                <div>
+                <>
                     <NavLink
                         onClick={handleShow}
-                        className="navlink"
+                        className="px-4"
                         exact
                         to="/home"
                     >
@@ -73,7 +70,7 @@ function Header({hasPlan}) {
                         <Modal.Footer className="modal-footer">
                         </Modal.Footer>
                     </Modal>
-                </div>
+                </>
 
             )
         }
@@ -84,61 +81,52 @@ function Header({hasPlan}) {
             <div className="row col-12 d-flex align-items-center text-white">
                 <div className="mr-auto">
                     <span className="h4 align-middle">DoYourDishes</span>
-                    <img className="icon" src={logo} alt="DoYourDishes logo"/>
+                    <img className="icon mr-3" src={logo} alt="DoYourDishes logo"/>
+                    <NavLink className="px-4"
+                             exact
+                             to="/home"
+                    >
+                        {t("home")}
+                    </NavLink>
+                    {myPlanAuth()}
+                    <NavLink className="px-4"
+                             exact
+                             to="/profile"
+                    >
+                        {t("profile")}
+                    </NavLink>
                 </div>
 
-                <ul>
-                    <li>
-                        <NavLink className="navlink"
-                                 exact
-                                 to="/home"
-                        >
-                            Home
-                        </NavLink>
-                    </li>
-                    <li>
-                        {myPlanAuth()}
-                    </li>
-                    <li>
-                        <NavLink className="navlink"
-                                 exact
-                                 to="/profile"
-                        >
-                            Profile
-                        </NavLink>
-                    </li>
-                    <li>
-                        <button className="changeLang-button" onClick={changeLanguage("en")}>
-                            EN
-                        </button>
-                        <span className="mx-2">|</span>
-                        <button className="changeLang-button" onClick={changeLanguage("de")}>
-                            DE
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            className="dark-mode-button top-dark-mode-button"
-                            aria-label="dark mode toggle"
-                            onClick={setDarkMode}
-                        >
+                <div className="btn-language mx-1">
+                    <span data-testid="btn-language-en"
+                          onClick={changeLanguage("en")}>
+                        EN
+                    </span>
+                    <span className="mx-2">|</span>
+                    <span data-testid="btn-language-de"
+                          onClick={changeLanguage("de")}>
+                        DE
+                    </span>
+                </div>
 
+                <button
+                    className="dark-mode-button top-dark-mode-button mx-5"
+                    aria-label="dark mode toggle"
+                    onClick={setDarkMode}
+                >
                     <span aria-hidden="true" className="dark-toggle">
                         <img data-testid={darkMode === "dark" ? "dark-logo" : "light-logo"}
                              className="DTSpan"
                              src={darkMode === "dark" ? Moon : Sun}
                              alt="theme logo"/>
                     </span>
-                        </button>
-                    </li>
-                    <li>
-                        <button className="btn btn-primary btn-sm"
-                                onClick={logout}
-                        >
-                            Logout
-                        </button>
-                    </li>
-                </ul>
+                </button>
+
+                <button className="btn btn-primary btn-sm"
+                        onClick={logout}
+                >
+                    Log out
+                </button>
             </div>
         </nav>
     );

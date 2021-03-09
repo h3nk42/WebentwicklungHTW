@@ -41,5 +41,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-bootstrap": "^1.5.0",
+    "react-easy-chart": "^1.0.0"
   }
 }

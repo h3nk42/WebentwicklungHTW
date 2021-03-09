@@ -59,14 +59,14 @@ function RegistrationForm() {
     return (
         <div data-testid="register-card" className="card p-4 col-12 col-lg-4 login-card card-style">
             {registerState === "registering" ?
-                <div className="spin"></div>
+                <div className="spin"/>
                 :
                 <>
                     <h2 className="card-title mt-4">Register</h2>
                     <p className="card-subtitle mb-5">Already have an account?
                         <span data-testid="sign-in"
-                                className="btn btn-outline-primary"
-                                onClick={() => history.push("/login")}
+                              className="btn btn-outline-primary"
+                              onClick={() => history.push("/login")}
                         >
                             Sign in here
                         </span>
