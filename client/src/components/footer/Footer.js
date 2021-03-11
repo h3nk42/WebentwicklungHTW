@@ -5,7 +5,7 @@ import "./Footer.css";
 
 function Footer() {
 
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
 
     return (
         <nav data-testid="footer" className="navbar navbar-light footer mb-3">

@@ -27,14 +27,36 @@ describe('<MyPlan/>', () => {
         const addTask = screen.getByText('+');
         fireEvent.click(addTask)
         expect(screen.getByText("Add your Task's name")).toBeInTheDocument();
-        expect(screen.getByText("TasksName")).toBeInTheDocument();
         expect(screen.getByText("Points worth")).toBeInTheDocument();
     })
 
     it('change tab and update view when users is clicked',() => {
-        const userTab = screen.getByText('Users');
+        const userTab = screen.getByText('User');
         fireEvent.click(userTab);
         expect(screen.getByText("Owner:")).toBeInTheDocument();
+    })
+
+    it('change tab to score when clicked', () => {
+        const userTab = screen.getByText('Score');
+        fireEvent.click(userTab);
+        expect(screen.getByText("Scores")).toBeInTheDocument();
+    })
+
+    it('switch language test', () => {
+        const switchLangDE = screen.getByText('DE');
+        fireEvent.click(switchLangDE);
+        expect(screen.getByText('Aufgaben')).toBeInTheDocument();
+        const switchLangEng = screen.getByText('EN');
+        fireEvent.click(switchLangEng);
+        expect(screen.getByText("Tasks")).toBeInTheDocument();
+    })
+
+    it('add Task test 1', () => {
+        const addTask = screen.getByText("+");
+        fireEvent.click(addTask);
+        expect(screen.getByText("Add your Task's name")).toBeInTheDocument();
+        expect(screen.getByText("Description of task")).toBeInTheDocument();
+        expect(screen.getByText("Points worth")).toBeInTheDocument();
     })
 
 

@@ -10,11 +10,11 @@ export default function useGetHasPlan() {
     const API_URL = process.env.REACT_APP_API_URL;
     const headers = {Authorization: `Bearer ${token}`};
     const [hasPlan, setHasPlan] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoadingPlan, setIsLoadingPlan] = useState(true);
 
 
     useEffect(() => {
-        setIsLoading(true);
+        setIsLoadingPlan(true);
         const fetchData = async () => {
             try {
                 const result = await axios.get(`${API_URL}plan/showOne`,{headers});
@@ -25,7 +25,7 @@ export default function useGetHasPlan() {
             }
         };
         fetchData();
-        setIsLoading(false);
+        setIsLoadingPlan(false);
     },[hasPlan])
 
 

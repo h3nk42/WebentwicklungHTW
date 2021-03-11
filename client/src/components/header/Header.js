@@ -45,7 +45,7 @@ function Header({hasPlan}) {
                          exact
                          to="/myPlan"
                 >
-                    MyPlan
+                    {t("myPlan")}
                 </NavLink>
             )
         } else {
@@ -57,7 +57,7 @@ function Header({hasPlan}) {
                         exact
                         to="/home"
                     >
-                        MyPlan
+                        {t("myPlan")}
                     </NavLink>
                     <Modal
                         show={show}
@@ -68,7 +68,7 @@ function Header({hasPlan}) {
                         <Modal.Header closeButton className="modal-header">
                         </Modal.Header>
                         <Modal.Body className="modal-body">
-                            <p className="modal-text">You dont have a Plan yet, create one</p>
+                            <p className="modal-text">{t("youDontHaveAPlanModal")}</p>
                         </Modal.Body>
                         <Modal.Footer className="modal-footer">
                         </Modal.Footer>
@@ -93,7 +93,7 @@ function Header({hasPlan}) {
                                  exact
                                  to="/home"
                         >
-                            Home
+                            {t("home")}
                         </NavLink>
                     </li>
                     <li>
@@ -104,7 +104,7 @@ function Header({hasPlan}) {
                                  exact
                                  to="/profile"
                         >
-                            Profile
+                            {t("profile")}
                         </NavLink>
                     </li>
                     <li>
@@ -135,7 +135,7 @@ function Header({hasPlan}) {
                         <button className="btn btn-primary btn-sm"
                                 onClick={logout}
                         >
-                            Logout
+                            {t("logout")}
                         </button>
                     </li>
                 </ul>
