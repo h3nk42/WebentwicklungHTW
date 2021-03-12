@@ -107,9 +107,9 @@ body.dark-mode .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
 
 body.dark-mode .addPlan-style {
     background: #06090f;
-    border: transparent;
     border-radius: 0;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+    border: 1px solid #6e6e6e;
 }
 
 body.dark-mode .addPlan-sm-style {
@@ -179,5 +179,9 @@ body.dark-mode .card-title {
 }
 
 body.dark-mode .addPlan-note {
+    color: white;
+}
+
+body.dark-mode .modal-text {
     color: white;
 }

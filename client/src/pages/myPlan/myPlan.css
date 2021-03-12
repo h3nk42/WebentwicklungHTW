@@ -1,6 +1,9 @@
 .tabs-style {
-    position: relative;
-    left: 380px;
+    display: flex;
+    justify-content: center;
+    margin-right: 410px;
+    margin-top: 5px;
+    margin-bottom: -5px;
 }
 
 .activeTab {
@@ -21,6 +24,7 @@
 }
 
 .tab-task-title {
+    display: inline-flex;
     font-family: 'Poppins SemiBold', sans-serif;
     color:  #695D47;
     position: relative;
@@ -41,8 +45,9 @@
 }
 
 .tasks-sm-style-green {
-    display: flex;
-    align-self: center;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
     background: #81F781;
     border: transparent;
     border-radius: 0;
@@ -52,8 +57,9 @@
     margin-top: 5px;
 }
 .tasks-sm-style-yellow {
-    display: flex;
-    align-self: center;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
     background: #F3F781;
     border: transparent;
     border-radius: 0;
@@ -63,8 +69,9 @@
     margin-top: 5px;
 }
 .tasks-sm-style-red {
-    display: flex;
-    align-self: center;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
     background: #FA5858;
     border: transparent;
     border-radius: 0;
@@ -77,35 +84,32 @@
 .taskCard-name {
     font-family: 'Poppins Bold', sans-serif;
     color: #695D47;
+    margin-left: 10px;
     margin-top: 10px;
     font-size: 20px;
 }
 
 .tasks-sm-style-btn {
-    background: transparent;
+    margin-bottom: 10px;
     font-size: 20px;
-    margin-top: 50px;
-    width: 60px;
+    margin-left: 30px;
     border: transparent;
-    position: absolute;
-    left: 10px;
-    top: 25px;
+    background: transparent;
 }
 
 .tasks-sm-style-btn-fullfill {
-    background: transparent;
+    margin-bottom: 10px;
     font-size: 20px;
-    margin-top: 50px;
-    width: 60px;
+    margin-left: 10px;
     border: transparent;
-    position: absolute;
-    right: 10px;
-    bottom: 7px;
+    background: transparent;
+
 }
 
 .users-sm-style {
-    display: flex;
-    align-self: center;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
     background: #9FE3D6;
     border: transparent;
     border-radius: 0;
@@ -118,42 +122,20 @@
 .userCard-name {
     font-family: 'Poppins Bold', sans-serif;
     color: #695D47;
+    margin-left: 10px;
     margin-top: 10px;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .users-sm-style-btn {
+    margin-bottom: 5px;
+    font-size: 22px;
     background: transparent;
-    font-size: 20px;
-    margin-top: 50px;
-    width: 50px;
     border: transparent;
 }
 
 
-ul.userList-style {
-    list-style-type: none;
-    columns: 3;
-    position: absolute;
-    left: -20px;
-}
 
-li.userList-item {
-    padding: 5px;
-    left: 5px;
-}
-
-ul.taskList-style {
-    list-style-type: none;
-    columns: 3;
-    position: absolute;
-    left: -20px;
-}
-
-li.taskList-item {
-    padding: 5px;
-    left: 5px;
-}
 
 .owner-note {
     font-family: 'Poppins SemiBold', sans-serif;
@@ -176,42 +158,6 @@ li.taskList-item {
     margin: 10px;
 }
 
-
-.taskCard-green {
-    display: flex;
-    align-self: center;
-    background: darkgreen;
-    border: transparent;
-    border-radius: 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-    min-height: 6vw;
-    min-width: 10vw;
-    margin: 10px;
-}
-
-.taskCard-yellow {
-    display: flex;
-    align-self: center;
-    background: yellow;
-    border: transparent;
-    border-radius: 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-    min-height: 6vw;
-    min-width: 10vw;
-    margin: 10px;
-}
-
-.taskCard-red {
-    display: flex;
-    align-self: center;
-    background: red;
-    border: transparent;
-    border-radius: 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-    min-height: 6vw;
-    min-width: 10vw;
-    margin: 10px;
-}
 
 .user-owner-sm-style-red {
     display: flex;
@@ -246,30 +192,22 @@ li.taskList-item {
     color:  #695D47;
     position: absolute;
     right: 25px;
-    top: -8px;
 
 }
 
 .add-user-button{
-    background: transparent;
-    border: transparent;
     color:  #695D47;
-    padding-left: 100px;
-    margin-left: 100px;
-    position: absolute;
-    top: -4px;
+    margin-left: 50px;
+    border: transparent;
+    background: transparent;
 }
 
-.taskCard-list {
-    columns: 3;
-    -webkit-columns: 3;
-    -moz-columns: 3;
-}
 
 .chart-style {
-    position: absolute;
-    bottom: 100px;
-    right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
 }
 
 .delete-plan-btn {
@@ -282,5 +220,84 @@ li.taskList-item {
     position: absolute;
     right: 25px;
     top: -8px;
+}
 
+
+
+
+
+body.dark-mode .add-user-button {
+    color: white;
+}
+
+body.dark-mode .refresh-btn {
+    color: white;
+}
+
+body.dark-mode .tasks-sm-style-red {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #540f0f;
+    border: transparent;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    min-height: 6vw;
+    min-width: 10vw;
+    margin-top: 5px;
+}
+
+body.dark-mode .tasks-sm-style-green {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #1e7a2d;
+    border: transparent;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    min-height: 6vw;
+    min-width: 10vw;
+    margin-top: 5px;
+}
+
+body.dark-mode .tasks-sm-style-yellow {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #a3ab20;
+    border: transparent;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    min-height: 6vw;
+    min-width: 10vw;
+    margin-top: 5px;
+}
+
+body.dark-mode .users-sm-style {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #4e1860;
+    border: transparent;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    min-height: 6vw;
+    min-width: 10vw;
+    margin-top: 5px;
+}
+
+body.dark-mode .modal-text {
+    color: white;
+}
+
+body.dark-mode .modal-input {
+    color: white;
+}
+
+body.dark-mode .modal-button {
+    color: white;
+}
+
+body.dark-mode .allUsersWithoutPlan-Text {
+    color: white;
 }

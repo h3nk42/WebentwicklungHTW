@@ -5,12 +5,14 @@ import axios from "axios";
 import UsersCards from "./UsersCards";
 import {useAuth} from "../../context/auth";
 import {useHistory} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 import "./myPlan.css";
 
 
 function UsersComponent(props) {
 
 
+    const {t} = useTranslation();
 
     let history = useHistory();
     const [showUsers, setShowUsers] = useState(false);
@@ -21,7 +23,6 @@ function UsersComponent(props) {
     const API_URL = process.env.REACT_APP_API_URL;
     const {user,token} = useAuth();
     let [newUserNameAdded, setNewUserNameAdded] = useState("");
-    console.log("USerName:::: " + user.userName);
 
 
     function handleNewUserNameAdded(event) {
@@ -58,7 +59,7 @@ function UsersComponent(props) {
                 keyboard={false}
             >
                 <Modal.Header closeButton className="modal-header">
-                    <p className="modal-text"> List of Users available</p>
+                    <p className="modal-text">{t("userList")}</p>
                 </Modal.Header>
                 <Modal.Body className="modal-body">
                     <input className="modal-input" type="text" value={newUserNameAdded}
@@ -68,7 +69,7 @@ function UsersComponent(props) {
                     </ul>
                 </Modal.Body>
                 <Modal.Footer className="modal-footer">
-                    <button className="modal-button" onClick={addUserToPlan}>Add User</button>
+                    <button className="modal-button" onClick={addUserToPlan}>+</button>
                     {props.isLoading ? <LoadingSpinner/> : <div/>}
                 </Modal.Footer>
             </Modal>
@@ -78,7 +79,7 @@ function UsersComponent(props) {
     function renderAllUsersWithoutPlan() {
         return (
             <div>
-                <ol>
+                <ol className="allUsersWithoutPlan-Text">
                     {props.allUsersWithoutPlan.map((user) => <li key={user._id}>{user}</li>)}
                 </ol>
             </div>
@@ -87,25 +88,28 @@ function UsersComponent(props) {
 
 
     function handleDeleteUser(delUserName) {
-        props.setIsLoading(true);
-        const data = {userName: delUserName};
-        const headers = {Authorization: `Bearer ${token}`};
-        axios.post(`${API_URL}plan/removeUser`, data, {headers})
-            .then(response => {
-                console.log(response);
-                props.setIsLoading(false);
-                props.fetchData();
-                if (user.userName === delUserName) {
-                    history.push("/home");
-                }
-            })
-            .catch(error => {
-                const e = error.json
-                console.log("Error " + e);
-                props.setIsLoading(false);
-                alert("You are not the owner")
-            })
-
+        if(delUserName === props.owner){
+            handleDeletePlan();
+        }else{
+            props.setIsLoading(true);
+            const data = {userName: delUserName};
+            const headers = {Authorization: `Bearer ${token}`};
+            axios.post(`${API_URL}plan/removeUser`, data, {headers})
+                .then(response => {
+                    console.log(response);
+                    props.setIsLoading(false);
+                    props.fetchData();
+                    if (user.userName === delUserName) {
+                        history.push("/home");
+                    }
+                })
+                .catch(error => {
+                    const e = error.json
+                    console.log("Error " + e);
+                    props.setIsLoading(false);
+                    alert("You are not the owner")
+                })
+        }
     }
 
     function handleDeletePlan(){
@@ -126,14 +130,12 @@ function UsersComponent(props) {
 
     function renderAllUsersOfPlanCards() {
         return (
-            <div>
-                <ul className="userList-style">
-                    {props.allUsersOfPlan.map((user) =>
-                        <li className="userList-item" key={user._id}>
-                            <UsersCards userName={user.userName} handleDeleteUser={handleDeleteUser}/>
-                        </li>
-                    )}
-                </ul>
+            <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
+                {props.allUsersOfPlan.map((user) =>
+                    <div style={{marginLeft: '10px', marginTop: '5px'}}>
+                        <UsersCards userName={user.userName} handleDeleteUser={handleDeleteUser}/>
+                    </div>
+                )}
             </div>
         )
     }
@@ -143,12 +145,12 @@ function UsersComponent(props) {
             <div className="col-md-12 d-flex align-items-center flex-column">
                 <div className="card p-4 col-12 col-lg-4 myPlan-card addPlan-style">
                     <h2 className="tab-task-title">
-                        <strong>Users</strong>
+                        <strong>{t("users")}</strong>
                         <button className="add-user-button" onClick={handleShowUsers}>+</button>
                         <button  onClick={handleDeletePlan} className="delete-plan-btn"> &#128465;</button>
                         {stateModalAddUsers()}
                     </h2>
-                    <h1 className="tab-task-owner"> Owner: {props.owner}</h1>
+                    <h1 className="tab-task-owner"> {t("owner")}: {props.owner}</h1>
                     <div className="row">
                         <ul>
                             {renderAllUsersOfPlanCards()}

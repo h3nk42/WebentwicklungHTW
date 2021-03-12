@@ -6,5 +6,20 @@
   "logout": "Logout",
   "profile": "Profile",
   "myPlan": "MyPlan",
-  "home": "Home"
+  "home": "Home",
+  "youHavePlan": "You have a Plan",
+  "addPlanTitle": "Add your Plan's name",
+  "tabTask": "Tasks",
+  "addTaskName": "Add your Task's name",
+  "taskName": "Description of task",
+  "pointsWorth": "Points worth",
+  "tasks": "Tasks",
+  "users": "Users",
+  "owner" : "Owner",
+  "score": "Scores",
+  "userList": "All users available",
+  "welcome": "Welcome ",
+  "addPlanButtonMessage" : "Press + to add a new Plan",
+  "youHaveAPlanMessage" : "You have a plan, you can go directly to ",
+  "youDontHaveAPlanModal" : "You dont have a Plan yet, create one"
 }

@@ -24,7 +24,7 @@ describe('<Home/>', () => {
 
 
     it("render correctly",() => {
-        expect(screen.getByText('Press "+" to add a new Plan')).toBeInTheDocument();
+        expect(screen.getByTestId("addPlanButtonMessage")).toBeInTheDocument();
         expect(screen.getByText('Welcome')).toBeInTheDocument();
     })
 

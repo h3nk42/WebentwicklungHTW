@@ -1,8 +1,12 @@
 import React from "react";
 import {BarChart} from "react-easy-chart";
+import {useTranslation} from "react-i18next";
 import "./myPlan.css";
 
+
 function ScoreComponent(props) {
+
+    const {t} = useTranslation();
 
     let scores = JSON.stringify(props.allUsersOfPlan)
 
@@ -20,11 +24,12 @@ function ScoreComponent(props) {
 
 
 
+
     return (
         <div className="container backdrop my-4">
             <div className="col-md-12 d-flex align-items-center flex-column">
                 <div className="card p-4 col-12 col-lg-4 myPlan-card addPlan-style">
-                    <h2 className="tab-task-title"><strong>Score</strong></h2>
+                    <h2 className="tab-task-title"><strong>{t("score")}</strong></h2>
                     <div className="col-md-12 chart-style">
                         <BarChart
                             axes

@@ -124,14 +124,14 @@ function MyPlan() {
     const tabList = [
         {
             name: 'tab1',
-            label: 'Tasks',
+            label: 'Task',
             content: (
                 <TasksComponent setIsLoading={setIsLoading} isLoading={isLoading} planName={planName} allUsersOfPlan={allUsersOfPlan} tasks={tasks} getTasksFromDB={getTasksFromDB} fetchData={fetchData}/>
             )
         },
         {
             name: 'tab2',
-            label: 'Users',
+            label: 'User',
             content: (
                 <UsersComponent setIsLoading={setIsLoading} isLoading={isLoading} allUsersWithoutPlan={allUsersWithoutPlan} allUsersOfPlan={allUsersOfPlan} owner={owner} fetchData={fetchData}/>
             )
@@ -156,7 +156,7 @@ function MyPlan() {
 
     return (
         <div data-testid="myplancard">
-            <Header/>
+            <Header hasPlan={true}/>
                 <div className="myTabs">
                     <div className="tabs-style">
                         {

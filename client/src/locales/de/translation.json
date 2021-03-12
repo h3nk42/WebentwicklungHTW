@@ -6,6 +6,21 @@
   "logout": "Abmelden",
   "profile": "Profil",
   "myPlan": "MeinPlan",
-  "home": "Startseite"
+  "home": "Startseite",
+  "youHavePlan": "Du gehörst zu einem Plan",
+  "addPlanTitle": "Wie soll dein Plan heißen?",
+  "tabTask": "Aufgaben",
+  "addTaskName": "Wie soll dein Task heißen?",
+  "taskName": "Beschreibung des Tasks",
+  "pointsWorth": "Punkte",
+  "tasks": "Aufgaben",
+  "users": "Nutzer",
+  "owner": "Besitzer",
+  "score": "Punkte",
+  "userList": "Alle verfügbaren Nutzer",
+  "welcome": "Willkommen ",
+  "addPlanButtonMessage" : "Drücke + um einen neuen Plan zu erstellen",
+  "youHaveAPlanMessage" : "Du bist in einem Plan, Zugriff über  ",
+  "youDontHaveAPlanModal" : "Du bist noch in keinem Plan, erstelle einen"
 }
 

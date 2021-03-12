@@ -4,11 +4,14 @@ import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import useToken from "../../hooks/useToken";
 import TaskCard from './TaskCard';
+import {useTranslation} from "react-i18next";
 import "./myPlan.css";
 
 
 
 function TasksComponent(props) {
+
+    const {t} = useTranslation();
 
     const {token} = useToken();
     const API_URL = process.env.REACT_APP_API_URL;
@@ -86,18 +89,18 @@ function TasksComponent(props) {
                 keyboard={false}
             >
                 <Modal.Header closeButton className="modal-header">
-                    <p className="modal-text">Add your Task's name</p>
+                    <p className="modal-text">{t("addTaskName")}</p>
                 </Modal.Header>
                 <Modal.Body className="modal-body">
-                    <p>TasksName</p>
-                    <input className="modal-input" type="text" value={taskName} onChange={handleTaskName}/>
-                    <p style={{margin:10}}>Points worth</p>
-                    <input className="modal-input" type="text" value={pointsWorth} onChange={handlePointsWorth}/>
+                    <p>{t("taskName")}</p>
+                    <input data-testid="taskNameTest" className="modal-input" type="text" value={taskName} onChange={handleTaskName}/>
+                    <p style={{margin:10}}>{t("pointsWorth")}</p>
+                    <input data-testid="taskPointsTest" className="modal-input" type="text" value={pointsWorth} onChange={handlePointsWorth}/>
 
                 </Modal.Body>
                 <Modal.Footer className="modal-footer">
-                    <button className="modal-button" onClick={() => createTask(taskName,pointsWorth)}>Add Task</button>
-                    {props.loading ? <LoadingSpinner /> : <div/>}
+                    <button data-testid="addTaskButton" className="modal-button" onClick={() => createTask(taskName,pointsWorth)}>+</button>
+                    {props.loading ? <LoadingSpinner/> : <div/>}
                 </Modal.Footer>
             </Modal>
         )
@@ -106,13 +109,14 @@ function TasksComponent(props) {
 
     function renderAllTasksCards() {
         return (
-            <div>
-                <ul className="taskList-style">
-                    {props.tasks.map(task =>
-                        <li className="taskList-item" key={task._id}>
-                            <TaskCard taskID={task._id} taskName={task.name} pointsWorth={task.pointsWorth} lastTimeDone={task.lastTimeDone} handleDelete={handleDeleteTask} handleFullFill={handleFullFillTask} />
-                        </li>)}
-                </ul>
+            <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
+                {props.tasks.map(task =>
+                    <div style={{marginLeft: '10px', marginTop: '5px'}}>
+                    <TaskCard taskID={task._id} taskName={task.name} pointsWorth={task.pointsWorth}
+                              lastTimeDone={task.lastTimeDone} handleDelete={handleDeleteTask}
+                              handleFullFill={handleFullFillTask}/>
+                    </div>
+                    )}
             </div>
         )
     }
@@ -126,14 +130,16 @@ function TasksComponent(props) {
         <div className="container backdrop my-4">
             <div className="col-md-12 d-flex align-items-center flex-column">
                 <div className="card p-4 col-12 col-lg-4 myPlan-card addPlan-style">
-                    <h2 className="tab-task-title"><strong>Tasks</strong>
+                    <h2 className="tab-task-title"><strong>{t("tasks")}</strong>
                         <button onClick={handleShow} className="add-user-button"> + </button>
                         <button  onClick={handleRefresh} className="refresh-btn"> &#8634;</button>
                         {stateModalAddTask()}
                     </h2>
-                    <ul>
-                        {renderAllTasksCards()}
-                    </ul>
+                    <div className="row">
+                        <ul>
+                            {renderAllTasksCards()}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
