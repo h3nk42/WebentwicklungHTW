@@ -98,11 +98,11 @@ function ProfileCard() {
                 {!isEditing ? (
                     <>
                         <label className="label">First name :</label>
-                        <p data-testid="firstName">{data.firstName ? data.firstName : '-'}</p>
+                        <p data-testid="firstName">{data?.firstName ? data?.firstName : '-'}</p>
                         <label className="label">Surname :</label>
-                        <p data-testid="surName">{data.surName ? data.surName : '-'}</p>
+                        <p data-testid="surName">{data?.surName ? data?.surName : '-'}</p>
                         <label className="label">Date of birth :</label>
-                        <p>{data.dateOfBirth ? data.dateOfBirth : '-'}</p>
+                        <p>{data?.dateOfBirth ? data?.dateOfBirth : '-'}</p>
                     </>
                 ) : (
                     <form data-testid="profile-form">

@@ -125,7 +125,9 @@ function Header({hasPlan}) {
                 <button className="btn btn-primary btn-sm"
                         onClick={logout}
                 >
+
                     {t("logout")}
+
                 </button>
             </div>
         </nav>

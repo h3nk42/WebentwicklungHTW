@@ -18,6 +18,13 @@ h1, h2, label {
     color: #695D47;
 }
 
+.backdrop {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .backdrop h1 {
     font-weight: bold;
 }
