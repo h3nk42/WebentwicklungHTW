@@ -59,8 +59,9 @@ require('./routes/index')(app);
 
 
 // WebSocket
+const options = { transports: ["websocket", "polling"] }
 const http = require('http').createServer(app);
-const io = require('socket.io')(http);
+const io = require('socket.io')(http, options);
 
 
 

@@ -21,15 +21,12 @@ function ChatComponent(props) {
     const WS_URL = process.env.REACT_APP_WS_URL;
     const API_PORT = process.env.PORT || 3001;
 
-    console.log(`${WS_URL}:${API_PORT}`);
-
     // establish connection to websocket
     useEffect( () => {
         setSocket(io(`${WS_URL}`, {
             transports: ["websocket", "polling"]
         }));
     },[]);
-
 
     useEffect(() => {
         if(!socket) return;
