@@ -1,0 +1,44 @@
+.all-messages-list {
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+nav ul {
+    height:400px;
+    width: 100%;
+}
+
+.single-message {
+    list-style-type: none;
+}
+
+
+.messageBoard {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.input-and-button {
+    display: flex;
+    padding: 10px;
+}
+
+.input-and-button * {
+    padding: 10px;
+    border-radius: 3px;
+    font-size: 1em;
+    border: none;
+}
+
+.message-input {
+    flex: 1;
+    background: transparent;
+}
+
+
+.send-button {
+    margin-left: 10px;
+    background: transparent;
+    cursor: pointer;
+}

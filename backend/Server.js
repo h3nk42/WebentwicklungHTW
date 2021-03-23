@@ -57,8 +57,42 @@ require('./routes/index')(app);
 // append /api for our http requests
     app.use('/api', router);
 
+
+// WebSocket
+const options = { transports: ["websocket", "polling"] }
+const http = require('http').createServer(app);
+const io = require('socket.io')(http, options);
+
+
+
+io.on("connection", (socket) => {
+    console.log("User has connected to Server");
+
+    // receiving from client when connecting to WebSocket
+    socket.on("userInfo", (userInfo) => {
+        console.log("I GOT THE USER INFO " + userInfo);
+
+        // joining specific room
+        socket.join(userInfo.roomid);
+        console.log("Socket joined " + userInfo.roomid);
+    });
+
+    socket.on("message", (message) => {
+        // now is a js object
+        const msg = JSON.parse(message);
+        // sending to client of same room only
+        io.to(msg.roomid).emit("message", message);
+    });
+
+    socket.on("disconnect", () => {
+        console.log("User has disconnected from the Server");
+    });
+
+});
+
+
 // launch our backend into a port
-    app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
+http.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
 
 
 

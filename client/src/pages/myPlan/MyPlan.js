@@ -8,6 +8,7 @@ import axios from 'axios';
 import TasksComponent from "./TasksComponent"
 import UsersComponent from "./UsersComponent";
 import ScoreComponent from "./ScoreComponent";
+import ChatComponent from "./chat/ChatComponent";
 
 
 function MyPlan() {
@@ -59,7 +60,8 @@ function MyPlan() {
                     })
                     withoutPlanRes.data.data.map(users => {
                         if(users.plan === null){
-                            setAllUsersWithoutPlan(allUsersWithoutPlan => [...allUsersWithoutPlan, users.userName])
+                            setAllUsersWithoutPlan(allUsersWithoutPlan => [users.userName, ...allUsersWithoutPlan]);
+                            //setAllUsersWithoutPlan([users.userName, ...allUsersWithoutPlan]);
                         }
                     })
                     allUserOfPlanRes.data.data.map((obj) => {
@@ -141,6 +143,13 @@ function MyPlan() {
             label: 'Score',
             content: (
                 <ScoreComponent allUsersOfPlan={allUsersOfPlan}/>
+            )
+        },
+        {
+            name: 'tab4',
+            label: 'Chat',
+            content: (
+                <ChatComponent userName={user.userName} roomID={planName} />
             )
         }
     ]
