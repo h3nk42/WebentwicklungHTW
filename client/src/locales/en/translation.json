@@ -21,5 +21,8 @@
   "welcome": "Welcome ",
   "addPlanButtonMessage" : "Press + to add a new Plan",
   "youHaveAPlanMessage" : "You have a plan, you can go directly to ",
-  "youDontHaveAPlanModal" : "You dont have a Plan yet, create one"
+  "youDontHaveAPlanModal" : "You dont have a Plan yet, create one",
+  "chatHallo" : "Chat: Hello",
+  "typeAMessage" : "Type a message ...",
+  "sendMessage" : "send"
 }

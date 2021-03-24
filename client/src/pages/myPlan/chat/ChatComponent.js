@@ -3,11 +3,14 @@ import "./Chat.css";
 import "../../../components/loginForm/spinner.css";
 import {io} from "socket.io-client";
 import {useAuth} from "../../../context/auth";
+import {useTranslation} from "react-i18next";
 
 
 
 
 function ChatComponent(props) {
+
+    const {t} = useTranslation();
 
     const {user} = useAuth();
     const [socket, setSocket] = useState(null);
@@ -75,7 +78,7 @@ function ChatComponent(props) {
         <div className="container backdrop my-4">
             <div className="col-md-12 d-flex align-items-center flex-column">
                 <div className="card p-4 col-12 col-lg-4 myPlan-card addPlan-style">
-                    <h2 className="tab-task-title"><strong>Chat: Hello {props.userName}</strong></h2>
+                    <h2 className="tab-task-title"><strong>{t("chatHallo")} {props.userName}</strong></h2>
                     <main className="messageBoard">
                         <nav>
                             <ul className="all-messages-list">
@@ -95,11 +98,11 @@ function ChatComponent(props) {
                         <input
                             className="message-input"
                             type="text"
-                            placeholder={'Type a message ...'}
+                            placeholder={t("typeAMessage")}
                             value={message.message}
                             onChange={onTextChange}
                         />
-                        <input type="submit" value={'Send'} className="send-button"/>
+                        <input type="submit" value={t("sendMessage")} className="send-button"/>
                     </form>
                 </div>
             </div>

@@ -42,3 +42,15 @@ nav ul {
     background: transparent;
     cursor: pointer;
 }
+
+body.dark-mode .send-button {
+    color: white;
+}
+
+body.dark-mode .message-input {
+    color: white;
+}
+
+body.dark-mode .single-message {
+    color: white;
+}
