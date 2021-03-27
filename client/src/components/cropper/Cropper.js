@@ -5,9 +5,11 @@ import Cropper from "react-easy-crop";
 import Slider from "@material-ui/core/Slider";
 import getCroppedImg, { generateDownload } from "../../utils/cropImage";
 import { dataURLtoFile } from "../../utils/dataURLtoFile";
+import {useTranslation} from "react-i18next";
 
 export default function RenderCropper({ handleCropper }) {
   const inputRef = useRef();
+  const {t} = useTranslation();
 
   const triggerFileSelectPopup = () => inputRef.current.click();
 
@@ -96,14 +98,14 @@ export default function RenderCropper({ handleCropper }) {
             onClick={() => setImage(null)}
             style={{ marginRight: "10px" }}
         >
-            Clear
+            {t("clear")}
         </button>
         <button 
             className="btn btn-outline-primary btn-sm mr-2"
             onClick={triggerFileSelectPopup}
             style={{ marginRight: "10px" }}
         >
-            Choose
+            {t("choose")}
         </button>
         <button
             className="btn btn-primary btn-sm m-2 px-3"
@@ -111,14 +113,14 @@ export default function RenderCropper({ handleCropper }) {
             style={{ marginRight: "10px" }}
             disabled={!image}
         >
-            Download
+            {t("download")}
         </button>
         <button
             className="btn btn-primary btn-sm m-2 px-3"
             onClick={onUpload}
             disabled={!image}
         >
-            Upload
+            {t("upload")}
         </button>
       </div>
     </div>

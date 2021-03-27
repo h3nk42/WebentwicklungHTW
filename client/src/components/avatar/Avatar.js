@@ -12,6 +12,7 @@ import { IconButton } from "@material-ui/core";
 import { useAuth } from "../../context/auth";
 import avatarDark from "../../logo/profile-picture-dark.png";
 import avatar from "../../logo/profile-picture.png";
+import {useTranslation} from "react-i18next";
 
 import RenderCropper from "../cropper/Cropper";
 
@@ -56,6 +57,8 @@ export default function RenderAvatar() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
+
+  const {t} = useTranslation();
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -138,16 +141,16 @@ export default function RenderAvatar() {
                     id="menu-list-grow"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem onClick={handleClose}>View</MenuItem>
+                    <MenuItem onClick={handleClose}>{t("view")}</MenuItem>
                     <MenuItem
                       onClick={(e) => {
                         handleCropper();
                         handleClose(e);
                       }}
                     >
-                      Change
+                      {t("change")}
                     </MenuItem>
-                    <MenuItem onClick={handleClose}>Remove</MenuItem>
+                    <MenuItem onClick={handleClose}>{t("remove")}</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
