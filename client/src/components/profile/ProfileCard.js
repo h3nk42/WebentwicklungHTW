@@ -7,6 +7,7 @@ import axios from "axios";
 import "./ProfileCard.css";
 import "react-day-picker/lib/style.css";
 import RenderAvatar from "../avatar/Avatar";
+import {useTranslation} from "react-i18next";
 
 function ProfileCard() {
   const { user, darkMode } = useAuth();
@@ -17,6 +18,7 @@ function ProfileCard() {
   const [dateOfBirth, setDateOfBirth] = useState("");
 
   const API_URL = process.env.REACT_APP_API_URL;
+  const {t} = useTranslation();
 
   let config = {
     headers: { Authorization: `Bearer ${user?.token}` },
@@ -75,7 +77,7 @@ function ProfileCard() {
     >
       <div className="heading">
         <div className="profile-title">
-          <h2 data-testid="profile-title">Profile</h2>
+          <h2 data-testid="profile-title">{t("profile")}</h2>
           {!isEditing && (
             <img
               data-testid={darkMode === "dark" ? "edit-dark" : "edit-light"}
@@ -89,48 +91,48 @@ function ProfileCard() {
         <RenderAvatar />
       </div>
       <div className="text-left mt-3">
-        <label className="label">Username :</label>
+        <label className="label">{t("username")} :</label>
         <p>{user?.userName ? user.userName : "testguy"}</p>
         <label className="label">Plan ID :</label>
         <p>{user?.plan ? user.plan : "-"}</p>
         {!isEditing ? (
           <>
-            <label className="label">First name :</label>
+            <label className="label">{t("firstName")} :</label>
             <p data-testid="firstName">
               {data?.firstName ? data?.firstName : "-"}
             </p>
-            <label className="label">Surname :</label>
+            <label className="label">{t("lastName")} :</label>
             <p data-testid="surName">{data?.surName ? data?.surName : "-"}</p>
-            <label className="label">Date of birth :</label>
+            <label className="label">{t("dateOfBirth")} :</label>
             <p>{data?.dateOfBirth ? data?.dateOfBirth : "-"}</p>
           </>
         ) : (
           <form data-testid="profile-form">
             <label className="label" htmlFor="firstName">
-              First name :
+              {t("firstName")} :
             </label>
             <input
               id="firstName"
               type="text"
               className="my-2"
               name="firstName"
-              placeholder="First name"
+              placeholder={t("firstName")}
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
             />
             <label className="label" htmlFor="surName">
-              Surname :
+              {t("lastName")} :
             </label>
             <input
               id="surName"
               type="text"
               className="my-2"
               name="surName"
-              placeholder="Surname"
+              placeholder={t("lastName")}
               value={surName}
               onChange={(e) => setSurName(e.target.value)}
             />
-            <label className="label">Date of birth :</label>
+            <label className="label">{t("dateOfBirth")} :</label>
             <DayPickerInput
               onDayChange={handleDayChange}
               className="my-2"
@@ -144,7 +146,7 @@ function ProfileCard() {
                 className="btn btn-outline-primary btn-sm mr-2"
                 onClick={handleCancel}
               >
-                Cancel
+                {t("cancel")}
               </button>
               <button
                 data-testid="save-btn"
@@ -155,7 +157,7 @@ function ProfileCard() {
                   firstName === "" && surName === "" && dateOfBirth === ""
                 }
               >
-                Save
+                {t("save")}
               </button>
             </div>
           </form>

@@ -24,6 +24,19 @@
   "youDontHaveAPlanModal" : "Du bist noch in keinem Plan, erstelle einen",
   "chatHallo" : "Chat: Hallo",
   "typeAMessage" : "Schreibe eine Nachricht ...",
-  "sendMessage" : "sende"
+  "sendMessage" : "sende",
+  "username" : "Benutzername",
+  "firstName" : "Vorname",
+  "lastName" : "Nachname",
+  "dateOfBirth" : "Geburtsdatum",
+  "cancel" : "Abbrechen",
+  "save" : "Speichern",
+  "view" : "Ansehen",
+  "change" : "Ändern",
+  "remove" : "Entfernen",
+  "clear" : "Löschen",
+  "choose" : "Auswählen",
+  "download" : "Herunterladen",
+  "upload" : "Hochladedn"
 }
 
