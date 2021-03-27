@@ -57,6 +57,10 @@ const UserSchema = new Schema(
       type: String,
       required: false,
     },
+    profilePicture: {
+      type: String,
+      required: false,
+    }
   },
   { timestamps: true }
 );
@@ -147,6 +151,26 @@ UserSchema.methods.updateData = function (res, data) {
     this.firstName = data.firstName ? data.firstName : this.firstName;
     this.surName = data.surName ? data.surName : this.surName;
     this.dateOfBirth = data.dateOfBirth ? data.dateOfBirth : this.dateOfBirth;
+    this.save((err, user) => {
+      if (err) reject(retErr(res, {}, 418, "DB_ERROR"));
+      resolve(user);
+    });
+  });
+};
+
+UserSchema.methods.updatePicture = function (res, data) {
+  return new Promise((resolve, reject) => {
+    this.profilePicture = data.profilePicture ? data.profilePicture : this.profilePicture;
+    this.save((err, user) => {
+      if (err) reject(retErr(res, {}, 418, "DB_ERROR"));
+      resolve(user);
+    });
+  });
+};
+
+UserSchema.methods.removePicture = function (res) {
+  return new Promise((resolve, reject) => {
+    this.profilePicture = null;
     this.save((err, user) => {
       if (err) reject(retErr(res, {}, 418, "DB_ERROR"));
       resolve(user);

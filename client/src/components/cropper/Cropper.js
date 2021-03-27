@@ -5,11 +5,16 @@ import Cropper from "react-easy-crop";
 import Slider from "@material-ui/core/Slider";
 import getCroppedImg, { generateDownload } from "../../utils/cropImage";
 import { dataURLtoFile } from "../../utils/dataURLtoFile";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
+import { useAuth } from "../../context/auth";
+import { uploadFile } from 'react-s3';
+import { config } from '../avatar/Avatar';
+import { API_URL } from '../profile/ProfileCard';
+import axios from 'axios';
 
-export default function RenderCropper({ handleCropper }) {
+export default function RenderCropper({ handleCropper, setData }) {
   const inputRef = useRef();
-  const {t} = useTranslation();
+  const { user } = useAuth();
 
   const triggerFileSelectPopup = () => inputRef.current.click();
 
@@ -17,6 +22,8 @@ export default function RenderCropper({ handleCropper }) {
   const [croppedArea, setCroppedArea] = useState(null);
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
+
+  const {t} = useTranslation();
 
   const onCropComplete = (croppedAreaPercentage, croppedAreaPixels) => {
     setCroppedArea(croppedAreaPixels);
@@ -37,23 +44,29 @@ export default function RenderCropper({ handleCropper }) {
     const canvasDataUrl = canvas.toDataURL("image/jpeg");
     const convertedUrlToFile = dataURLtoFile(
       canvasDataUrl,
-      "cropped-image.jpeg"
+      `${user.userName}.jpeg`
     );
-
-    try {
-      const formData = new FormData();
-      formData.append("croppedImage", convertedUrlToFile);
-
-      const res = await fetch("http://localhost:9000/api/users/setProfilePic", {
-        method: "POST",
-        body: formData,
+    await axios({
+      method: "post",
+      url: `${API_URL}user/updatePicture`,
+      data: { profilePicture: `${user.userName}.jpeg` },
+      headers: { Authorization: `Bearer ${user?.token}` },
+    })
+      .then((res) => {
+        console.log(res);
+        setData(res.data);
+        uploadFile(convertedUrlToFile, config)
+          .then(data => {
+            console.log(data)
+            handleCropper() // Close the cropper after successfully uploading image
+          })
+          .catch(err => {
+            console.error(err)
+          })
+      })
+      .catch((err) => {
+        console.log(err.message);
       });
-
-      const res2 = await res.json();
-      console.log(res2);
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   return (
