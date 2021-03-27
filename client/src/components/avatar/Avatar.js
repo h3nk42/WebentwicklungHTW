@@ -13,8 +13,10 @@ import { useAuth } from "../../context/auth";
 import avatarDark from "../../logo/profile-picture-dark.png";
 import avatar from "../../logo/profile-picture.png";
 import {useTranslation} from "react-i18next";
-
 import RenderCropper from "../cropper/Cropper";
+import { deleteFile } from 'react-s3';
+import { API_URL } from '../profile/ProfileCard';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,8 +54,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function RenderAvatar() {
-  const { darkMode } = useAuth();
+export const config = {
+  bucketName: process.env.REACT_APP_BUCKET_NAME,
+  region: process.env.REACT_APP_BUCKET_REGION,
+  accessKeyId: process.env.REACT_APP_S3_KEY,
+  secretAccessKey: process.env.REACT_APP_S3_SECRET,
+}
+
+export default function RenderAvatar({ data, setData }) {
+  const { user, darkMode } = useAuth();
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -68,7 +77,6 @@ export default function RenderAvatar() {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
-
     setOpen(false);
   };
 
@@ -85,24 +93,41 @@ export default function RenderAvatar() {
     if (prevOpen.current === true && open === false) {
       anchorRef.current.focus();
     }
-
     prevOpen.current = open;
   }, [open]);
 
   const [showCropper, setShowCropper] = React.useState(false);
   const handleCropper = () => setShowCropper((prevValue) => !prevValue);
 
+  const handleRemove = async () => {
+    await axios({
+      method: "post",
+      url: `${API_URL}user/removePicture`,
+      headers: { Authorization: `Bearer ${user?.token}` },
+    })
+      .then((res) => {
+        console.log(res);
+        setData(res.data);
+        deleteFile(`${user.userName}.jpeg`, config)
+                .then(data => console.log(data))
+                .catch(err => console.error(err))
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }
+
   return (
     <>
       <div className="avatar-container">
         <div className="avatar">
           <img
-            src={darkMode === "dark" ? avatarDark : avatar}
+            src={data.profilePicture ? `https://${process.env.REACT_APP_BUCKET_NAME}.s3.${process.env.REACT_APP_BUCKET_REGION}.amazonaws.com/${data.profilePicture}` :
+                (darkMode === 'dark' ? avatarDark : avatar)}
             alt="avatar"
             className="avatar-img"
           />
         </div>
-
         <IconButton
           className={
             darkMode === "dark" ? classes.createicondark : classes.createicon
@@ -141,16 +166,16 @@ export default function RenderAvatar() {
                     id="menu-list-grow"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem onClick={handleClose}>{t("view")}</MenuItem>
                     <MenuItem
                       onClick={(e) => {
                         handleCropper();
                         handleClose(e);
                       }}
-                    >
-                      {t("change")}
-                    </MenuItem>
-                    <MenuItem onClick={handleClose}>{t("remove")}</MenuItem>
+                    >{t("change")}</MenuItem>
+                    <MenuItem onClick={(e) => {
+                      handleRemove();
+                      handleClose(e);
+                    }}>{t("remove")}</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
@@ -159,7 +184,7 @@ export default function RenderAvatar() {
         </Popper>
       </div>
 
-      {showCropper && <RenderCropper handleCropper={handleCropper} />}
+      {showCropper && <RenderCropper handleCropper={handleCropper} setData={setData} />}
     </>
   );
 }

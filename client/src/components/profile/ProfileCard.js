@@ -9,6 +9,8 @@ import "react-day-picker/lib/style.css";
 import RenderAvatar from "../avatar/Avatar";
 import {useTranslation} from "react-i18next";
 
+export const API_URL = process.env.REACT_APP_API_URL;
+
 function ProfileCard() {
   const { user, darkMode } = useAuth();
   const [isEditing, setEditing] = useState(false);
@@ -17,7 +19,6 @@ function ProfileCard() {
   const [surName, setSurName] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
 
-  const API_URL = process.env.REACT_APP_API_URL;
   const {t} = useTranslation();
 
   let config = {
@@ -88,7 +89,7 @@ function ProfileCard() {
             />
           )}
         </div>
-        <RenderAvatar />
+        <RenderAvatar data={data} setData={setData} />
       </div>
       <div className="text-left mt-3">
         <label className="label">{t("username")} :</label>

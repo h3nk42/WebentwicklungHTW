@@ -116,3 +116,34 @@ exports.updateData = async (req, res) => {
       }
     });
 };
+
+exports.updatePicture = async (req, res) => {
+  let msgSender = req.user.userName;
+  let { profilePicture } = req.body;
+
+  let user = await User.findOne({ userName: msgSender }, (err, data) => {});
+
+  user
+    .updatePicture(res, { profilePicture })
+    .then((resolve, reject) => {
+      if (reject) return resolve;
+      if (resolve) {
+        return res.status(200).json(resolve);
+      }
+    });
+};
+
+exports.removePicture = async (req, res) => {
+  let msgSender = req.user.userName;
+
+  let user = await User.findOne({ userName: msgSender }, (err, data) => {});
+
+  user
+    .removePicture(res)
+    .then((resolve, reject) => {
+      if (reject) return resolve;
+      if (resolve) {
+        return res.status(200).json(resolve);
+      }
+    });
+};

@@ -34,4 +34,16 @@ router.post(
   userController.updateData
 );
 
+router.post(
+  "/updatePicture",
+  passport.authenticate("jwt", { session: false }),
+  userController.updatePicture
+);
+
+router.post(
+  "/removePicture",
+  passport.authenticate("jwt", { session: false }),
+  userController.removePicture
+);
+
 module.exports = router;
