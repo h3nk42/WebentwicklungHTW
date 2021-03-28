@@ -35,8 +35,9 @@
   justify-content: center;
 }
 
-.close {
+.cross {
   position: absolute;
+  cursor: pointer;
   right: 32px;
   top: 32px;
   width: 32px;
@@ -44,11 +45,12 @@
   opacity: 0.6;
 }
 
-.close:hover {
+.cross:hover {
   opacity: 1;
 }
 
-.close:before, .close:after {
+.cross:before,
+.cross:after {
   position: absolute;
   left: 15px;
   content: ' ';
@@ -57,11 +59,11 @@
   background-color: #695d47;
 }
 
-.close:before {
+.cross:before {
   transform: rotate(45deg);
 }
 
-.close:after {
+.cross:after {
   transform: rotate(-45deg);
 }
 
@@ -70,8 +72,8 @@ body.dark-mode .wrapper {
   border: 1px solid #6e6e6e;
 }
 
-body.dark-mode .close:before,
-body.dark-mode .close:after {
+body.dark-mode .cross:before,
+body.dark-mode .cross:after {
   background-color: white;
 }
 

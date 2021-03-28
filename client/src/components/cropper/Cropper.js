@@ -71,7 +71,7 @@ export default function RenderCropper({ handleCropper, setData }) {
 
   return (
     <div className="wrapper">
-      <div className="close" onClick={handleCropper} />
+      <div className="cross" onClick={handleCropper} />
       <div className="wrapper-cropper">
         {image && (
           <>
